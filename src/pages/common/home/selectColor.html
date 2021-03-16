@@ -1,0 +1,14 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/02/26
+搜索
+-->
+<ons-dialog cancelable class="drop-dialog cem-message"
+            style="height: 41%;width: 73%;background-color: white">
+    <div class="color-father">
+        <div ng-repeat="item in colorsDrop" class="color-common" ng-style="item.styleStr" ng-click="confirmColor(item)">
+            {{ item.colorName }}
+        </div>
+    </div>
+</ons-dialog>

@@ -1,0 +1,33 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/02/25
+薄附錄詳情
+-->
+<ons-page ng-controller="cemcktpCtrl">
+    <ons-modal var="app.cembflxqModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            查看圖片
+        </div>
+    </ons-toolbar>
+    <!--圖片-->
+    <div class="cem-bfl-query-photo" style="height: 100%">
+        <div class="cem-no-data" ng-if="menus.length<1"></div>
+        <div class="cem-bfl-father" ng-repeat="item in menus track by $index">
+            <div class="cem-no-img cem-margin-zero">
+                <img ng-src="{{ item.src }}" class="cem-has-photo-img"/>
+            </div>
+        </div>
+    </div>
+</ons-page>

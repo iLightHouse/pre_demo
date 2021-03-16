@@ -1,0 +1,39 @@
+<ons-page ng-controller="LoginCtrl">
+    <div class="login-pageown">
+        <div class="login_out">
+            <div style="height: 20%" class="login-layout-center-end"><img src="img/cem/login/logo.png"/></div>
+            <div style="height: 11%;" class="login-layout-center-end">移動作業系統</div>
+            <div style="height: 4%;" class="login-layout-center-end">SYSTEM LOGIN</div>
+            <div style="height: 36%;display: flex;flex-direction: column;justify-content: center;" class="login_text">
+                <div ng-show="showLogin" style="height: 47%;display: flex;flex-direction: column;justify-content: space-around;min-height: 94px;">
+                    <hy-input-clear placeholder="請輸入賬號" hy-value="accountInfo.loginName"
+                                    class="cem-input-clear-font-white cem-input-clear"></hy-input-clear>
+                    <hy-password class="password-input" ng-model="accountInfo.loginCheckCode" placeholder="請輸入密碼"/>
+                </div>
+                <div style="margin-top: 15px;">
+                    <hy-button class="login-submit-button" style="margin-left: 0px;" ng-click="login()">登入</hy-button>
+                </div>
+            </div>
+            <div class="login-user" style="height: 8%;">
+                <!--橫線-->
+                <div class="line-login"></div>
+                <div class="login-info">
+                    <img src="img/cem/login/stx.png"/>
+                    <!--<div>NO.2331</div>-->
+                    <div>{{userName}}</div>
+                </div>
+            </div>
+            <!--<div class="login-count">
+                <div>10/09/82</div>
+                <div>10/09/82</div>
+                <div>19/54</div>
+                <div>69/89</div>
+            </div>-->
+            <div class="login-setting"
+                 style="height: 18%;display: flex;justify-content: flex-end;align-items: flex-end;">
+                <img src="img/cem/login/setting.png" ng-click="toSetting()" />
+            </div>
+        </div>
+        <div class="login-bq">APP v0.1.13(CEM) &copy; HaiyiSoft.All Rights Reserved</div>
+    </div>
+</ons-page>

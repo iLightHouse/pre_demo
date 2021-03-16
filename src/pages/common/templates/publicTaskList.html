@@ -1,0 +1,73 @@
+<!--
+Version:1.0.0
+Author:jiangjiabin
+Date:2017/9/4
+首页待办
+-->
+<div ng-if="!isTaskListInit" class="tf-message-content hy-layout-column hy-layout-align-center-center">
+    <div class="hy-layout-column hy-layout-align-center-center" ng-show="!getTaskError">
+        <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+        <br>
+        <div>正在获取待办列表</div>
+    </div>
+    <div ng-show="getTaskError">
+        <hy-button class="hy-outline" ng-click="queryTaskList()">请重试</hy-button>
+    </div>
+</div>
+<ons-scroller style="width: 100%;position: relative;height: 100%" ng-if="isTaskListInit">
+    <ons-pull-hook ng-action="load($done)" var="dbloader">
+          <span ng-switch="dbloader.getCurrentState()">
+                <span ng-switch-when="initial"><ons-icon size="35px" icon="ion-arrow-down-a"></ons-icon>下拉刷新</span>
+                <span ng-switch-when="preaction"><ons-icon size="35px" icon="ion-arrow-up-a"></ons-icon>松开刷新</span>
+                <span ng-switch-when="action"><ons-icon size="35px" spin="true" icon="ion-load-d"></ons-icon>正在加载</span>
+          </span>
+    </ons-pull-hook>
+    <ons-list style="border: none">
+        <div class="tf-content-title" ng-if="taskList.length<1"
+             style="width: 100%">
+            <div class="hy-layout-row hy-layout-align-center-center tf-content-header" style="height:60px">
+                没有待办工单
+            </div>
+        </div>
+        <div ng-show="taskList.length>0" style="width:100%;" class="hy-layout-column" ons-lazy-repeat="dbDelegate">
+            <div class="ydyx-list">
+                <div class="ydyx-content-body" style="font-size: 14px; padding: 1px 10px;">
+                    <div class="hy-layout-row hy-layout-align-start-center" style="margin-bottom: 10px;">
+                        <div style="width: 15%;" class="hy-layout-align-center-center">
+                            <img src="img/sy/ydyx/gd.png" class="task-gdclr-img">
+                        </div>
+                        <div style="width: 50%;font-size: 16px;">{{item.crrmc}}</div>
+                        <div style="color: #7E7E7E;font-size: 12px;width: 35%;">{{item.chsj}}</div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-column" style="width: 80%">
+                            <div class="hy-layout-row" style="margin-left: 10px;">
+                                <div style="color:#7E7E7E;width: 25%;">工作单号</div>
+                                <div style="width: 60%;line-height: 19px;">{{item.gzdbh}}</div>
+                            </div>
+                            <div class="hy-layout-row hy-layout-align-space-around-center" style="width: 100%;height: 60px;margin-top: 10px;">
+                                <div class="hy-layout-column task-ywzl-box" style="background-color:#FEFAEE;width: 45%;">
+                                    <div class="task-ywzl-text-grey">业务子类</div>
+                                    <div class="task-ywzl-text">{{item.ywzl}}</div>
+                                </div>
+                                <div class="hy-layout-column task-ywzl-box" style="background-color:#EBFBFA;width: 45%;">
+                                    <div class="task-ywzl-text-grey">环节</div>
+                                    <div class="task-ywzl-text">{{item.hjmc}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hy-layout-column" style="width: 20%">
+                            <div class="hy-layout-column hy-layout-align-space-around-center">
+                                <hy-button  class="task-button buttonTheme" ng-click="gdclmx(item)">详情</hy-button>
+                                <hy-button  class="task-button buttonTheme" ng-click="ywcl(item)">办理</hy-button>
+                                <hy-button  class="task-button buttonTheme" ng-click="tq(item)">退签</hy-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background-color: #dddddd;height: 1px;margin: 10px 0;"></div>
+                </div>
+            </div>
+        </div>
+    </ons-list>
+</ons-scroller>
+

@@ -1,0 +1,22 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/02/26
+搜索
+-->
+<ons-dialog cancelable class="drop-dialog cem-message"
+            style="height: 44%;width: 73%;background-color: white">
+    <div class="cem-ssck-title">物料所屬倉庫</div>
+    <div class="color-father" style="overflow: scroll;height: calc(100% - 82px);">
+        <hy-radio-group class="hy-layout-column fdqf_radiobutton" ng-model="sel.val" style="width: 100%;">
+            <div ng-repeat="item in selCk track by $index" class="cem-ssck-group">
+                <hy-radio-button value="{{ item.num }}" class="hy-primary cem-ssck-radio">
+                    {{ item.selckmc }}
+                </hy-radio-button>
+            </div>
+        </hy-radio-group>
+    </div>
+    <div class="cem-button" style="position: static;background-color: transparent;align-items: start">
+        <div style="width: 45%" class="button-solid" ng-click="selectCk()">確認</div>
+    </div>
+</ons-dialog>

@@ -1,0 +1,54 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/7
+签到
+-->
+<ons-page ng-controller="wdQiandaoCtrl">
+    <ons-modal var="app.qdModel" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="toolbar-hide-border" toolbar-modal>
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">签到</div>
+    </ons-toolbar>
+    <div class="tf-page-content hy-layout-column" style="background-color: #FFFFFF;">
+        <div style="height: calc(100% - 100px);">
+            <hy-gd-map hya-ak="234ff739f7a8578b997bda504cd024ba" id="hy-gd-map"
+                       hya-init="init($event)"
+                       hya-controls="mapControls"
+                       hya-geolocation="geolocation($event,$map);"
+                       var="qdMapView"
+            ></hy-gd-map>
+        </div>
+        <div style="height: 100px">
+            <div class="hy-layout-row hy-layout-align-space-between-center" style="height: 100%">
+                <div class="hy-layout-column tf-info-content wd-qd-content">
+                    <div class="hy-layout-row tf-display-font">
+                        <div class="hy-layout-row tf-row-header-100 tf-primary" style="width: 70px">当前信息</div>
+                        <div class="hy-layout-row tf-row-content">
+                            {{nowSign.signTime|hyDateFormat:'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row tf-display-font">
+                        <div class="hy-layout-row tf-row-content-auto" style="font-size: smaller">
+                            {{nowSign.address ? nowSign.address : '无'}}
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <hy-button ng-click="sdqd()" class="hy-fab" ng-disabled="!geoend">
+                        签到
+                    </hy-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

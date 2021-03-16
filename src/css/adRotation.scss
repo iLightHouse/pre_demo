@@ -1,0 +1,18 @@
+.ad-rotation {
+  background: white;
+  height: 35px;
+  padding: 0 5px;
+  overflow: hidden;
+  margin-top: 2px;
+  .ad-rotation-item {
+    padding: 0 5px;
+    height: 35px;
+    line-height: 35px;
+    .item-text {
+      color: #828282;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

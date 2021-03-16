@@ -1,0 +1,62 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/4
+通用待办详情
+-->
+<ons-page ng-controller="dbDetialCtrl">
+    <ons-toolbar toolbar-modal>
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">工单办理情况</div>
+    </ons-toolbar>
+    <div class="tf-page-content hy-layout-column">
+        <div class="hy-layout-row hy-layout-align-space-between-center yn-cb-list-head">
+            <div><span style="font-size: 13px;color: #999999">NO.</span>{{task.gzdbh}}</div>
+        </div>
+        <div class="tf-content-flex hy-layout-column" style="overflow: hidden;">
+            <div style="overflow: scroll;width: 100%;height: 100%;">
+                <div ng-if="!init" class="tf-message-content hy-layout-column hy-layout-align-center-center">
+                    <div class="hy-layout-column hy-layout-align-center-center" ng-show="!error">
+                        <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                        <br>
+                        <div>正在获取工单办理情况</div>
+                    </div>
+                    <div ng-show="error">
+                        <hy-button class="hy-outline" ng-click="query()">请重试</hy-button>
+                    </div>
+                </div>
+                <div ng-if="init" class="tf-content-inner" style="padding-left:5px">
+                    <div class="tf-content-title" ng-if="taskStateList.length<1">
+                        <div class="hy-layout-row hy-layout-align-center-center tf-content-header" style="height:60px">
+                            没有工单办理情况
+                        </div>
+                    </div>
+                    <hy-time-line ng-repeat="item in taskStateList" is-last="$last" is-start="$first"
+                                  class="tf-time-line">
+                        <div style="padding-right: 10px">
+                            <div class="hy-layout-row">
+                                <div class="tf-row-content-auto tf-primary" style="padding-left:0;">
+                                    <span style="color: black">{{taskStateList.length-$index}}&nbsp;&nbsp;&nbsp;</span>{{item.chsj}}(传入)
+                                </div>
+                            </div>
+                            <div class="hy-layout-row hy-layout-align-start-center">
+                                <div class="tf-row-header-65">环节</div>
+                                <div class="tf-row-content-auto">{{item.hjmc}}</div>
+                            </div>
+                            <div class="hy-layout-row hy-layout-align-start-center">
+                                <div class="tf-row-header-65">状态</div>
+                                <div class="tf-row-content-auto">{{item.blqk}}</div>
+                            </div>
+                            <div class="hy-layout-row hy-layout-align-start-center">
+                                <div class="tf-row-header-65">传入人</div>
+                                <div class="tf-row-content-auto">{{item.crr}}</div>
+                            </div>
+                        </div>
+                    </hy-time-line>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

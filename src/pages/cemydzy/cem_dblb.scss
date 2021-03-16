@@ -1,0 +1,458 @@
+.cem_title {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  img {
+    height: 19px;
+  }
+  > div:nth-of-type(1) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  > div:nth-of-type(2) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /*.cem_select{
+    position: relative;
+  }*/
+}
+
+/*.cem_select_item {
+  position: absolute;
+  top: -11px;
+  right: 20px;
+  background-color: white;
+  z-index: 30000;
+  height: 85px;
+  width: 55px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px #eaeaea;
+  padding: 7px 0;
+  > div {
+    text-align: center;
+    height: 28px;
+    line-height: 28px;
+  }
+}*/
+
+/*.font-green {
+  color: green;
+}*/
+
+/*.zfjh-font-size16 {
+  font-size: 16px;
+}*/
+
+/*.zfjh-img {
+  height: 22px;
+  width: 22px;
+  margin: 0 2px;
+}
+
+.zfjh-img-second {
+  height: 22px;
+  width: 22px;
+}*/
+
+/*.zfjh-content-row-header {
+  flex: none;
+  height: 30px;
+  line-height: 30px;
+  color: black;
+}*/
+
+/*.zfjh-zfzt {
+  border: 1px solid #36aaff;
+  border-radius: 5px;
+  height: 24px;
+  line-height: 24px;
+  width: 50px;
+  text-align: center;
+  color: #36aaff;
+}*/
+
+/*.zfhh-backgroung-gray {
+  background-color: rgba(196, 196, 196, 0.51);
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.zfjh-content-height {
+  height: 60px;
+
+}
+
+.zfjh-content-height2 {
+  height: 50px;
+  border-bottom: 1px solid #d7d7d7;
+}*/
+
+.tf-content-flex {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  //padding: 8px 4px;
+}
+
+/*.cem-cb-search-top {
+  !*padding: 10px 20px;*!
+  !*background-color: white;*!
+  !*border-bottom: 1px solid #F3F3F3;*!
+  !*margin-bottom: 11px;*!
+  margin: 11px 20px;
+  .cem-ydcb-search-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 34px;
+    border: 1px solid $border-color;
+    border-radius: 17px;
+    .cem-icon-color {
+      color: $background-color;
+    }
+    .cem-input-clear > input {
+      color: $background-color;
+    }
+    .cem-search-scan {
+      width: 70px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+}*/
+
+/*.regularBlock {
+  margin: 10px 25px 20px 25px;
+  .regular_all {
+    > div:nth-of-type(1) {
+      width: 15%;
+    }
+    > div:nth-of-type(2) {
+      margin-left: 15px;
+      width: 69%;
+    }
+  }
+  .regular_no {
+    color: #ffc72c;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .regular_meterno {
+    color: #4b4b4b;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .regular_number {
+    font-weight: bold;
+    font-size: 35px;
+    color: #eaeaea;
+  }
+  .regular_address {
+    color: #8c8c8c;
+  }
+  .cem-clock {
+    margin-left: 15px;
+    font-weight: normal;
+    font-size: 15px;
+    height: 100%;
+    color: #ffc72c;
+    letter-spacing: 1px;
+    img {
+      height: 12px;
+      margin-right: 5px;
+    }
+  }
+}*/
+
+.cem-popover-lable {
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+.font-color {
+  color: #ffc72c;
+}
+
+.cem-popover {
+  top: 269px !important;
+  width: 112px;
+  left: 257px !important;;
+  .popover__top-arrow {
+    //background-image: linear-gradient(45deg, $primaryColor, $primaryColor 50%, transparent 50%);
+    background-color: #FFFFFF;
+    background-image: none;
+  }
+  .app-popover-content {
+    background-color: #FFFFFF;
+    color: #4b4b4b;
+    font-size: 20px;
+    padding: 10px;
+    /*border-radius: 8px;*/
+  }
+  .app-popover-lable {
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+  }
+}
+
+/*.cem-filter-click {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 45px;
+  text-align: center;
+  background-color: #FFD052;
+  box-shadow: 2px 2px 3px #eaeaea;
+}*/
+
+/*.cem-filter-noclick {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  color: #FFD052;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 45px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 2px 2px 3px #eaeaea;
+}*/
+
+/*------定期抄錶辦理界面樣式-------*/
+/*.meter_info {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  > div:nth-of-type(1) {
+    font-size: 13px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+  }
+  > div:nth-of-type(2) {
+    width: 60%;
+  }
+  !*统计数量*!
+  .login-count {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-around;
+    > div {
+      width: 25%;
+      border-radius: 15px;
+      color: white;
+      padding: 2px 4px;
+      display: inline-block;
+      height: 15px;
+      line-height: 16px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-weight: normal;
+    }
+    > div:nth-of-type(1) {
+      width: 30%;
+      background-color: #7acf63;
+      box-shadow: 0 0 0 2px #DAEED2;
+    }
+    > div:nth-of-type(2) {
+      background-color: #f86c6c;
+      box-shadow: 0 0 0 2px #FCD5D2;
+    }
+    > div:nth-of-type(3) {
+      background-color: #ffda2e;
+      box-shadow: 0 0 0 2px #FEF2C2;
+    }
+  }
+}*/
+
+.cem-dqcb-content {
+  flex: 1 1 auto;
+  overflow: scroll;
+  height: calc(100% - 84px);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+}
+
+/*.cem-dqcb-an {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  height: 50px;
+  div {
+    margin-right: 20px;
+    background-color: #eaeaea;
+  }
+  div:nth-of-type(2) {
+    margin: 0;
+  }
+  img {
+    height: 50px;
+    width: 50px;
+  }
+}*/
+
+.cem-input-scancodes {
+  float: right;
+  margin-top: 11px;
+  > img {
+    height: 20px;
+  }
+}
+
+.ring {
+  position: absolute; /* 绝对定位 */
+  top: 50%; /* 距上部 */
+  left: 50%; /* 距左部 */
+  transform: translate(-50%, -50%); /* 相对于自身，x,y轴移动 */
+  width: 60px; /* 宽 */
+  height: 60px; /* 高 */
+  background: transparent; /* 背景颜色透明 */
+  border: 3px solid #eaeaea; /* 边框 */
+  border-radius: 50%; /* 边框圆角 */
+  text-align: center; /* 字体水平居中 */
+  line-height: 60px; /* 行高 */
+  font-family: sans-serif; /* 字体样式 */
+  font-size: 12px; /* 字体大小 */
+  color: #fff000; /* 颜色 */
+  /*letter-spacing: 4px;*/
+  /* 字符间距 */
+  /*text-transform: uppercase;*/
+  /* 字体全大写 */
+  text-shadow: 0 0 10px #fff000; /* 字体阴影 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, .5); /* 盒子阴影 */
+  user-select: none; /* 无法选中 */
+  span {
+    display: block;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+    width: 50%;
+    height: 4px;
+    background: transparent;
+    transform-origin: left; /* 动画开始位置 */
+    animation: animate 2s linear infinite;
+    transform: rotate(45deg);
+  }
+
+  span::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff000;
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 0 20px #fff000;
+  }
+
+}
+
+/* 黄色长线 */
+.ring::before {
+  content: ''; /* 内容 */
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid #fff000;
+  border-right: 3px solid #fff000;
+  border-radius: 50%;
+  animation: animateCircle 2s linear infinite; /* 动画：名称 时间 速率 重复 */
+}
+
+@keyframes animate {
+  100% {
+    /* 360+45 */
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes animateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*.record-button {
+  padding: 5px;
+  color: #528ffa;
+  border: 1px solid #528ffa;
+}
+
+.record-item {
+  margin: 0px 4px 8px 4px;
+  padding: 4px 16px;
+  //border-radius: 8px;
+  background-color: #eaeaea;
+}*/
+
+/*.cem_cbly {
+  margin-top: 10px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+}
+
+.cem_cbly_pic {
+  width: 18%;
+  height: 70%;
+  background-color: #eaeaea;
+  margin-left: 12px;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+
+.cem_cbly_pic_content {
+  height: 50px;
+  margin-top: 3px;
+}*/
+
+/*.cem_cbly_jdt {
+  background-color: #ffc72c;
+  height: 3px;
+  margin-top: 5px;
+}
+
+.cem-dqcb-exception::after {
+  content: '異常';
+  color: $cem-dark-red;
+}*/
+
+.cem_pzsc_img {
+  height: 85%;
+}

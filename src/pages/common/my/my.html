@@ -1,0 +1,85 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/7
+我的页面
+-->
+<ons-page ng-controller="wdCtrl">
+    <!--<ons-toolbar class="toolbar-hide-border" toolbar-modal>
+        <div class="center">我的</div>
+    </ons-toolbar>
+    <ons-modal var="app.myModel" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+        <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+            <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+            <div class="tf-loader-content-text">加載中...</div>
+        </div>
+    </div>
+    </ons-modal>
+    <div class="tf-page-content hy-layout-column">
+        <div class="tf-my-top-content hy-layout-row">
+            <div class="hy-layout-row hy-layout-align-center-center" style="width:150px;flex:none;">
+                <img style="width:100px;height:100px" src="img/my/wd_img.png">
+            </div>
+            <div class="hy-layout-column hy-layout-align-center-start" style="width:100%;flex:1 1 auto">
+                <div class="tf-my-text">
+                    {{userInfo.RYMC}}
+                </div>
+                <div class="tf-my-text">
+                    {{userInfo.DLZH}}
+                </div>
+                <div class="tf-my-text" style="overflow: hidden;text-overflow: ellipsis;">
+                    {{userInfo.YJDZ}}
+                </div>
+            </div>
+        </div>
+        <div class="tf-content-flex hy-layout-column" style="overflow:auto;">
+            <div style="width:100%">
+                <div ng-repeat="item in pageInfo" class="tf-info-content">
+                    <div class="hy-layout-row hy-layout-align-center-center" ng-click="showDetailMy(item)">
+                        <div style="flex: 1 1 auto;width:100%;">{{item.label}}</div>
+                        <div class="hy-layout-row hy-layout-align-center-center"
+                             style="width:35px;height:35px;flex: none;">
+                            <ons-icon icon="ion-chevron-right" size="20px" style="color:#AAAAAA"></ons-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="tf-page-content hy-layout-column">
+        <div class="app-my-bg-content  hy-layout-row">
+            <div class="hy-layout-column" style="width:150px;">
+                <img class="app-my-pic" src="img/wgjl/dg/my/user.png">
+                <div style="padding-top: 10px; padding-left: 30px;">
+                    {{userInfo.RYMC}}
+                </div>
+                <div class="hy-layout-row" style="padding-top: 10px; padding-left: 30px;">
+                    {{userInfo.YJDZ}}
+                    <img src="img/wgjl/dg/my/code.png" style="padding-left: 20px;width: 20px;height: 20px;flex: none;"
+                         ng-click="enlargeImage()">
+                </div>
+            </div>
+        </div>
+        <div class="tf-content-flex hy-layout-column" style="overflow:auto;">
+            <div style="width:100%">
+                <div ng-repeat="item in pageInfo" class="tf-info-content">
+                    <div class="hy-layout-row hy-layout-align-start-center" ng-click="showDetailMy(item)">
+                        <img style="width:40px;height:40px" ng-src="{{item.srcUrl}}" ng-show="item.id=='1'">
+                        <img style="width:20px;height:20px" ng-src="{{item.srcUrl}}" ng-show="item.id=='2'">
+                        <div style="flex: 1 1 auto;padding-left:10px;">{{item.label}}</div>
+                        <div class="hy-layout-row hy-layout-align-center-center"
+                             style="width:35px;height:35px;flex: none;">
+                            <ons-icon icon="ion-chevron-right" size="5px" style="color:#AAAAAA"></ons-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-info-wdxx-content" ng-if="false" style="background-color: #ff5959">
+                    <div class="hy-layout-row hy-layout-align-center-center" ng-click="zxapp()">
+                        <div class="app-wdxx-button-content">退出登录</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

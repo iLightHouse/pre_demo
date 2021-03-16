@@ -1,0 +1,89 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/10/13
+文件下载列表
+-->
+<ons-page ng-controller="wjxzlbCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            文件下載
+        </div>
+    </ons-toolbar>
+    <div class="tf-page-content hy-layout-column">
+        <!--<div class="yn-cb-tab-top">
+            <div class="button-bar tf-radio-group-button" style="width:100%;margin:0 auto;">
+                <div class="button-bar__item">
+                    <input type="radio" name="segment-a" ng-value="0" ng-model="checkType">
+                    <button class="button-bar__button">传输中</button>
+                </div>
+                <div class="button-bar__item">
+                    <input type="radio" name="segment-a" ng-model="checkType" ng-value="1">
+                    <button class="button-bar__button">已完成</button>
+                </div>
+            </div>
+        </div>-->
+        <div class="nwyyt_jf_content1" style="z-index: 99;flex: none;margin: 0;box-shadow: 0 2px 1px -2px #eeeeee">
+            <div class="content_inner">
+                <div layout="row" layout-align="center center">
+                    <div layout="row" layout-align="center center" style="width:50%">
+                        <div class="up_button " ng-class="{active:integral(0)}" ng-click="selectSortType(0)">傳輸中</div>
+                    </div>
+                    <div layout="row" layout-align="center center" style="width:50% ">
+                        <div class="up_button" ng-class="{active:integral(1)}" ng-click="selectSortType(1)">已完成</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tf-content-flex hy-layout-column cem-ydjc-ydjcdb">
+            <hy-scroll ng-class="{'remove':checkType===0}" ng-if="checkType===0" style="width:100%">
+                <div class="cem-no-data" ng-if="loadingFileList.length<1"></div>
+                <!--<div class="tf-content-title" ng-if="loadingFileList.length<1">
+                    <div class="hy-layout-row hy-layout-align-center-center tf-content-header" style="height:60px">
+                        没有传输中文件
+                    </div>
+                </div>-->
+                <div ng-repeat="file in loadingFileList|orderBy:'time':true" class="tf-info-content" style="padding:15px 20px;">
+                    <div class="hy-layout-row hy-layout-align-space-between">
+                        <ons-icon icon="fa-file-pdf-o" size="50px" class="tf-primary"></ons-icon>
+                        <div class="hy-layout-column" style="width: 70%;padding-left: 10px;line-height: 25px">
+                            <div style="font-size: 17px;
+                                word-break:break-all;">{{file.fileName}}</div>
+                            <div class="tf-background">{{file.time | date: 'yyyy-MM-dd HH:mm:ss'}}</div>
+                        </div>
+                        <hy-progress-circular style="height: 40px;width:40px;" value="{{file.percent}}">
+                        </hy-progress-circular>
+                    </div>
+                </div>
+                <br>
+            </hy-scroll>
+
+            <hy-scroll ng-class="{'remove':checkType===1}" ng-if="checkType===1" style="width:100%">
+                <div class="cem-no-data" ng-if="fileList.length<1"></div>
+                <!--<div class="tf-content-title" ng-if="fileList.length<1">
+                    <div class="hy-layout-row hy-layout-align-center-center tf-content-header" style="height:60px">
+                        没有已下载文件
+                    </div>
+                </div>-->
+                <div ng-repeat="file in fileList|orderBy:'time':true" class="tf-info-content" style="padding:15px;"
+                     ng-click="openFile(file)">
+                    <div class="hy-layout-row inner-middle">
+                        <ons-icon icon="fa-file-pdf-o" size="50px" class="tf-primary"></ons-icon>
+                        <div class="hy-layout-column" style="width: calc(100% - 50px);padding-left:10px;line-height: 25px">
+                            <div style="font-size: 17px;
+                                word-break:break-all;">{{file.fileName}}</div>
+                            <div class="hy-layout-row hy-layout-align-space-between tf-background">
+                                <div>{{file.time | date: 'yyyy-MM-dd HH:mm:ss'}}</div>
+                                <div ng-if="file.enabled!='1'" ng-class="{'font-color-red':file.enabled!='1'}">{{file.enabled!='1'?'下載失敗':'下載成功'}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </hy-scroll>
+        </div>
+    </div>
+</ons-page>

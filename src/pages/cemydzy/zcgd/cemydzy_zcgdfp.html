@@ -1,0 +1,152 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/13
+裝拆工單分派辦理
+-->
+<ons-page ng-controller="zcgdfpblCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            工作传票
+        </div>
+        <div class="right cem_title">
+            <div>
+                <img ng-src="img/cem/db/filter_check.png" style="display: none;"/>
+            </div>
+            <div ng-click="changeLanguage(flag)">
+                <img ng-src="{{ languageSrc }}"/>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                基本信息
+            </div>
+        </div>
+        <div class="cemydyz_xcjcbl_content">
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">工作单号</div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{zcfpInfo.wkordrno}}
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">业务类别</div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    工作传票
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">户号</div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    09030006660300
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">户名</div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">申请事项</div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    更名
+                </div>
+            </div>
+            <div class="hy-layout-column">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">说明</div>
+                <div class="hy-layout-row" style="margin: 0px 20px;">
+                    <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;"
+                              hy-focus-scroll
+                              placeholder="請輸入" rows="4" ng-model="xcjcInfo.remark"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                审批信息
+            </div>
+        </div>
+        <div class="cemydyz_xcjcbl_content">
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                    审批结果
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="gzjgDrop" ng-model="xcjcInfo.inspconc" class="cem-form-list"
+                                  var="gzjgDrop"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">审批日期
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                    hya-date-type="String" hya-date-value="xcjcInfo.veridt"
+                                    hya-format="YYYY-MM-DD hh:mm:ss"
+                                    hya-active-class="date-active"
+                                    class="cem_timepicker">
+                    </hy-datepicker3>
+                </div>
+            </div>
+            <div class="hy-layout-column">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">审批意见</div>
+                <div class="hy-layout-row" style="margin: 0px 20px;">
+                    <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;"
+                              hy-focus-scroll
+                              placeholder="請輸入" rows="4" ng-model="xcjcInfo.remark"></textarea>
+                </div>
+            </div>
+            <!--<div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">裝拆人員</div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom" style="margin-right: 0">
+                    {{zcfpInfo.leaderMc?zcfpInfo.leaderMc:'請選擇'}}
+                </div>
+                <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="toQueryInfo()"
+                     style="margin-right: 20px">
+                    <img src="img/cem/common/cem_more.png"/>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                    計劃執行日期
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                    hya-date-type="String" hya-date-value="zcfpInfo.plantime"
+                                    hya-format="YYYY-MM-DD hh:mm:ss"
+                                    style="width:100%;font-size: 14px"
+                                    hya-active-class="date-active"
+                                    class="cem_timepicker">
+                    </hy-datepicker3>
+                </div>
+            </div>-->
+            <!--<div class="hy-layout-column">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">備註</div>
+                <div class="hy-layout-row" style="margin: 0px 20px;">
+                    <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;margin: 0"
+                              placeholder="請輸入" rows="4" ng-model="zcfpInfo.remarks"></textarea>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType!=='2'">
+        <div style="width: 33%" class="button-solid" ng-click="save()">保存</div>
+        <div style="width: 33%" class="button-solid" ng-click="send()">傳遞</div>
+    </ons-bottom-toolbar>
+</ons-page>

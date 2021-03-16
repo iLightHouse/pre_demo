@@ -1,0 +1,172 @@
+/*公告*/
+.cem-message {
+  height: 100%;
+  margin: 12px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 6px 3px $cem-light-font-color;
+  overflow: hidden;
+  font-size: 14px;
+  color: $cem-middle-font-color;
+  .cem-message-title {
+    height: 11%;
+    background-color: $cem-light-yellow;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $cem-dark-font-color;
+    letter-spacing: 1px;
+  }
+  .cem-message-content {
+    padding: 25px;
+  }
+  .cem-message-cbdy-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: $cem-dark-font-color;
+  }
+  .cem-message-cbdy-item {
+    margin: 8px 0;
+    letter-spacing: 1px;
+  }
+  .cem-message-mro-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    div:nth-child(2) {
+      width: 65%;
+      margin-left: 4px;
+      height: 0;
+      border-bottom: 1px solid $cem-light-yellow;
+    }
+  }
+  .cem-message-meter-title {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 13px;
+    div:nth-child(1) {
+      width: 30%;
+    }
+    div:nth-child(2) {
+      width: 55%;
+      letter-spacing: 1px;
+    }
+  }
+  .cem-message-underline {
+    text-decoration: underline;
+  }
+  .cem-message-remind {
+    /*color: $cem-dark-red;*/
+    color: $cem-light-red;
+  }
+}
+
+/*消息數量提示*/
+.cem-message-count {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #f86c6c;
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+  position: absolute;
+  top: 11px;
+  right: 29%;
+}
+
+/*消息*/
+.cem-news {
+  margin: 10px;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 5px 2px $cem-light-font-color;
+  overflow: hidden;
+  font-size: 15px;
+  color: $cem-middle-font-color;
+  border-left: 3px solid $cem-dark-yellow;
+  .cem-news-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $cem-dark-font-color;
+    margin-bottom: 15px;
+  }
+  .cem-message-text {
+    text-indent: 32px;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
+  .cem-news-new {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    .cem-news-sign {
+      width: 36px;
+      background-color: $cem-light-red;
+      height: 15px;
+      color: white;
+      font-size: 12px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 16px;
+      padding: 1px 6px;
+      margin-left: 5px;
+      font-weight: bold;
+      /*font-size: 12px;
+      font-weight: bold;
+      color: white;
+      background-color: $cem-light-red;
+      border-radius: 11px;
+      padding: 1px 7px;*/
+    }
+  }
+}
+
+/*首頁彈框公告的樣式*/
+.home_message_dialog {
+  height: 80%;
+  width: 85%;
+  border-radius: 4px;
+  background-color: transparent
+}
+
+.home_message_img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.home_message_nocontent {
+  height: 15px;
+  border-radius: 4px 4px 0 0;
+}
+
+/*薄附錄紅色字體*/
+.cem-bfl-remind {
+  color: $cem-light-red !important;
+}
+
+/*薄附錄文本*/
+.cem_bfl_content {
+  margin: 8px 0 15px 0px;
+  letter-spacing: 1px;
+  color: #8c8c8c;
+}
+
+/*薄附錄圖片*/
+.cem_bfl_img {
+  width: 150px;
+  height: 150px;
+}
+
+.cem-emoticon{
+  height: 23px;
+}

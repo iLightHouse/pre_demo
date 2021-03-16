@@ -1,0 +1,294 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/17
+電力裝置技術要求單
+-->
+<ons-page ng-controller="dlzzjsyqCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            電力裝置技術要求單
+        </div>
+        <div class="right">
+            <div ng-click="langgDrop.showDialog()" style="width: 16px;height: 16px;border: 1px solid white;
+                font-size: 12px;color: white;background-color: #4b4b4b;margin-left: 70px;margin-top: 13px;text-align: center;line-height: 18px;">
+                {{selectedLang}}
+            </div>
+            <hy-drop-list items="langDrop" ng-model="selectedLang" class="cem-form-list cem-select-none"
+                          var="langgDrop"
+                          hya-hide-null-val="true"
+                          hya-hide-arrow="true"
+                          hya-value-key="DMBM"
+                          hya-title-key="DMBMMC">
+            </hy-drop-list>
+        </div>
+    </ons-toolbar>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title" style="letter-spacing: 0">
+                {{selectedLang === '中' ? '澳門電力股份有限公司' : (selectedLang === 'En' ? 'CEM,S.A' : 'Companhia de ' +
+                'Electricidade de Macau')}}
+            </div>
+        </div>
+        <div class="cemydyz_xcjcbl_content">
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center" style="width: 100px;">
+                    {{selectedLang === '中' ? '編號' : (selectedLang === 'En' ? 'No.' : 'Nº')}}
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{jbxx.BH}}
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal;width: 100px;">
+                    {{selectedLang === '中' ? '申請編號' : (selectedLang === 'En' ? 'Application No.' : 'Nº de Pedido')}}
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{jbxx.wkordrno}}
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal;width: 100px;">
+                    {{selectedLang === '中' ? '電力裝置地址' : (selectedLang === 'En' ? 'Installation Address.' : 'Morada da Instalação')}}
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{jbxx.detaaddr}}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div style="width: 100%;">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title" style="letter-spacing: 0">
+                {{selectedLang === '中' ? '需要進行的客戶工程' : (selectedLang === 'En' ? 'Necessary Customer Works' : 'Trabalhos
+                ' +
+                'Neseccários Pelo Ciente')}}
+            </div>
+        </div>
+        <div class="cemydzy-jcxm-result" ng-repeat="item in khgcList track by $index">
+            <div class="cemydzy-jcxm-result-item">
+                <div class="cemydzy-ydzzjsyq-item-header">
+                    {{selectedLang === '中' ? item.titleCn : (selectedLang === 'En' ? item.titleEn : item.titlePt)}}
+                </div>
+                <div class="hy-layout-row" style="width: 100%;margin-bottom: 15px">
+                    <div style="width: 42%" ng-if="item.type=='1'||item.type=='2'||item.type=='3'">
+                        <hy-checkbox ng-model="item.rep"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+
+                        {{selectedLang === '中' ? '更換' : (selectedLang === 'En' ? 'Replace' : 'Substituir')}}
+                    </div>
+                    <div style="width: 40%;">
+                        <hy-checkbox ng-model="item.ins"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+                        {{selectedLang === '中' ? '加裝' : (selectedLang === 'En' ? 'Install' : 'Instalar')}}
+                    </div>
+                </div>
+                <div class="hy-layout-row" style="width: 100%;margin-bottom: 15px" ng-if="item.type=='1'">
+                    <div style="width: 42%">
+                        <hy-checkbox ng-model="item.am"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+                        aM
+                    </div>
+                    <div style="width: 40%">
+                        <hy-checkbox ng-model="item.gg"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+                        gG
+                    </div>
+                </div>
+                <div class="hy-layout-row" style="width: 100%;margin-bottom: 15px" ng-if="item.type=='3'">
+                    <div style="width: 42%">
+                        <hy-checkbox ng-model="item.type1"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+                        350 &times 350
+                    </div>
+                    <div style="width: 40%">
+                        <hy-checkbox ng-model="item.type2"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+                        250 &times 500
+                    </div>
+                </div>
+
+                <div class="hy-layout-row cem-form-row-content " style="width: 80%;margin-left: 40%;height: 35px"
+                     ng-if="item.type=='1'||item.type=='2'">
+                    <div style="width: 70%" class="cem-border-bottom">
+                        <input ng-model="item.ap" set-focus placeholder="請輸入"
+                               class="cem-form-input"
+                               style="color: #ffc72c;font-size: 18px;letter-spacing: 1px;"/>
+                    </div>
+                    <div style="width: 60%;color: #4B4B4B;font-size: 14px;letter-spacing: 1px">
+                        安培/A
+                    </div>
+                </div>
+                <div class="hy-layout-row cem-form-row-content " style="width: 80%;margin-left: 40%;height: 75px"
+                     ng-if="item.type=='3'">
+                    <div style="width: 70%;margin-top: 35px" class="cem-border-bottom">
+                        <input ng-model="item.area" set-focus placeholder="請輸入"
+                               class="cem-form-input"
+                               style="color: #ffc72c;font-size: 18px;letter-spacing: 1px;"/>
+                    </div>
+                    <div style="width: 85%">
+                        <div style="width: 100%;color: #4B4B4B;font-size: 14px;letter-spacing: 1px;height: 20px;margin-top: 17px">
+                            毫米/mm
+                        </div>
+                        <div style="width: 100%;color: #4B4B4B;font-size: 14px;letter-spacing: 1px">
+                            闊&times高/W&timesH
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                {{selectedLang === '中' ? '電線' : (selectedLang === 'En' ? 'Cables' : 'Cabos')}}
+            </div>
+        </div>
+        <div class="cemydzy-jcxm-result" ng-repeat="item in dxList track by $index">
+            <div class="cemydzy-jcxm-result-item">
+
+                <div class="hy-layout-row" style="width: 100%;margin-bottom: 15px">
+                    <div style="width: 10%;margin-top: 3px">
+                        <hy-checkbox ng-model="item.check"
+                                     style="margin-bottom: 0;">
+                        </hy-checkbox>
+                    </div>
+                    <div style="width: 80%;">
+                        <div class="cemydzy-ydzzjsyq-item-header">
+                            {{selectedLang === '中' ? item.titleCn : (selectedLang === 'En' ? item.titleEn :
+                            item.titlePt)}}
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-layout-row cem-form-row-content " style="width: 80%;margin-left: 25%;height: 35px"
+                     ng-if="item.type=='1'">
+                    <div style="width: 80%" class="cem-border-bottom">
+                        <input set-focus placeholder="請輸入" ng-model="item.model"
+                               class="cem-form-input"
+                               style="color: #ffc72c;font-size: 18px;letter-spacing: 1px;"/>
+                    </div>
+                    <div style="width: 70%;color: #4B4B4B;font-size: 14px;letter-spacing: 1px">
+                        平方毫米/mm<sup>2</sup>
+                    </div>
+                </div>
+                <div class="hy-layout-row" style="width: 100%;margin-bottom: 15px" ng-if="item.type=='2'">
+                    <div style="width: 33%">
+                        <hy-checkbox ng-model="item.check1"
+                                     style="margin-bottom: 0;width: 19px">
+                        </hy-checkbox>
+                        {{selectedLang === '中' ? item.color1Cn : (selectedLang === 'En' ? item.color1En :
+                        item.color1Pt)}}
+                    </div>
+                    <div style="width: 33%">
+                        <hy-checkbox ng-model="item.check2"
+                                     style="margin-bottom: 0;width: 19px">
+                        </hy-checkbox>
+                        {{selectedLang === '中' ? item.color2Cn : (selectedLang === 'En' ? item.color2En :
+                        item.color2Pt)}}
+                    </div>
+                    <div style="width: 33%">
+                        <hy-checkbox ng-model="item.check3"
+                                     style="margin-bottom: 0;width: 19px">
+                        </hy-checkbox>
+                        {{selectedLang === '中' ? item.color3Cn : (selectedLang === 'En' ? item.color3En :
+                        item.color3Pt)}}
+                    </div>
+                </div>
+                <div class="hy-layout-row" style="width: 100%;margin-bottom: 15px" ng-if="item.type=='2'">
+                    <div style="width: 33%">
+                        <hy-checkbox ng-model="item.check4"
+                                     style="margin-bottom: 0;width: 19px">
+                        </hy-checkbox>
+                        {{selectedLang === '中' ? item.color4Cn : (selectedLang === 'En' ? item.color4En :
+                        item.color4Pt)}}
+                    </div>
+                    <div style="width: 50%">
+                        <hy-checkbox ng-model="item.check5"
+                                     style="margin-bottom: 0;width: 19px">
+                        </hy-checkbox>
+                        {{selectedLang === '中' ? item.color5Cn : (selectedLang === 'En' ? item.color5En :
+                        item.color5Pt)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                {{selectedLang === '中' ? '其他' : (selectedLang === 'En' ? 'Others' : 'Outros')}}
+            </div>
+        </div>
+        <div class="cemydyz_xcjcbl_content">
+            <div style="width: 90%;margin-left: 5%;margin-top: 20px;">
+                <hy-checkbox ng-model="otherXx.check"
+                             style="margin-bottom: 0;">
+                </hy-checkbox>
+            </div>
+            <div style="width: 80%;margin-left: 8%;margin-top: 20px;height: auto;background-color: #FFF9e9;font-size: 16px;padding:10px 10px 20px 10px;text-indent: 16px;color: #757575;letter-spacing: 1px">
+                {{selectedLang === '中' ? otherXx.remindCn : (selectedLang === 'En' ? otherXx.remindEn :
+                otherXx.remindPt)}}
+            </div>
+            <div style="width: 90%;margin-left: 5%;margin-top: 20px;color: #4B4B4B;font-size: 16px">
+                {{selectedLang === '中' ? '備註' : (selectedLang === 'En' ? 'Remarks' : 'Notas')}}
+            </div>
+            <div style="width: 90%;margin-left: 5%;margin-top: 20px;">
+               <textarea class="hy-layout-row"
+                         style="width: 100%;color: #4b4b4b;font-size:16px;padding-top: 10px;
+                               padding-left: 10px;border-color: #eaeaea" placeholder="請輸入"
+                         rows="6" ng-model="otherXx.bz"></textarea>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                {{selectedLang === '中' ? '電子簽名' : (selectedLang === 'En' ? 'The Electronic Signature' : 'Assinatura' +
+                'electrónica')}}
+            </div>
+        </div>
+        <div class="cemydyz_xcjcbl_content">
+            <div style="width: 90%;margin-left: 5%;margin-top: 20px;background-color: #fff9e9">
+                <div style="font-size: 16px;margin-left: 5px;margin-top: 5px;color: #4b4b4b;">
+                    {{selectedLang === '中' ? '客戶' : (selectedLang === 'En' ? 'Customer' : 'Cliente')}}
+                </div>
+                <hy-hand-sign hya-hand-sign="khSign" hya-submit="saveKhHandSign($image,$date)"></hy-hand-sign>
+            </div>
+            <div style="width: 90%;margin-left: 5%;margin-top: 20px;background-color: #fff9e9">
+                <div style="font-size: 16px;margin-left: 5px;margin-top: 5px;color: #4b4b4b;">
+                    {{selectedLang === '中' ? '代澳電' : (selectedLang === 'En' ? 'For CEM' : 'Plea CEM')}}
+                </div>
+                <hy-hand-sign hya-hand-sign="cemSign" hya-submit="saveCemHandSign($image,$date)"></hy-hand-sign>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType !== '2'">
+        <div style="width: 33%;margin: 0px 10px;" class="button-solid" ng-click="save()">保存</div>
+        <div style="width: 33%" class="button-solid" ng-click="toEwm()">生成二維碼</div>
+        <div style="width: 33%;margin: 0px 10px;" class="button-solid" ng-click="toEmail()">發送郵件</div>
+    </ons-bottom-toolbar>
+</ons-page>

@@ -1,0 +1,316 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/12/30
+更改設備庫位
+-->
+<ons-page ng-controller="cemggsbkwCtrl">
+    <ons-modal var="app.fdblModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加载中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            移庫
+        </div>
+        <div class="right cem_title">
+            <div>
+                <img ng-src="img/cem/db/filter_check.png" style="display: none;"/>
+            </div>
+            <div ng-click="changeLanguage(flag)">
+                <img ng-src="{{ languageSrc }}"/>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div style="height: 100%;overflow: hidden" class="hy-layout-column">
+        <div style="overflow: scroll" class="hy-focus-scroll-content">
+            <!-- 移出庫位信息 -->
+            <!--<div style="width: 100%;margin-bottom: 20px">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        移出庫位信息
+                    </div>
+                </div>
+                <div class="cemydyz_xcjcbl_content">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-important-note">
+                            倉庫編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="ckDrop" ng-model="ckxx.ycck" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          hya-selected="filterDrop($value,'kq')"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            庫區編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="yckqDrop" ng-model="ckxx.yckq" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          hya-selected="filterDrop($value,'hj')"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            貨架編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="ychjDrop" ng-model="ckxx.ychj" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          hya-selected="filterDrop($value,'tp')"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            托盤/箱子編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="yctpDrop" ng-model="ckxx.yctp" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!-- 移入庫位信息 -->
+            <div style="width: 100%;margin-bottom: 20px">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        移入庫位信息
+                    </div>
+                </div>
+                <div class="cemydyz_xcjcbl_content">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-important-note">
+                            倉庫編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="ckDrop" ng-model="ckxx.yrck" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          hya-selected="filterDrop($value,'yrkq')"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            庫區編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="yrkqDrop" ng-model="ckxx.yrkq" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          hya-selected="filterDrop($value,'yrhj')"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            貨架編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="yrhjDrop" ng-model="ckxx.yrhj" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          hya-selected="filterDrop($value,'yrtp')"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            托盤/箱子編號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="yrtpDrop" ng-model="ckxx.yrtp" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 移入庫位信息 -->
+            <div style="width: 100%;">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        移入設備列表
+                    </div>
+                </div>
+                <div class="cem-query-result cem-sxx-tab" style="padding: 0">
+                    <div class="cemydyz_xcjcbl_content">
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-important-note">
+                                設備類別
+                            </div>
+                            <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                                <hy-drop-list items="sblbDrop" ng-model="ckxx.sblb" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              hya-selected="filterSblx($value)"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                                設備類型
+                            </div>
+                            <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                                <hy-drop-list items="sblxFilterDrop" ng-model="ckxx.sblx" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row hy-layout-align-end-center">
+                            <div class="cem-jcxm-button" style="margin: 15px 20px 0 0;" ng-click="addYrsb()">
+                                添加
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hy-layout-column cem-ggsb-list">
+                        <div class="cem-no-data" ng-if="yrsbList.length<1&&yrsbSysList.length<1"></div>
+                        <div class="cem-query-result-item" ng-repeat="item in yrsbList track by $index">
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header40">設備類別</div>
+                                <div class="hy-layout-row hy-layout-align-space-between cem-result-form-content">
+                                    {{ item.sblbMc }}
+                                    <div class="hy-layout-row hy-layout-align-end-center" ng-click="delYrsb($index)">
+                                        <img style="margin-bottom: 7px;height: 18px" src="img/cem/cbbl/shandiao.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header40">設備類型</div>
+                                <div class="hy-layout-row cem-result-form-content">{{ item.sblxMc }}</div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header40">移出倉庫</div>
+                                <div class="hy-layout-row cem-result-form-content">{{ item.ycckMc }}</div>
+                                <div class="cem-input-scancodes" ng-click="selectKw()"
+                                     ng-if="item.showMoreCk">
+                                    <img src="img/cem/common/cem_more.png"/>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row" ng-if="item.equiclas=='01'|| item.equiclas=='02' || item.equiclas=='21' || item.equiclas=='44'">
+                                <div class="hy-layout-row cem-result-form-header40 cem-important-note">
+                                    資產編號
+                                </div>
+                                <!--ng-blur="checkRkxx('zcbh',item)"-->
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <input ng-model="item.asseno" placeholder="請輸入" hy-focus-scroll ng-blur="checkRkxx('zcbh',item)"
+                                           class="cem-form-input"/>
+                                    <div class="cem-input-scancode" ng-click="scanMeter(item)">
+                                        <img src="img/cem/cbbl/scancode.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="item.equiclas!='01'&& item.equiclas!='02' && item.equiclas!='21' && item.equiclas!='44'">
+                                <div class="hy-layout-row">
+                                    <div class="hy-layout-row cem-result-form-header40 cem-important-note">
+                                        物料編號
+                                    </div>
+                                    <!--ng-blur="checkRkxx('wlbh',item)"-->
+                                    <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                        <input ng-model="item.matecd" placeholder="請輸入" hy-focus-scroll
+                                               ng-blur="checkRkxx('wlbh',item)"
+                                               class="cem-form-input"/>
+                                    </div>
+                                </div>
+                                <div class="hy-layout-row">
+                                    <div class="hy-layout-row cem-result-form-header40">
+                                        數量
+                                    </div>
+                                    <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                        <input ng-model="item.strgnbr" placeholder="請輸入" hy-focus-scroll
+                                               ng-blur="checkRkxx('quantity',item)"
+                                               class="cem-form-input"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cem-query-result-item" ng-repeat="item in yrsbSysList track by $index">
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header40">設備類別</div>
+                                <div class="hy-layout-row hy-layout-align-space-between cem-result-form-content">{{ item.sblbMc }}
+                                    <div class="hy-layout-row hy-layout-align-end-center" ng-click="delSysYrsb($index)">
+                                        <img style="margin-bottom: 7px;height: 18px" src="img/cem/cbbl/shandiao.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header40">設備類型</div>
+                                <div class="hy-layout-row cem-result-form-content">{{ item.sblxMc }}</div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header40">移出倉庫</div>
+                                <div class="hy-layout-row cem-result-form-content">{{ item.ycckMc }}</div>
+                            </div>
+                            <div class="hy-layout-row" ng-if="item.equiclas=='01'|| item.equiclas=='02' || item.equiclas=='21' || item.equiclas=='44'">
+                                <div class="hy-layout-row cem-result-form-header40">
+                                    資產編號
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content">
+                                    {{ item.asseno }}
+                                </div>
+                            </div>
+                            <div ng-if="item.equiclas!='01'&& item.equiclas!='02' && item.equiclas!='21' && item.equiclas!='44'">
+                                <div class="hy-layout-row">
+                                    <div class="hy-layout-row cem-result-form-header40">
+                                        物料編號
+                                    </div>
+                                    <div class="hy-layout-row cem-result-form-content">
+                                        {{ item.matecd }}
+                                    </div>
+                                </div>
+                                <div class="hy-layout-row">
+                                    <div class="hy-layout-row cem-result-form-header40">
+                                        數量
+                                    </div>
+                                    <div class="hy-layout-row cem-result-form-content">
+                                        {{ item.strgnbr }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType!=='2'">
+        <div style="width: 33%" class="button-solid" ng-click="save()">保存</div>
+        <div style="width: 33%" class="button-solid" ng-click="send()">傳遞</div>
+    </ons-bottom-toolbar>
+</ons-page>

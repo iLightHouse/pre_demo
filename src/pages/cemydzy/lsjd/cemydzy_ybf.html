@@ -1,0 +1,146 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/18
+用電作業 驗表費
+-->
+<ons-page ng-controller="ydzyybfCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            驗錶費
+        </div>
+        <div class="right">
+            <div ng-click="langgDrop.showDialog()" style="width: 16px;height: 16px;border: 1px solid white;
+                font-size: 12px;color: white;background-color: #4b4b4b;margin-left: 70px;margin-top: 13px;text-align: center;line-height: 18px;">
+                {{selectedLang}}
+            </div>
+            <hy-drop-list items="langDrop" ng-model="selectedLang" class="cem-form-list cem-select-none"
+                          var="langgDrop"
+                          hya-hide-null-val="true"
+                          hya-hide-arrow="true"
+                          hya-value-key="DMBM"
+                          hya-title-key="DMBMMC">
+            </hy-drop-list>
+        </div>
+    </ons-toolbar>
+    <div class="hy-focus-scroll-content">
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title" style="letter-spacing: 0">
+                    {{selectedLang === '中' ? '澳門電力股份有限公司' : (selectedLang === 'En' ? 'CEM,S.A' : 'Companhia de ' +
+                    'Electricidade de Macau')}}
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                         style="line-height: normal;width: 80px">
+                        {{selectedLang === '中' ? '申請編號' : (selectedLang === 'En' ? 'Application No.' : 'Pedido nº')}}
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.wkordrno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                         style="line-height: normal;width: 80px">
+                        {{selectedLang === '中' ? '電錶編號' : (selectedLang === 'En' ? 'Meter no.' : 'Contador nº')}}
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.asseno}}
+                    </div>
+                </div>
+
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                         style="line-height: normal;width: 80px">
+                        {{selectedLang === '中' ? '申請人姓名' : (selectedLang === 'En' ? 'Applicant Name' : 'Nome do Cliente')}}
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{selectedLang === '中'?jbxx.custnm:jbxx.custenglnm}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                         style="line-height: normal;width: 80px">
+                        {{selectedLang === '中' ? '合同號碼' : (selectedLang === 'En' ? 'Contract no.' : 'Nº. de Contrato')}}
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.cntracctno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                         style="line-height: normal;width: 80px">
+                        {{selectedLang === '中' ? '電話' : (selectedLang === 'En' ? 'Telephone.' : 'Telefone')}}
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.ctctaddr}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                         style="line-height: normal;width: 80px">
+                        {{selectedLang === '中' ? '安裝地址' : (selectedLang === 'En' ? 'Installation Address.' : 'Morada da '
+                        +
+                        'Instalação')}}
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{selectedLang === '中'?jbxx.detaaddr:jbxx.detaengladdr}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    {{selectedLang === '中' ? '其他' : (selectedLang === 'En' ? 'Others' : 'Outros')}}
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div style="width: 85%;margin-left: 5%;margin-top: 20px;height: auto;background-color: #FFF9e9;font-size: 16px;padding:10px 10px 20px 10px;text-indent: 16px;color: #757575;letter-spacing: 1px">
+                    {{selectedLang === '中' ? otherXx.remindCn : (selectedLang === 'En' ? otherXx.remindEn :
+                    otherXx.remindPt)}}
+                </div>
+                <div style="width: 90%;margin-left: 5%;margin-top: 20px;color: #4B4B4B;font-size: 16px">
+                    {{selectedLang === '中' ? '備註' : (selectedLang === 'En' ? 'Remarks' : 'Observações')}}
+                </div>
+                <div style="width: 90%;margin-left: 5%;margin-top: 20px;">
+                   <textarea class="hy-layout-row"
+                             style="width: 100%;color: #4b4b4b;font-size:16px;padding-top: 10px;
+                             padding-left: 10px;border-color: #eaeaea" placeholder="
+                             {{selectedLang === '中' ? '請輸入' : (selectedLang === 'En' ? 'Please Input' : 'Por favor, insira')}} "
+                             rows="6" ng-model="otherXx.bz" hy-focus-scroll></textarea>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    {{selectedLang === '中' ? '電子簽名' : (selectedLang === 'En' ? 'The Electronic Signature' : 'Assinatura' +
+                    'electrónica')}}
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div style="width: 90%;margin-left: 4%;margin-top: 10px;background-color: #fff9e9;padding: 4px">
+                    <div style="font-size: 16px;margin-left: 5px;margin-top: 5px">
+                        {{selectedLang === '中' ? '申請人簽名' : (selectedLang === 'En' ? 'Signatures' : 'Assinaturas')}}
+                    </div>
+                    <hy-hand-sign hya-hand-sign="khSign" hya-submit="saveHandSign($image,$date)"></hy-hand-sign>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType !== '2'">
+        <div style="width: 60%" class="button-solid" ng-click="save()">保存</div>
+    </ons-bottom-toolbar>
+</ons-page>

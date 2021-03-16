@@ -1,0 +1,83 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/03/17
+裝拆工單办理
+-->
+<ons-page ng-controller="cemzcgdblCtrl">
+    <ons-modal var="app.cemjdjcblModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            电表拆换
+        </div>
+        <div class="right cem_title">
+            <div>
+                <img ng-src="img/cem/db/filter_check.png" style="display: none;"/>
+            </div>
+            <div ng-click="changeLanguage(flag)">
+                <img ng-src="{{ languageSrc }}"/>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div class="nwyyt_jf_content1" style="z-index: 99;flex: none;">
+        <div class="content_inner">
+            <div layout="row" layout-align="center center" style="overflow-x:auto;white-space: nowrap;">
+                <div style="display:flex;width: 100%;">
+                    <div layout="row" layout-align="center center"
+                         style="width:50%;font-size: 15px;margin-right: 20px;">
+                        <div class="up_button" ng-class="{active:integral(0)}" ng-click="selectSortType(0)">基礎信息
+                        </div>
+                    </div>
+                    <div layout="row" layout-align="center center"
+                         style="width:50%;font-size: 15px;margin-right: 20px;" ng-if="dnbList.length>0">
+                        <div class="up_button " ng-class="{active:integral(1)}" ng-click="selectSortType(1)">拆换表
+                        </div>
+                    </div>
+                    <div layout="row" layout-align="center center"
+                         style="width:50%;font-size: 15px;margin-right: 20px;">
+                        <div class="up_button " ng-class="{active:integral(2)}" ng-click="selectSortType(2)">审批信息
+                        </div>
+                    </div>
+                    <!--<div layout="row" layout-align="center center"
+                         style="width:50%;font-size: 15px;margin-right: 20px;" ng-if="dlqList.length>0">
+                        <div class="up_button " ng-class="{active:integral(3)}" ng-click="selectSortType(3)">斷路器
+                        </div>
+                    </div>-->
+                    <!--<div layout="row" layout-align="center center"
+                         style="width:50%;font-size: 15px;">
+                        <div class="up_button " ng-class="{active:integral(5)}" ng-click="selectSortType(5)">鎖信息
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--基礎信息-->
+    <div ng-if="SortType===0" class="cem-zcgdbl-son-page" ng-include="'pages/cemydzy/zcgdbl/cem_jcxx.html'"></div>
+    <!--電能表-->
+    <div ng-if="SortType===1" class="cem-zcgdbl-son-page" ng-include="'pages/cemydzy/zcgdbl/cem_dnb.html'"></div>
+    <!--互感器-->
+    <div ng-if="SortType===2" class="cem-zcgdbl-son-page" ng-include="'pages/cemydzy/zcgdbl/cem_spxx.html'"></div>
+    <!--斷路器-->
+    <!--<div ng-if="SortType===3" class="cem-zcgdbl-son-page" ng-include="'pages/cemydzy/zcgdbl/cem_dlq.html'"></div>-->
+    <!--封印-->
+    <!--<div ng-if="SortType===5" class="cem-zcgdbl-son-page" ng-include="'pages/cemydzy/zcgdbl/cem_fy.html'"></div>-->
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType!=='2'">
+        <div style="width: 33%" class="button-solid" ng-class="{'zcgd-pass-button':lsjdOrderType}" ng-click="saveAll()">保存</div>
+        <!--<div style="width: 30%" class="button-solid" ng-class="{'zcgd-pass-button':lsjdOrderType}" ng-click="holdingEquipment()">持有設備</div>-->
+        <div style="width: 33%" class="button-solid" ng-class="{'zcgd-pass-button':fromPage}" ng-click="send()">傳遞</div>
+    </ons-bottom-toolbar>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType==='2'">
+        <div style="width: 60%" class="button-solid" ng-click="savePhoto()">照片上傳</div>
+    </ons-bottom-toolbar>
+</ons-page>

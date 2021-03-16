@@ -1,0 +1,141 @@
+<div style="height: 100%;overflow: hidden" class="hy-layout-column">
+    <div style="overflow: scroll">
+        <div class="hy-focus-scroll-content">
+            <!--基本信息-->
+            <div style="width: 100%;margin-bottom: 20px">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        基本信息
+                    </div>
+                </div>
+                <div class="cemydyz_xcjcbl_content">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">工作單號
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{zcInfo.wkordrno}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">電錶號</div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{zcInfo.meterno}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">客戶姓名
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{ !flag?zcInfo.custnm:zcInfo.custenglnm }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">合約賬戶
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{zcInfo.contractno}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">用戶地址
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{ !flag?zcInfo.detaaddr:zcInfo.detaengladdr }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">設備GPS
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom"
+                             style="margin-right: 0">
+                            {{ zcInfo.equilocdescr}}
+                        </div>
+                        <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="openMap('equipment')"
+                             style="margin-right: 20px">
+                            <img src="img/cem/cbbl/dingwei.png"/>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">訂定功率
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{zcInfo.subsdema}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">申請功率
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{ zcInfo.applykw }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                            供電點信息
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom margin-left-zero">
+                            {{ zcInfo.supppntno }}
+                        </div>
+                        <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="openMap()"
+                             style="margin-right: 20px">
+                            <img src="img/cem/cbbl/dingwei.png"/>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                             style="line-height:normal">聯繫人
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{ zcInfo.custnm }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                             style="line-height:normal;">聯繫電話
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{ zcInfo.contactphone }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                             style="line-height:normal;">計費組別
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            {{ zcInfo.prctypMc }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--拍照上傳-->
+            <div style="width: 100%;margin-bottom: 20px">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        拍照上傳
+                    </div>
+                </div>
+                <div class="cemydyz_xcjcbl_content">
+                    <div class="cb-content-body">
+                        <div class="cb-content-body">
+                            <div class="hy-file-list">
+                                <hy-image-list class="app-select-image" height="80" style="width: 100%;"
+                                               hya-list="photoList" hya-column="4"
+                                               hya-add="selectPicture($callback);"
+                                               hya-delete="deletePhoto($index,$item,$done);"
+                                               hya-item-del="canDelFile($item)"
+                                               hya-src-key="SRC">
+                                    <img ng-src="{{item.SRC}}" class="cem_pzsc_img"/>
+                                </hy-image-list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,374 @@
+<div class="cem-no-data" ng-if="hgqList.length<1"></div>
+<div style="height: 100%;overflow: hidden" class="hy-layout-column">
+    <div style="overflow: scroll">
+        <div class="hy-focus-scroll-content">
+            <div ng-repeat="item in hgqList track by $index">
+                <!--新裝互感器-->
+                <div class="cem-query-result" style="padding: 0;margin: 15px" ng-if="item.chgflg==='10'">
+                    <div class="cem-query-result-item cem-content-padding">
+                        <div class="cem-zcgd-list-title">
+                            <div class="cem-title-style">
+                                <div class="cem-no-wrap">{{ item.equitypMc }}</div>
+                                <div>新</div>
+                            </div>
+                            <div class="cem-jld-style">{{ item.metepntno }}</div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">資產編號</div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <input ng-model="item.asseno" placeholder="請輸入" hy-focus-scroll
+                                       class="cem-form-input" ng-blur="doSomething(item)"/>
+                                <div class="cem-input-scancode" ng-click="scanMeter(item)">
+                                    <img src="img/cem/cbbl/scancode.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                裝拆原因
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <hy-drop-list items="zcyyDrop" ng-model="item.irrsn" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                裝拆標誌
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <hy-drop-list items="zcbzDrop" ng-model="item.irflg" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              hya-hide-null-val="true"
+                                              hya-selected="showDescription($value,item)"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header"
+                                 ng-class="{'cem-important-note':item.irflg==='00'}" style="height: 44px;">
+                                未裝拆原因
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom"
+                                 ng-show="item.irflg == '00'">
+                                <hy-drop-list items="wzcyyDrop" ng-model="item.nonirrsn" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom"
+                                 ng-show="item.irflg !== '00'">
+                                <hy-drop-list items="wzcyyNullDrop" ng-model="item.nonirrsn" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header"
+                                 ng-class="{'cem-important-note':item.nonirrsn==='19'}" style="height: 44px;">
+                                未裝拆說明
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <input ng-model="item.nonirrsnintroduct" placeholder="請輸入"
+                                       ng-disabled="item.irflg !== '00'" hy-focus-scroll
+                                       class="cem-form-input"/>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">設備位置</div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <input ng-model="item.equilocno" placeholder="請輸入" ng-readonly="true"
+                                       class="cem-form-input"/>
+                                <div class="cem-input-scancode" ng-click="toQueryAzwzInfo($index,'hgq')">
+                                    <img src="img/cem/common/cem_more.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                {{ item.tabb? 'TA變比':'TV變比'}}
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <input ng-model="item.parmval" placeholder="請輸入"
+                                       class="cem-form-input"/>
+                            </div>
+                        </div>
+                        <div class="cem-zcxx-container" ng-click="updown=!updown">
+                            <div ng-show="updown"><img src="img/cem/common/query_up.png"/></div>
+                            <div ng-show="!updown"><img src="img/cem/common/query_down.png"/></div>
+                        </div>
+                        <div ng-show="updown">
+                            <div class="hy-layout-row" ng-if="item.curtranrati">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">TA變比</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    {{ item.curtranratiMc }}
+                                </div>
+                            </div>
+                            <div class="hy-layout-row" ng-if="item.volttranrati">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">TV變比</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    {{ item.volttranratiMc }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--拆除互感器-->
+                <div class="cem-query-result" style="padding: 0;margin: 15px" ng-if="item.chgflg==='15'">
+                    <div class="cem-query-result-item cem-content-padding">
+                        <div class="cem-zcgd-list-title">
+                            <div class="cem-title-style">
+                                <div class="cem-no-wrap">{{ item.equitypMc }}</div>
+                                <div>拆</div>
+                            </div>
+                            <div class="cem-jld-style">{{ item.metepntno }}</div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">資產編號</div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <input ng-model="item.asseno" placeholder="" ng-disabled="true" class="cem-form-input"
+                                       hy-focus-scroll/>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                裝拆原因
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <hy-drop-list items="zcyyDrop" ng-model="item.irrsn" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                裝拆標誌
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <hy-drop-list items="zcbzDrop" ng-model="item.irflg" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              hya-hide-null-val="true"
+                                              hya-selected="showDescription($value,item)"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header"
+                                 ng-class="{'cem-important-note':item.irflg==='00'}" style="height: 44px;">
+                                未裝拆原因
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom"
+                                 ng-show="item.irflg == '00'">
+                                <hy-drop-list items="wzcyyDrop" ng-model="item.nonirrsn" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom"
+                                 ng-show="item.irflg !== '00'">
+                                <hy-drop-list items="wzcyyNullDrop" ng-model="item.nonirrsn" class="cem-form-list"
+                                              hya-value-key="DMBM"
+                                              hya-title-key="DMBMMC"
+                                              placeholder="請選擇">
+                                </hy-drop-list>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header"
+                                 ng-class="{'cem-important-note':item.nonirrsn==='19'}" style="height: 44px;">
+                                未裝拆說明
+                            </div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                <input ng-model="item.nonirrsnintroduct" placeholder="請輸入"
+                                       ng-disabled="item.irflg !== '00'" hy-focus-scroll
+                                       class="cem-form-input"/>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header" style="height: 44px;">主副標誌</div>
+                            <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                {{ item.mastandslavflgMc }}
+                            </div>
+                        </div>
+                        <div class="cem-zcxx-container" ng-click="updown=!updown">
+                            <div ng-show="updown"><img src="img/cem/common/query_up.png"/></div>
+                            <div ng-show="!updown"><img src="img/cem/common/query_down.png"/></div>
+                        </div>
+                        <div ng-show="updown">
+                            <div class="hy-layout-row" ng-if="item.curtranrati">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">TA變比</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    {{ item.curtranratiMc }}
+                                </div>
+                            </div>
+                            <div class="hy-layout-row" ng-if="item.volttranrati">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">TV變比</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    {{ item.volttranratiMc }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--變更互感器-->
+                <div class="cem-query-result" style="padding: 0;margin: 15px" ng-if="item.begin || item.end">
+                    <div class="cem-query-result-item cem-content-padding">
+                        <!--變更前-->
+                        <div>
+                            <div class="cem-zcgd-list-title">
+                                <div class="cem-title-style">
+                                    <div class="cem-no-wrap">{{ item.begin.equitypMc }}</div>
+                                    <div>更</div>
+                                </div>
+                                <div class="cem-jld-style">{{ item.begin.metepntno }}</div>
+                            </div>
+                            <div ng-if="item.begin">
+                                <div class="cem-bg-bz cem-ghq-bg">更換前</div>
+                                <div class="hy-layout-row">
+                                    <div class="hy-layout-row cem-result-form-header" style="height: 44px;">資產編號</div>
+                                    <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                        <input ng-model="item.begin.asseno" placeholder="請輸入" readonly
+                                               class="cem-form-input"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--變更后-->
+                        <div ng-if="item.end">
+                            <div class="cem-title-ghh-style">
+                                <div class="cem-bg-bz cem-ghh-bg">更換后</div>
+                                <div>{{ item.end.equitypMc }}</div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">資產編號</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <input ng-model="item.end.asseno" placeholder="請輸入" hy-focus-scroll
+                                           class="cem-form-input" ng-blur="doSomething(item.end)"/>
+                                    <div class="cem-input-scancode" ng-click="scanMeter(item.end)">
+                                        <img src="img/cem/cbbl/scancode.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                    裝拆原因
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <hy-drop-list items="zcyyDrop" ng-model="item.end.irrsn" class="cem-form-list"
+                                                  hya-value-key="DMBM"
+                                                  hya-title-key="DMBMMC"
+                                                  placeholder="請選擇">
+                                    </hy-drop-list>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                    裝拆標誌
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <hy-drop-list items="zcbzDrop" ng-model="item.end.irflg" class="cem-form-list"
+                                                  hya-value-key="DMBM"
+                                                  hya-title-key="DMBMMC"
+                                                  hya-hide-null-val="true"
+                                                  hya-selected="showDescription($value,item.end)"
+                                                  placeholder="請選擇">
+                                    </hy-drop-list>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header"
+                                     ng-class="{'cem-important-note':item.end.irflg==='00'}" style="height: 44px;">
+                                    未裝拆原因
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom"
+                                     ng-show="item.end.irflg == '00'">
+                                    <hy-drop-list items="wzcyyDrop" ng-model="item.end.nonirrsn" class="cem-form-list"
+                                                  hya-value-key="DMBM"
+                                                  hya-title-key="DMBMMC"
+                                                  placeholder="請選擇">
+                                    </hy-drop-list>
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom"
+                                     ng-show="item.end.irflg !== '00'">
+                                    <hy-drop-list items="wzcyyNullDrop" ng-model="item.end.nonirrsn"
+                                                  class="cem-form-list"
+                                                  hya-value-key="DMBM"
+                                                  hya-title-key="DMBMMC"
+                                                  placeholder="請選擇">
+                                    </hy-drop-list>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header"
+                                     ng-class="{'cem-important-note':item.end.nonirrsn==='19'}" style="height: 44px;">
+                                    未裝拆說明
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <input ng-model="item.end.nonirrsnintroduct" placeholder="請輸入"
+                                           ng-disabled="item.end.irflg !== '00'" hy-focus-scroll
+                                           class="cem-form-input"/>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">主副標誌</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    {{ item.end.mastandslavflgMc }}
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">設備位置</div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <input ng-model="item.end.equilocno" placeholder="請輸入" ng-readonly="true"
+                                           class="cem-form-input"/>
+                                    <div class="cem-input-scancode" ng-click="toQueryAzwzInfo($index,'hgq')">
+                                        <img src="img/cem/common/cem_more.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hy-layout-row">
+                                <div class="hy-layout-row cem-result-form-header" style="height: 44px;">
+                                    {{ item.end.tabb? 'TA變比':'TV變比'}}
+                                </div>
+                                <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                    <input ng-model="item.end.parmval" placeholder="請輸入"
+                                           class="cem-form-input"/>
+                                </div>
+                            </div>
+                            <div class="cem-zcxx-container" ng-click="updown=!updown">
+                                <div ng-show="updown"><img src="img/cem/common/query_up.png"/></div>
+                                <div ng-show="!updown"><img src="img/cem/common/query_down.png"/></div>
+                            </div>
+                            <div ng-show="updown">
+                                <div class="hy-layout-row" ng-if="item.end.curtranrati">
+                                    <div class="hy-layout-row cem-result-form-header" style="height: 44px;">TA變比</div>
+                                    <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                        {{ item.end.curtranratiMc }}
+                                    </div>
+                                </div>
+                                <div class="hy-layout-row" ng-if="item.end.volttranrati">
+                                    <div class="hy-layout-row cem-result-form-header" style="height: 44px;">TV變比</div>
+                                    <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                                        {{ item.end.volttranratiMc }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

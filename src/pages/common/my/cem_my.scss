@@ -1,0 +1,98 @@
+.my_title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #8c8c8c;
+}
+
+.cem_my {
+  height: 100%;
+  color: $cem-middle-font-color;
+  /*個人信息*/
+  .cem_my_info {
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    width: 100%;
+    letter-spacing: 2px;
+    background: url("img/cem/common/my_bg.png") no-repeat;
+    background-size: 100% 100%;
+    img {
+      height: 100%;
+    }
+    div {
+      height: 10%;
+      display: flex;
+      align-items: center;
+    }
+    div:nth-child(1) {
+      overflow: hidden;
+      border-radius: 47px;
+      height: 40%;
+      width: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    div:nth-child(2) {
+      font-size: 18px;
+      color: $cem-dark-yellow;
+      font-weight: bold;
+    }
+    div:nth-child(3) {
+      color: $cem-light-font-color;
+    }
+    .cem-photo {
+      overflow: hidden;
+      border-radius: 47px;
+      border: 1px solid #fff;
+      height: 85px;
+      width: 85px;
+    }
+  }
+
+  /*功能區域*/
+  .cem_my_operate {
+    background-color: #fff;
+    border-radius: 10px;
+    height: 40%;
+    box-shadow: 0 0 8px rgba(255, 218, 46, 0.2);
+    padding: 13px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin: -25px 20px 0 20px;
+    img {
+      height: 20px;
+    }
+    .cem_my_operate-item {
+      height: 25%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      > div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      > div:nth-child(1) {
+        width: 12%;
+      }
+      > div:nth-child(2) {
+        width: 58%;
+        color: $cem-dark-font-color;
+      }
+      > div:nth-child(3) {
+        width: 30%;
+        justify-content: flex-end;
+      }
+
+    }
+  }
+}
+

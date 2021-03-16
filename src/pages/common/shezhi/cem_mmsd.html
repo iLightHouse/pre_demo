@@ -1,0 +1,57 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2019/05/16
+密碼設定
+-->
+<ons-page ng-controller="cemmmsdCtrl">
+    <ons-modal var="app.cemmmsdModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            密碼設定
+        </div>
+    </ons-toolbar>
+
+    <div class="cem-dqcb-content hy-layout-column">
+        <div style="padding: 30px 15px 0px 15px;">
+            <div class="hy-layout-row" style="margin-bottom: 10px;">
+                <div class="hy-layout-row cem-sz-row-header-60 hy-layout-align-end-center">用戶賬號</div>
+                <div class="hy-layout-row cem-form-row-content cem-border-bottom">
+                    {{info.dlzh}}
+                </div>
+            </div>
+            <div class="hy-layout-row" style="margin-bottom: 10px;">
+                <div class="hy-layout-row cem-sz-row-header-60 hy-layout-align-end-center">舊密碼</div>
+                <div class="hy-layout-row cem-form-row-content cem-border-bottom right1">
+                    <hy-password ng-model="info.jmm" placeholder="請輸入密码"/>
+                </div>
+            </div>
+            <div class="hy-layout-row" style="margin-bottom: 10px;">
+                <div class="hy-layout-row cem-sz-row-header-60 hy-layout-align-end-center">新密碼</div>
+                <div class="hy-layout-row cem-form-row-content cem-border-bottom right1">
+                    <hy-password class="password-input" ng-model="info.xmm" placeholder="請輸入密码"/>
+                </div>
+            </div>
+            <div class="hy-layout-row" style="margin-bottom: 10px;">
+                <div class="hy-layout-row cem-sz-row-header-60 hy-layout-align-end-center">確認密碼</div>
+                <div class="hy-layout-row cem-form-row-content cem-border-bottom right1">
+                    <hy-password class="password-input" ng-model="info.qrmm" placeholder="請輸入密码"/>
+                </div>
+            </div>
+            <div class="cem-xgmm-font">可使用長度6位的數字，小寫或大寫字母</div>
+        </div>
+    </div>
+    <div class="hy-layout-row hy-layout-align-space-around-center cem-sz-fatherdiv">
+        <hy-button class="cem_sz_button" ng-click="save()">確認更改</hy-button>
+    </div>
+</ons-page>

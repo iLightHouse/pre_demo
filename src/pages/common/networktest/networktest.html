@@ -1,0 +1,37 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/9
+网络测试
+-->
+<ons-page ng-controller="networkTestCtrl">
+    <ons-toolbar class="toolbar-hide-border">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">网络测试</div>
+    </ons-toolbar>
+    <div style="background-color: white;width: 100%;height: 100%;">
+        <table border="1" width="100%" cellspacing="0" style="border-color: white;">
+            <tr>
+                <th>节点</th>
+                <th width="70">响应码</th>
+                <th width="70">状态</th>
+            </tr>
+            <tr ng-repeat="item in list">
+                <td>{{item.name}}</td>
+                <td style="text-align: center;">{{item.stateCode}}</td>
+                <td style="text-align: center;">{{item.status}}</td>
+            </tr>
+        </table>
+        <p>1、多次获取用户信息失败可能是由于您的网络不稳定造成的，可以查看上方网络测试结果，首先查看【百度】等节点的测试结果是否成功，以确定您是否可以访问外网；</p>
+        <p>2、如果【百度】等节点访问没有问题，查看【应用平台】节点是否可以访问，如果此节点失败，可能与平台或您的手机网络有关系，请尝试切换手机网络；</p>
+        <p>3、如果上述节点都没问题，请查看【移动营销】节点，如果该节点失败可能是当前移动营销服务网络波动，具体情况请咨询相关运维人员。</p>
+    </div>
+    <ons-bottom-toolbar class=" hy-layout-row hy-layout-align-space-around-center"
+                        style="background-color: rgb(238, 238, 238)">
+        <hy-button class="hy-fill cb-button" style="border: 1px solid white;"
+                   ng-click="retest()">重新测试
+        </hy-button>
+    </ons-bottom-toolbar>
+</ons-page>

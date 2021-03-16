@@ -1,0 +1,9 @@
+<ons-dialog cancelable class="drop-dialog device-dialog">
+    <ons-list>
+        <ons-list-header class="drop-dialog-header">{{deviceDialogTitle}}</ons-list-header>
+        <ons-list-item class="hy-drop-item" ng-repeat="item in deviceList" ng-click="deviceSelected(item, $index+1);" ng-class="{active:item.active}">
+            <i class="fa fa-circle drop-select-icon"></i>
+            <span>{{showDeviceInfo(item)}}</span>
+        </ons-list-item>
+    </ons-list>
+</ons-dialog>

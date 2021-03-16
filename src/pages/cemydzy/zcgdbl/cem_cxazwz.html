@@ -1,0 +1,98 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/05/06
+裝拆工單辦理   互感器    安裝位置信息查詢  pages/cemydzy/zcgdbl/cem_cxazwz.html
+-->
+<ons-page ng-controller="cemCxazwzCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            安裝位置列表
+        </div>
+    </ons-toolbar>
+    <div class="cem-query-container">
+        <!--查詢條件-->
+        <!--<div class="cem-query-condition">
+            <div class="cem-query-title" ng-click="updown=!updown">
+                <div ng-class="{'cem-down-color':updown}">查詢條件</div>
+                <div ng-if="updown"><img src="img/cem/common/query_up.png"/></div>
+                <div ng-if="!updown"><img src="img/cem/common/query_down.png"/></div>
+            </div>
+            <div class="cem-query-content" ng-if="updown">
+                 <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-query-form-header">地址對象編號</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.dzbh" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-query-form-header">設備位置編號</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.sbbh" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-query-form-header">設備位置描述</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.sbms" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="cem-query-button">
+                    <div class="cem-query-btn" ng-click="search()">搜索</div>
+                </div>
+            </div>
+        </div>-->
+        <!--列表展示-->
+        <div class="cem-query-result">
+            <div class="cem-no-data" ng-if="azwzList.length<1"></div>
+            <div class="cem-query-result-item" ng-if="azwzList.length>0" ng-repeat="item in azwzList track by $index">
+                <div ng-click="sure()">
+                    <div class="cem-query-dxxx-title">
+                        <div>
+                            <div>設備位置編號</div>
+                            <div style="margin: 4px 0;">{{ item.equilocno}}</div>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header" style="width: 40%">房產內安裝</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{item.indoinst =='1'?'是':item.indoinst =='0'?'否':''}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header" style="width: 40%">樓層</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{item.flr}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header" style="width: 40%">補充地址</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{item.extaddr}}
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <hy-button
+                            style="width: 35%;background-color: #ffc72c;min-height: 25px;height: 25px;line-height: 25px;font-size: 14px;color: #4B4B4B;letter-spacing: 2px;border-radius: 20px;margin-left: 65%"
+                            class="hy-fill gdsp_cxbutton " ng-click="toDetails('update',item)">
+                        修改
+                    </hy-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button">
+        <hy-button
+                style="width: 60%;background-color: #ffc72c;min-height: 25px;height: 30px;line-height: 30px;font-size: 16px;color: #4B4B4B;letter-spacing: 2px;border-radius: 20px"
+                class="hy-fill gdsp_cxbutton " ng-click="toDetails('add',null)" ng-disabled="azwzList.length>0">
+            添加
+        </hy-button>
+    </ons-bottom-toolbar>
+</ons-page>

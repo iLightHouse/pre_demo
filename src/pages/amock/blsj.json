@@ -1,0 +1,137 @@
+{
+  "jbxx": {
+    "GZDBH": "8457471",
+    "YHDZ": "墮名街道大河村",
+    "DBH": "154789",
+    "KHXM": "劉某某",
+    "KHDH": "18787654523",
+    "GPS": "墮名街道大河村 1-1",
+    "DDGL": "59KV",
+    "SQGL": "24KV",
+    "GDDXX": "xxx供電點",
+    "KHXMEN": "JERRY",
+    "YHDZEN": "Fall name street river village",
+    "HYZH": "0012789",
+    "JFZB": "01",
+    "LXR": "趙某某",
+    "SFHMD": "否",
+    "QFTS": "10",
+    "QFJE": "2983",
+    "LXFS": "18787655513",
+    "SL": "2",
+    "DLQDL": "10",
+    "DLQAZWZ": "錶前",
+    "DLQLX": "MCB",
+    "WCGTDYY": "***************",
+    "SCZXRQ": "2020-02-10",
+    "TDFS":"人工停電",
+    "SCWWCYY":"",
+    "SCWWCSM":""
+  },
+  "xcjcsb": [
+    {
+      "SBLB": "互感器",
+      "SBLX": "電流互感器",
+      "ZCBH": "1111208804",
+      "SFGH": "",
+      "JCXM": [
+        {
+          "ITEMNAME": "CCL箱損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內有水氣",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無做銅棍水線",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無裝fuse",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH或CCL箱與錶位距離太遠",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "住宅單位",
+          "RESULTS": ""
+        }
+      ]
+    },
+    {
+      "SBLB": "電能表",
+      "SBLX": "三項多功能電能表",
+      "ZCBH": "1111208831",
+      "SFGH": "",
+      "JCXM": [
+        {
+          "ITEMNAME": "CCL箱損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內有水氣",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無做銅棍水線",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無裝fuse",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH或CCL箱與錶位距離太遠",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "住宅單位",
+          "RESULTS": ""
+        }
+      ]
+    }
+  ],
+  "scenecheckentitylVo": {
+    "applykw": "24KV",
+    "apptbegtm": "",
+    "apptendtm": "",
+    "apptphnno": "18787654523",
+    "asseno": "154789",
+    "attrload": "69KV",
+    "buscatgcd": "",
+    "cntracctno": "0012789",
+    "ctctpers": "",
+    "custenglnm": "JERRY",
+    "custnm": "劉某某",
+    "dangernotice": "危險提示",
+    "detaaddr": "墮名街道大河村",
+    "detaengladdr": "Fall name street river village",
+    "equilocdescr": "墮名街道大河村 1-1",
+    "inspconc": "",
+    "lati1": "113.571585",
+    "long1": "22.137465",
+    "lowvoltequityp": "",
+    "phasln": "",
+    "projinsprecid": "",
+    "projprog": "",
+    "rechkflg": "",
+    "remark": "",
+    "sevapptid": "",
+    "subsdema": "59KV",
+    "supppntno": "",
+    "veridt": "",
+    "wkordrno": "",
+    "wkordrtele": ""
+  }
+}

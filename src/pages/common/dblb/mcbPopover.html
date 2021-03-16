@@ -1,0 +1,9 @@
+<ons-popover direction="up down" cancelable style="top: 269px;width: 112px;left: 257px" class="cem-popover">
+    <div class="app-popover-content">
+        <div ng-repeat="item in filterSelect track by $index">
+            <div ng-click="changeSelectFilter($index)" class="cem-popover-lable"
+                 ng-class="{'font-color':number==$index}">{{ item }}
+            </div>
+        </div>
+    </div>
+</ons-popover>

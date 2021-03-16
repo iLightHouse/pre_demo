@@ -1,0 +1,78 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/03/16
+停電辦理-拆除鎖信息查詢
+-->
+<ons-page ng-controller="cemccsCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            拆除鎖信息查詢
+        </div>
+    </ons-toolbar>
+    <div class="cem-query-container">
+        <!--查詢條件-->
+        <div class="cem-query-condition">
+            <div class="cem-query-title" ng-click="updown=!updown">
+                <div ng-class="{'cem-down-color':updown}">查詢條件</div>
+                <div ng-if="updown"><img src="img/cem/common/query_up.png"/></div>
+                <div ng-if="!updown"><img src="img/cem/common/query_down.png"/></div>
+            </div>
+            <div class="cem-query-content" ng-if="updown">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-query-form-header">鎖編號</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.zcbh" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                    <div class="cem-input-scancode cem-border-bottom" ng-click="scanMeter()">
+                        <img src="img/cem/cbbl/scancode.png"/>
+                    </div>
+                </div>
+                <div class="cem-query-button">
+                    <div class="cem-query-btn" ng-click="queryByCondition()">搜索</div>
+                </div>
+            </div>
+        </div>
+        <!--列表展示-->
+        <div class="cem-query-result">
+            <div class="cem-no-data" ng-if="resultList.length<1"></div>
+            <div class="cem-query-result-item" ng-repeat="item in resultList track by $index">
+                <div class="cem-query-lsjd-title">
+                    <div>
+                        <div>鎖編號</div>
+                        <div style="font-size: 21px;color: #ffc72c;">{{ item.sealno }}</div>
+                    </div>
+                    <hy-checkbox style="margin-bottom:0;height: 20px;width: 20px;" ng-checked="item.isSel"
+                                 ng-click="pgSelected(item)"></hy-checkbox>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-result-form-header">加封對象</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.sealequicateMc ?item.sealequicateMc:item.sealequicate}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-result-form-header">加封位置</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.seallocMc?item.seallocMc:item.sealloc }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button">
+        <div style="width: 60%" class="button-solid" ng-click="confirmSb()">確定</div>
+    </ons-bottom-toolbar>
+</ons-page>

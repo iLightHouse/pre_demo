@@ -1,0 +1,52 @@
+<div style="height: 100%;overflow: hidden" class="hy-layout-column">
+    <div style="overflow: scroll">
+        <div class="hy-focus-scroll-content">
+            <!--基本信息-->
+            <div style="width: 100%;margin-bottom: 20px">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        审批信息
+                    </div>
+                </div>
+                <div class="cemydyz_xcjcbl_content">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                            审批结果
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-drop-list items="gzjgDrop" ng-model="xcjcInfo.inspconc" class="cem-form-list"
+                                          var="gzjgDrop"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">审批日期
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                            <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                            hya-date-type="String" hya-date-value="xcjcInfo.veridt"
+                                            hya-format="YYYY-MM-DD hh:mm:ss"
+                                            hya-active-class="date-active"
+                                            class="cem_timepicker">
+                            </hy-datepicker3>
+                        </div>
+                    </div>
+                    <div class="hy-layout-column">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">审批意见</div>
+                        <div class="hy-layout-row" style="margin: 0px 20px;">
+                    <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;"
+                              hy-focus-scroll
+                              placeholder="請輸入" rows="4" ng-model="xcjcInfo.remark"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

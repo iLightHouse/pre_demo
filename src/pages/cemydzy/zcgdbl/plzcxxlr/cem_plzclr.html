@@ -1,0 +1,53 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/03/11
+批量裝拆錄入
+-->
+<ons-page ng-controller="cemPlzclrCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            批量裝拆任務列表
+        </div>
+    </ons-toolbar>
+    <div style="height: 100%;overflow: hidden" class="hy-layout-column">
+        <div class="tf-content-flex hy-layout-column cem-ydjc-ydjcdb"
+             style="flex: 1 1 auto;overflow: hidden;height: 100%">
+            <div class="cem-query-result">
+                <div class="cem-no-data" ng-if="resultList.length<1"></div>
+                <div class="cem-query-result-item" style="padding:10px;"
+                     ng-repeat="item in resultList track by $index" ng-click="toPllrOrder(item.premno,item.metepntno)">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">工作單號</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc" style="font-size: 15px">
+                            {{ item.wkordrno }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">合約賬戶</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc">
+                            {{ item.contractno }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">房產編號</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc">
+                            {{ item.premno}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

@@ -1,0 +1,11 @@
+{
+  "appUrl1": "http://192.168.2.167/ccsmobile",
+  "appUrl": "https://ccststmobileapp-cemmacau.msappproxy.net/ccsmobile",
+  "appId": "com.cemmacau.app.ydzy",
+  "appVersion": "0.1.13",
+  "otherVersion": 0,
+  "appVersionCode": 13,
+  "appShellVersion": 1,
+  "appIndex": "index.html",
+  "other": ""
+}

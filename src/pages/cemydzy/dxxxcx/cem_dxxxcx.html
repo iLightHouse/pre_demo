@@ -1,0 +1,189 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/02/27
+對象信息查詢
+-->
+<ons-page ng-controller="cemdxxxcxCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            對象信息查詢
+        </div>
+    </ons-toolbar>
+    <div class="cem-query-container">
+        <!--查詢條件-->
+        <div class="cem-query-condition">
+            <div class="cem-query-title" ng-click="updown=!updown">
+                <div ng-class="{'cem-down-color':updown}">查詢條件</div>
+                <div ng-if="updown"><img src="img/cem/common/query_up.png"/></div>
+                <div ng-if="!updown"><img src="img/cem/common/query_down.png"/></div>
+            </div>
+            <div class="cem-query-content" ng-if="updown">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-query-form-header">對象類型</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <hy-drop-list items="dxlxDrop" ng-model="query.dxlx" class="cem-form-list"
+                                      hya-value-key="DMBM"
+                                      hya-title-key="DMBMMC"
+                                      placeholder="請選擇"
+                                      hya-selected="selectDxlx($value)">
+                        </hy-drop-list>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-query-form-header cem-line-height">{{ dxmc }}</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom" ng-if="query.dxlx !== '5'">
+                        <input ng-model="query.bh" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom" ng-if="query.dxlx === '5'">
+                        <hy-drop-list items="sblbDrop" ng-model="query.sblb" class="cem-form-list"
+                                      hya-value-key="DMBM"
+                                      hya-title-key="DMBMMC"
+                                      placeholder="請選擇">
+                        </hy-drop-list>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="query.dxlx === '1'">
+                    <div class="hy-layout-row cem-query-form-header">房產名稱</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.fcmc" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="query.dxlx === '1'">
+                    <div class="hy-layout-row cem-query-form-header">房產地址</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.fcdz" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="query.dxlx === '3'">
+                    <div class="hy-layout-row cem-query-form-header cem-line-height">供電點類型</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <hy-drop-list items="gddlxDrop" ng-model="query.gddlx" class="cem-form-list"
+                                      hya-value-key="DMBM"
+                                      hya-title-key="DMBMMC"
+                                      placeholder="請選擇">
+                        </hy-drop-list>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="query.dxlx === '4'">
+                    <div class="hy-layout-row cem-query-form-header">合約編號</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.hyzh" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-if="query.dxlx === '2'">
+                    <div class="hy-layout-row cem-query-form-header">區域</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <hy-drop-list items="qyDrop" ng-model="query.qy" class="cem-form-list"
+                                      hya-value-key="DMBM"
+                                      hya-title-key="DMBMMC"
+                                      placeholder="請選擇">
+                        </hy-drop-list>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="query.dxlx === '2'">
+                    <div class="hy-layout-row cem-query-form-header">街道</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.jd" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="query.dxlx === '2'">
+                    <div class="hy-layout-row cem-query-form-header">門牌號</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <input ng-model="query.mph" placeholder="請輸入"
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-if="query.dxlx === '5'">
+                    <div class="hy-layout-row cem-query-form-header">裝拆日期</div>
+                    <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                        <hy-datepicker2 hya-date-value="query.zcrq"
+                                        hya-has-button="true"
+                                        hya-date-type="String"
+                                        hya-format="YYYY-MM-DD"
+                                        hya-input-class="cem-date-picker"
+                                        hya-active-class="date-active"
+                                        class="cem_timepicker">
+                        </hy-datepicker2>
+                    </div>
+                </div>
+                <div class="cem-query-button">
+                    <div class="cem-query-btn" ng-click="queryDxxx()">搜索</div>
+                </div>
+            </div>
+        </div>
+        <!--列表展示-->
+        <div class="cem-query-result">
+            <div style="width: 100%;margin-bottom: 12px;font-size: 16px;" ng-if="showTotal">總數量：{{ resultList.length }}</div>
+            <div class="cem-no-data" ng-if="resultList.length<1"></div>
+            <div class="cem-query-result-item" ng-if="resultList.length>0"
+                 ng-repeat="item in resultList track by $index">
+                <div class="cem-query-dxxx-title">
+                    <div>
+                        <div>{{ item.DXBH }}</div>
+                        <div style="margin: 4px 0;">{{ item.PROPERTYNO }}</div>
+                    </div>
+                    <div ng-click="showPhoto(item)" ng-show="showPhotoPic">
+                        <div>查看圖片</div>
+                        <div><img src="img/cem/db/cem_look.png"/></div>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-result-form-header" ng-style="styleWidth">{{ item.DXMC }}</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.PROPERTYNAME }}
+                    </div>
+                    <div class="cem-input-scancodes" ng-click="openMap(item)" style="margin: 0;" ng-show="showMap">
+                        <img src="img/cem/cbbl/dingwei.png"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="item.DXMC !='地址名稱'">
+                    <div class="hy-layout-row cem-result-form-header" ng-style="styleWidth">{{ item.DXDZ }}</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.PROPERTYADDRESS }}
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="item.QY">
+                    <div class="hy-layout-row cem-result-form-header" ng-style="styleWidth">{{ item.QY }}</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.PROPERTYQY }}
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="item.JD">
+                    <div class="hy-layout-row cem-result-form-header" ng-style="styleWidth">{{ item.JD }}</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.PROPERTYJD }}
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="item.MPH">
+                    <div class="hy-layout-row cem-result-form-header" ng-style="styleWidth">{{ item.MPH }}</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.PROPERTYMPH }}
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-show="item.HYZH">
+                    <div class="hy-layout-row cem-result-form-header" ng-style="styleWidth">{{ item.HYZH }}</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.PROPERTYHYZH }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

@@ -1,0 +1,230 @@
+/*--------登录页面样式------------*/
+$login-priamy-color: #004ea2;
+.login-pageown {
+  height: 100%;
+  width: 100%;
+  background-image: url("img/cem/login/login-bg.jpg");
+  background-size: 100% 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px 25px 25px 25px;
+  box-sizing: border-box;
+  .login_out {
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 7px;
+    //box-shadow: 2px 6px 10px #FF7E04;
+    padding: 0 15px;
+    width: 100%;
+    height: 91%;
+    .login-layout-center-end {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    > div:first-of-type {
+      text-align: center;
+      img {
+        height: 70px;
+      }
+    }
+    > div:nth-of-type(2) {
+      font-size: 19px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+    > div:nth-of-type(3) {
+      font-size: 12px;
+      color: #eaeaea;
+      letter-spacing: 8px;
+      text-align: center;
+    }
+    .login_text {
+      margin: 0 20px;
+    }
+
+    /*历史登录信息*/
+    .login-user {
+      text-align: center;
+      font-size: 15px;
+      position: relative;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      .line-login {
+        width: 100%;
+        border-bottom: 1px solid #F9F8F6;
+      }
+      .login-info {
+        position: absolute;
+        top: 64%;
+        /*top: 30px;*/
+        /*left: 38%;*/
+        img {
+          height: 30px;
+          margin-bottom: 3px;
+          background-color: white;
+        }
+        > div:nth-of-type(1) {
+          font-weight: bold;
+        }
+        > div:nth-of-type(2) {
+          font-size: 13px;
+        }
+      }
+    }
+
+    /*统计数量*/
+    .login-count {
+      margin: 20px 0 7px 0;
+      display: flex;
+      justify-content: space-around;
+      > div {
+        width: 20%;
+        border-radius: 15px;
+        color: white;
+        padding: 2px 4px;
+        display: inline-block;
+        height: 19px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 1px;
+        font-weight: normal;
+      }
+      > div:nth-of-type(1) {
+        background-color: #7acf63;
+        box-shadow: 0 0 0 2px #DAEED2;
+      }
+      > div:nth-of-type(2) {
+        background-color: #6e9ae2;
+        box-shadow: 0 0 0 2px #D7E0F3;
+      }
+      > div:nth-of-type(3) {
+        background-color: #f86c6c;
+        box-shadow: 0 0 0 2px #FCD5D2;
+      }
+      > div:nth-of-type(4) {
+        background-color: #ffda2e;
+        box-shadow: 0 0 0 2px #FEF2C2;
+      }
+    }
+  }
+  /*设置图标*/
+  .login-setting {
+    > img {
+      height: 20px;
+    }
+  }
+  /*底部版权*/
+  .login-bq {
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    width: 100%;
+  }
+  /*用户名*/
+  .cem-input-clear-font-white {
+    > input {
+      &::-webkit-input-placeholder {
+        color: #4b4b4b;
+        font-size: 14px;
+        height: 35px;
+        background-color: #eaeaea;
+      }
+      color: #4b4b4b !important;
+      background-color: #eaeaea;
+      font-size: 14px;
+      height: 35px;
+    }
+  }
+
+  .cem-input-clear {
+    > input {
+      &::-webkit-input-placeholder {
+        color: #4b4b4b;
+        font-size: 14px;
+        background-color: #eaeaea;
+      }
+      border-radius: 20px;
+      padding: 3px 13px;
+      text-align: center;
+      background-color: #eaeaea;
+      color: #4b4b4b;
+      font-size: 14px;
+    }
+
+    .hy-input-clear-icon {
+      color: $dark-font-color-50;
+      font-size: 16px;
+      bottom: -1px;
+      right: 10px;
+    }
+    /*height: 100%;*/
+    width: 100%;
+  }
+}
+
+.cem-login-page {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-image: url("img/cem/login/welcome.jpg");
+  background-size: 100% 100%;
+}
+
+.hyc-password {
+  width: 100%;
+}
+
+.hyc-password .text-input {
+  color: #4b4b4b;
+  font-size: 14px;
+  border: none;
+  padding: 0;
+  position: relative;
+  display: block;
+  background-color: #eaeaea;
+  border-radius: 20px;
+  text-align: center;
+  height: 40px;
+  &::-webkit-input-placeholder {
+    color: #4b4b4b;
+    font-size: 14px;
+  }
+}
+
+.hyc-password .hyc-eye {
+  color: #fff;
+  bottom: 7px;
+  right: 10px;
+}
+
+.hyc-password .hyc-eye.active {
+  color: #fff;
+  bottom: 7px;
+  right: 10px;
+}
+
+.transition-input {
+  border: none;
+  background: transparent;
+  padding: 0px;
+}
+
+/*登录按钮*/
+.login-submit-button {
+  width: 100%;
+  height: 40px;
+  background-color: #ffc72c;
+  color: #FFFFFF;
+  font-size: 15px;
+  line-height: 40px;
+  border-radius: 20px;
+  letter-spacing: 5px;
+  box-shadow: 0 5px 6px #FFDCC9;
+}

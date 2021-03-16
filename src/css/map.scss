@@ -1,0 +1,46 @@
+.amap-geolocation-con .amap-geo {
+  background: #fff url("img/map/loc_gray.png") 50% 50% no-repeat;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  right: 4px
+}
+
+.amap-locate-loading .amap-geo {
+  background-image: url("img/map/loading.gif")
+}
+
+.amap-locate {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: url("img/map/map_view.png");
+  _background: url("img/map/map_view.gif");
+  background-position: -130px -185px;
+  cursor: pointer
+}
+
+.map-info-window {
+  position: absolute;
+  overflow: auto;
+  max-height: 50%;
+  background-color: #f0eff4;
+  bottom: 0;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  z-index: 100000;
+  .map-info-content{
+    width: 100%;
+  }
+  .map-info-button{
+    width: 100%;
+    padding: 0px 12px;
+    height: 38px;
+    font-size: 14px;
+    line-height: 38px;
+    margin: 0;
+    border-radius: 6px;
+}
+}

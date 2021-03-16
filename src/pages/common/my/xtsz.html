@@ -1,0 +1,46 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/7
+系统设置
+-->
+<ons-page ng-controller="wdXtszCtrl">
+    <ons-toolbar class="toolbar-hide-border" toolbar-modal>
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">系统设置</div>
+    </ons-toolbar>
+
+    <div class="tf-page-content hy-layout-column">
+        <div class="tf-content-flex hy-layout-column" style="overflow:auto;">
+            <div style="width:100%">
+                <div class="tf-info-content">
+                    <div class="hy-layout-row hy-layout-align-center-center" ng-click="clearKb()">
+                        <div style="flex: 1 1 auto;width:100%;height:35px;line-height: 35px">清除数据</div>
+                    </div>
+                </div>
+                <div class="tf-info-content" ng-click="checkUpdate()">
+                    <div class="hy-layout-row hy-layout-align-center-center">
+                        <div style="flex: 1 1 auto;width:100%;">版本信息</div>
+                        <div class="hy-layout-row hy-layout-align-center-center"
+                             style="width:35px;height:35px;flex: none;" ng-bind="version">
+                        </div>
+                    </div>
+                </div>
+                <div class="tf-info-content">
+                    <div class="hy-layout-row hy-layout-align-center-center" ng-click="showDetailXtsz()">
+                        <div style="flex: 1 1 auto;width:100%;">关于我们</div>
+                        <div class="hy-layout-row hy-layout-align-center-center"
+                             style="width:35px;height:35px;flex: none;">
+                            <ons-icon icon="ion-chevron-right" size="20px" style="color:#AAAAAA"></ons-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</ons-page>

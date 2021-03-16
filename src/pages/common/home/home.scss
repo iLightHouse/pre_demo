@@ -1,0 +1,224 @@
+$login-priamy-color: #004ea2;
+.cem-home-topbar {
+  font-size: 22px;
+  padding-left: 20px;
+  font-weight: bold;
+  color: #8c8c8c;
+}
+
+.cem-home-img {
+  width: 65%;
+  max-width: 70px;
+}
+
+.cem-home-img-animation {
+  width: 65%;
+  max-width: 70px;
+  animation: shake infinite 1s ease;
+}
+
+.cem-home-cd-font {
+  /*font-size: 12px;*/
+  font-size: 14px;
+  color: #8c8c8c;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.right1 {
+  background-color: transparent;
+  .hyc-password {
+    position: relative;
+    display: block;
+    .text-input {
+      width: -webkit-calc(100% - 30px);
+      width: calc(100% - 30px);
+      color: #000000;
+      height: 100%;
+      font-size: 14px;
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      border-radius: 0;
+      text-align: start;
+    }
+    .text-input::-webkit-input-placeholder {
+      font-size: 14px;
+      color: #7b7b7b;
+    }
+    .hyc-eye {
+      font-size: 14px;
+      position: absolute;
+      right: 10px;
+      bottom: 9px;
+      color: #6f6f6f;
+    }
+    .hyc-eye.active {
+      color: #6f6f6f;
+    }
+  }
+  .account-input {
+    font-size: 16px;
+    color: #cccccc;
+    background: transparent;
+    &::-webkit-input-placeholder {
+      color: #cccccc;
+      font-size: 14px;
+    }
+    > input {
+      &::-webkit-input-placeholder {
+        color: #cccccc;
+        font-size: 14px;
+      }
+      color: #cccccc;
+      font-size: 14px;
+    }
+    .hy-input-clear-icon {
+      color: #cccccc;
+    }
+    height: 100%;
+    width: 100%;
+  }
+  .password-input {
+    width: 100%;
+    height: 100%;
+    color: #cccccc;
+    font-size: 16px;
+    &::-webkit-input-placeholder {
+      color: #cccccc;
+      font-size: 14px;
+    }
+  }
+}
+
+.news-ydzy-remind {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #f86c6c;
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+  position: absolute;
+  top: 3px;
+  right: 20px;
+}
+
+.cem-home-large-number {
+  height: 16px;
+  min-width: 16px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #f86c6c;
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+  position: absolute;
+  top: 3px;
+  right: 11px;
+  padding: 0 4px;
+}
+
+.content-block-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.cem-menu-father-div {
+  background-color: white;
+  padding: 2px 6px 4px 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.cem-menu-div {
+  padding: 0 15px;
+  height: 33%;
+}
+
+.cem-menu-divt {
+  width: 25%;
+  margin: 8px 0;
+  height: 75px;
+}
+
+.cem-menu-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 20px;
+}
+
+/*首頁個人待辦標題*/
+.home-person-agenda {
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  > div:nth-child(1) {
+    font-size: 15px;
+    color: $cem-dark-font-color;
+    font-weight: bold;
+  }
+  img {
+    height: 17px;
+    vertical-align: middle;
+  }
+}
+
+.cile {
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 25px solid white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.color-father {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-common {
+  width: 33.33%;
+  height: 33.33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.view-img-father {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center
+}
+
+.cem-home-query {
+  height: 222px;
+  overflow: scroll;
+  margin-bottom: 6px;
+}
+
+.remarks-father {
+  height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  color: $cem-dark-font-color;
+  overflow: scroll;
+}
+

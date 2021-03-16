@@ -1,0 +1,208 @@
+{
+  "PROPERTY": [
+    {
+      "HYZHNO": "000000001",
+      "HYZHFL": "普通客戶",
+      "HYFL": "居民照明",
+      "KHMC": "張成建",
+      "PROPERTYADDRESS": "墮明街道大河村1-1",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "dbhm": "0116766",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "FCBHNO": "1001",
+      "sblx":"三相感應式長壽命電能表",
+      "SBLB":"電能表",
+      "SBLBBM":"1",
+      "SBLX":"單相感應式長壽命電能表",
+      "ZCBH":"001000002",
+      "SFGH": "",
+      "JCXM": [
+        {
+          "ITEMNAME": "CCL箱損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內有水氣",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無做銅棍水線",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無裝fuse",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH或CCL箱與錶位距離太遠",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH損壞",
+          "RESULTS": ""
+        }
+      ]
+    },
+    {
+      "HYZHNO": "000000002",
+      "HYZHFL": "政府客戶",
+      "HYFL": "居民照明",
+      "KHMC": "劉傳軍",
+      "PROPERTYADDRESS": "墮明街道大河村1-2",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "dbhm": "0116766",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "FCBHNO": "1002",
+      "sblx":"三相感應式長壽命電能表",
+      "SBLB":"互感器",
+      "SBLBBM":"2",
+      "SBLX":"電流互感器",
+      "ZCBH":"001000003",
+      "SFGH": "",
+      "JCXM": [
+        {
+          "ITEMNAME": "CCL箱損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內有水氣",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無做銅棍水線",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無裝fuse",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH或CCL箱與錶位距離太遠",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "住宅單位",
+          "RESULTS": ""
+        }
+      ]
+    },
+    {
+      "HYZHNO": "000000003",
+      "HYZHFL": "普通客戶",
+      "HYFL": "居民照明",
+      "KHMC": "趙士臣",
+      "PROPERTYADDRESS": "墮明街道大河村1-3",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "dbhm": "0116766",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "FCBHNO": "1003",
+      "sblx":"三相感應式長壽命電能表",
+      "SBLB":"電能表",
+      "SBLBBM":"1",
+      "SBLX":"三相感應式長壽命電能表",
+      "ZCBH":"001000004",
+      "SFGH": "",
+      "JCXM": [
+        {
+          "ITEMNAME": "CCL箱損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內有水氣",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無做銅棍水線",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無裝fuse",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH或CCL箱與錶位距離太遠",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "住宅單位",
+          "RESULTS": ""
+        }
+      ]
+    },
+    {
+      "HYZHNO": "000000004",
+      "HYZHFL": "政府客戶",
+      "HYFL": "居民照明",
+      "KHMC": "錢增",
+      "PROPERTYADDRESS": "墮明街道大河村1-4",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "dbhm": "0116766",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "FCBHNO": "1004",
+      "sblx":"三相感應式長壽命電能表",
+      "SBLB":"電能表",
+      "SBLBBM":"1",
+      "SBLX":"三相感應式長壽命電能表",
+      "ZCBH":"001000005",
+      "SFGH": "",
+      "JCXM": [
+        {
+          "ITEMNAME": "CCL箱損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內有水氣",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無做銅棍水線",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH內無裝fuse",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH或CCL箱與錶位距離太遠",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "PH損壞",
+          "RESULTS": ""
+        },
+        {
+          "ITEMNAME": "住宅單位",
+          "RESULTS": ""
+        }
+      ]
+    }
+  ]
+}

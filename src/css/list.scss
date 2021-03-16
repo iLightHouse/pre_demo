@@ -1,0 +1,35 @@
+.app-list-header {
+  width: 100%;
+  height: 50px;
+  padding: 5px 0px;
+  flex: none;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.app-list-header-inner {
+  width: 100%;
+  height: 100%;
+  padding:0px 8px;
+  background-color: $light-background;
+}
+
+.app-header-img {
+  height: 20px;
+  line-height: 20px;
+  padding: 0px 8px 0px 8px;
+}
+
+.app-header-lable{
+  height:40px;
+  line-height: 40px;
+}
+
+
+.app-content-flex {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+}

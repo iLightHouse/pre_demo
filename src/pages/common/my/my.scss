@@ -1,0 +1,37 @@
+.tf-my-top-content {
+  background-color: $primaryColor;
+  height: 180px;
+  width: 100%;
+}
+
+.tf-my-text {
+  height: 40px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+
+//我的上次签到信息
+.wd-qd-content {
+  background-color: #f0eff4;
+  padding: 4px 8px;
+  height: 100%;
+  width: calc(100% - 115px);
+}
+//二维码
+.app-my-ewm {
+  font-size: 10px;
+  padding-top: 10px;
+  color: darkgrey;
+}
+.cem-map-location-title{
+  background-color: #f0eff4;
+  padding: 4px 8px;
+  height: 100%;
+  width: calc(100% - 80px);
+}
+.map-width {
+  width: 100%;
+}
+.margin-left-zero{
+  margin-right: 0;
+}

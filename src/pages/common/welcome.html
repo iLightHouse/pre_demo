@@ -1,0 +1,17 @@
+<!-- 初始化页面 liukeyu 2017-08-30 -->
+<ons-page ng-controller="WelcomeCtrl">
+    <div class="tf-message-content hy-layout-column hy-layout-align-center-center cem-login-page">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <!--<div class="ring" ng-show="!welcomeError">
+                Loading
+                <span></span>
+            </div>-->
+            <hy-progress-circular hy-mode="indecterminate" ng-show="!welcomeError"></hy-progress-circular>
+            <br ng-if="!welcomeError">
+            <div style="font-weight: bold;color: #4B4B4B;">{{welcomeMsg}}</div>
+        </div>
+        <div ng-show="welcomeError">
+            <hy-button class="hy-outline welcome-button" ng-click="retry()">請重試</hy-button>
+        </div>
+    </div>
+</ons-page>

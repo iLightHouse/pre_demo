@@ -1,0 +1,33 @@
+.app-row-header-100 {
+  flex: none;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.app-row-content {
+  padding-left: 6px;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.app-row-header-65 {
+  flex: none;
+  width: 65px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.app-row-header-80 {
+  flex: none;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+}

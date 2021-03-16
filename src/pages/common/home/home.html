@@ -1,0 +1,291 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/03/10
+首页
+-->
+<ons-page ng-controller="HomesCtrl">
+    <ons-modal var="app.homeModel" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="toolbar-hide-border cem_topbar" toolbar-modal>
+        <div class="left cem-home-topbar">WELCOME</div>
+        <!--<div class="right cem_title">
+            <div>
+                <img ng-src="img/cem/db/filter_check.png" style="display: none;"/>
+            </div>
+            <div ng-click="moveMenus()" style="color: white">
+                <img ng-src="{{ languageSrc }}" style="height: 21px;"/>
+            </div>
+        </div>-->
+    </ons-toolbar>
+
+    <div style="height: 100%;overflow: hidden" class="hy-layout-column hy-focus-scroll-content">
+        <!--菜單區域-->
+        <div ng-show="!move" style="box-shadow: 0 0 5px 2px #eaeaea;">
+            <div class="cem-menu-father-div">
+                <div class="cem-menu-divt" ng-repeat="item in menus track by $index" ng-click="toTargetPage(item)">
+                    <div class="content-block-home" style="position: relative;">
+                        <img ng-src="{{ item.src }}" class="cem-home-img">
+                        <div class="cem-home-cd-font">{{ item.menuName }}</div>
+                        <div ng-class="{'cem-home-large-number':item.num>99,'news-ydzy-remind':item.num<100}"
+                             ng-if="item.num>0">{{ item.num }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--更多按钮-->
+            <!--<div class="cem-menu-more" ng-if="moreBz" ng-click="showMore(moreFlag)">
+                <img src="img/cem/home/cem_withdraw.png" style="height: 5px;" ng-show="!moreFlag">
+                <img src="img/cem/home/cem_unfold.png" style="height: 3px;" ng-show="moreFlag">
+            </div>-->
+        </div>
+        <div ng-show="move" style="box-shadow: 0 0 5px 2px #eaeaea;">
+            <div class="cem-menu-father-div" sv-root sv-part="menus">
+                <div class="cem-menu-divt" ng-repeat="item in menus track by $index"
+                     sv-element>
+                    <div class="content-block-home" style="position: relative;">
+                        <img ng-src="{{ item.src }}" class="cem-home-img-animation">
+                        <div class="cem-home-cd-font">{{ item.menuName }}</div>
+                        <div class="news-ydzy-remind" ng-if="item.num<0">{{ item.num }}</div>
+                    </div>
+                </div>
+            </div>
+            <!--更多按钮-->
+            <div class="cem-menu-more" ng-if="moreBz" ng-click="showMore(moreFlag)">
+                <img src="img/cem/home/cem_withdraw.png" style="height: 5px;" ng-show="!moreFlag">
+                <img src="img/cem/home/cem_unfold.png" style="height: 3px;" ng-show="moreFlag">
+            </div>
+        </div>
+        <!--列表展示-->
+        <div class="tf-content-flex hy-layout-column cem-ydjc-ydjcdb"
+             style="flex: 1 1 auto;overflow: hidden;height: 100%">
+            <div class="nwyyt_jf_content1"
+                 style="z-index: 99;flex: none;margin-top: 8px;box-shadow: 0 2px 1px -2px #eeeeee">
+                <div class="content_inner">
+                    <div layout="row" layout-align="center center">
+                        <div layout="row" layout-align="center center" style="width:50%">
+                            <div class="up_button " ng-class="{active:integral(1)}" ng-click="selectSortType(1)">已保存
+                                <span style="font-size: 14px">({{ saveOrder.length }})</span>
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="center center" style="width:50% ">
+                            <div class="up_button" ng-class="{active:integral(0)}" ng-click="selectSortType(0)">未辦理
+                                <span style="font-size: 14px">({{ notSaveOrder.length }})</span>
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="center center" style="width:50%">
+                            <div class="up_button " ng-class="{active:integral(2)}" ng-click="selectSortType(2)">已傳遞
+                                <span style="font-size: 14px">({{ passOrder.length }})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cem-query-condition" style="background-color: transparent;box-shadow: none">
+                <div class="cem-query-title" ng-click="updown=!updown">
+                    <div style="font-size: 15px;font-weight: bold">個人待辦</div>
+                    <div ng-show="updown"><img src="img/cem/common/query_up.png"/></div>
+                    <div ng-show="!updown"><img src="img/cem/common/query_down.png"/></div>
+                </div>
+                <!--style="height: 260px;overflow: scroll;margin-bottom: 10px;" -->
+                <div class="hy-layout-column cem-query-content" ng-class="{'cem-home-query':!moreFlag}"
+                     ng-show="updown">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">任務類型</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                            <hy-drop-list items="rwlxDrop" ng-model="query.rwlx" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">地址</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                            <input ng-model="query.dz" placeholder="請輸入" hy-focus-scroll
+                                   class="cem-form-input"/>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">區份</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                            <hy-drop-list items="qfDrop" ng-model="query.qf" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">业务类别</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                            <hy-drop-list items="ywlbDrop" ng-model="query.ywlb" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">電錶號</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom" style="flex: 1;">
+                            <input ng-model="query.dbh" placeholder="請輸入" hy-focus-scroll
+                                   class="cem-form-input"/>
+                        </div>
+                        <div class="cem-input-scancode cem-border-bottom" ng-click="scanMeter()">
+                            <img src="img/cem/cbbl/scancode.png"/></div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">工單號</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom">
+                            <input ng-model="query.gdh" placeholder="請輸入" hy-focus-scroll
+                                   class="cem-form-input"/>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-query-form-header">顏色</div>
+                        <div class="hy-layout-row cem-query-form-content cem-border-bottom"
+                             style="margin-right: 0;color: #8c8c8c;">
+                            {{query.colorName?query.colorName:'請選擇'}}
+                        </div>
+                        <div ng-show="query.colorName" class="cem-input-scancodes cemydzy-border-bottom"
+                             ng-click="clearData()">
+                            <img src="img/cem/common/cem_close.png" style="height: 15px;margin: 2px 6px 0 0;"/>
+                        </div>
+                        <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="showColor(null,'query')">
+                            <img src="img/cem/common/cem_more.png"/>
+                        </div>
+                    </div>
+                    <div class="cem-query-button" style="margin: 17px 0 5px 0;">
+                        <div class="cem-query-btn" ng-click="queryOrder()">搜索</div>
+                    </div>
+                </div>
+            </div>
+            <hy-scroll style="width:100%;height: 100%;" pull-down-option="pullDownOption"
+                       pull-down-load="pullDownLoad($done)" ng-class="{'remove':SortType===0}" ng-if="SortType===0">
+                <div class="cem-query-result" style="padding:0 15px 15px 15px;">
+                    <div class="cem-no-data" ng-if="notSaveOrder.length<1"></div>
+                    <div class="cem-query-result-item" style="padding:10px;overflow: hidden"
+                         ng-repeat="item in notSaveOrder track by $index" ng-click="toPersonOrderPage(item)">
+                        <!-- 存放标签数量大于2个的区域 -->
+                        <div class="hy-layout-row hy-layout-align-end-end" style="margin: 8px 0 0 0;"
+                             ng-if="item.newflag==='1'&&item.tssj">
+                            <div class="cem-ydjc-dblb-min">{{ item.tssj }} MIN</div>
+                            <div class="cem-ydjc-dblb-new">NEW</div>
+                        </div>
+                        <div class="cile" ng-style="item.colorStyle"
+                             ng-click="showColor(item);$event.stopPropagation();"></div>
+                        <div class="cem-ydjc-dblb-title"
+                             style="height: 30px;margin-top: 5px;justify-content: space-between;">
+                            <div class="cem-ydjc-dblb-name" style="width: auto;">{{ item.incotm }}</div>
+                            <div style="height: 100%;display: flex;align-items: center;z-index: 10"
+                                 ng-if="(item.newflag==='1'&&!item.tssj)||(item.newflag==='0'&&item.tssj)">
+                                <div class="cem-ydjc-dblb-min" ng-if="item.tssj">{{ item.tssj }} MIN</div>
+                                <div class="cem-ydjc-dblb-new" ng-if="item.newflag==='1'">NEW</div>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header-ydjc">工作单号</div>
+                            <div class="hy-layout-row cem-result-form-content-ydjc" style="font-size: 15px">
+                                {{ item.wkordrno }}
+                            </div>
+                        </div>
+                        <div class="hy-layout-row"><!-- ng-if="item.ywlbBz"-->
+                            <div class="hy-layout-row cem-result-form-header-ydjc">业务类别</div>
+                            <div class="hy-layout-row cem-result-form-content-ydjc">
+                                {{ item.buscatgcdMc }}
+                            </div>
+                        </div>
+                        <div class="hy-layout-row">
+                            <div class="hy-layout-row cem-result-form-header-ydjc">环节名称</div>
+                            <div class="hy-layout-row cem-result-form-content-ydjc">
+                                {{ item.wkflwtachnm}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </hy-scroll>
+            <!--已保存-->
+            <div class="cem-query-result" style="padding:0 15px 15px 15px;" ng-class="{'remove':SortType===1}"
+                 ng-if="SortType===1">
+                <div class="cem-no-data" ng-if="saveOrder.length<1"></div>
+                <div class="cem-query-result-item" style="padding:10px"
+                     ng-repeat="item in saveOrder track by $index" ng-click="toPersonOrderPage(item)">
+                    <!--存放标签数量大于2个的区域-->
+                    <!--<div class="hy-layout-row hy-layout-align-end-end" style="margin-top: 8px;"
+                         ng-if="item.newflag==='1'&&item.tssj">
+                        <div class="cem-ydjc-dblb-min">{{ item.tssj }} MIN</div>
+                        <div class="cem-ydjc-dblb-new">NEW</div>
+                    </div>-->
+                    <div class="cem-ydjc-dblb-title"
+                         style="height: 30px;margin-top: 5px;justify-content: space-between;">
+                        <div class="cem-ydjc-dblb-name" style="width: auto;">{{ item.incotm }}</div>
+                        <div style="height: 100%;display: flex;align-items: center">
+                            <div class="cem-ydjc-dblb-new" ng-if="item.orderType === '3'">STOP</div>
+                            <div class="cem-ydjc-dblb-new" ng-if="item.offLineState">OFFLINE</div>
+                        </div>
+                        <!--<div style="height: 100%;display: flex;align-items: center"
+                             ng-if="(item.newflag==='1'&&!item.tssj)||(item.newflag==='0'&&item.tssj)">
+                            <div class="cem-ydjc-dblb-min" ng-if="item.tssj">{{ item.tssj }} MIN</div>
+                            <div class="cem-ydjc-dblb-new" ng-if="item.newflag==='1'">NEW</div>
+                        </div>-->
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">工作单号</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc" style="font-size: 15px">
+                            {{ item.wkordrno }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row"><!-- ng-if="item.ywlbBz"-->
+                        <div class="hy-layout-row cem-result-form-header-ydjc">业务类别</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc">
+                            {{ item.buscatgcdMc }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">环节名称</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc">
+                            {{ item.wkflwtachnm}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--已傳遞-->
+            <div class="cem-query-result" style="padding:0 15px 15px 15px;" ng-class="{'remove':SortType===2}"
+                 ng-if="SortType===2">
+                <div class="cem-no-data" ng-if="passOrder.length<1"></div>
+                <div class="cem-query-result-item" style="padding:10px"
+                     ng-repeat="item in passOrder track by $index" ng-click="toPersonOrderPage(item)">
+                    <div class="cem-ydjc-dblb-title" style="height: 30px;margin-top: 5px;">
+                        <div class="cem-ydjc-dblb-name" style="width: auto;">{{ item.incotm }}</div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">工作单号</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc" style="font-size: 15px">
+                            {{ item.wkordrno }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row"><!-- ng-if="item.ywlbBz"-->
+                        <div class="hy-layout-row cem-result-form-header-ydjc">业务类别</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc">
+                            {{ item.buscatgcdMc }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header-ydjc">环节名称</div>
+                        <div class="hy-layout-row cem-result-form-content-ydjc">
+                            {{ item.wkflwtachnm}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

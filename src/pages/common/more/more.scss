@@ -1,0 +1,46 @@
+/** 更多页面 liukeyu 2017-09-12 **/
+.more-group{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 10px;
+  box-shadow: 0px 0px 2px 2px rgba(126, 131, 138, 0.1);
+  .group-content-title{
+    display: flex;
+    height:40px;
+    line-height: 40px;
+    color: #666;
+    font-size: 14px;
+    .group-content-icon{
+      width: 4px;
+      border-radius: 2px;
+      height: 12px;
+      margin: 14px 14px 14px 20px;
+      background-color: #5794F4;
+    }
+  }
+  .group-menu-list{
+    width: 100%;
+    .menu-group-content{
+      width: 100%;
+      border-top: 1px solid rgba(217,217,217,0.5);
+      .menu-item-content{
+        width: 25%;
+        height: 78px;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 4px;
+        border-right: 1px solid rgba(217,217,217,0.5);
+        &:nth-child(4n+4){
+          border-right:0;
+        }
+        .menu-btn-img{
+          width: 100%;
+          height: 45px;
+          img{
+            height: 34px;
+          }
+        }
+      }
+    }
+  }
+}

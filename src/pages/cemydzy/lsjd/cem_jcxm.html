@@ -1,0 +1,97 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/12
+檢查項目
+-->
+<ons-page ng-controller="cemjcxmCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            <!-- title = fldtsktyp -->
+            {{ title==='03'?'檢查項目': '檢驗項目'}}
+        </div>
+    </ons-toolbar>
+    <div style="height: 100%;">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                {{ title==='03'?'檢查信息':'檢驗信息' }}
+            </div>
+        </div>
+        <div style="height: 100%;padding: 10px 20px">
+            <div class="hy-layout-row">
+                <div class="hy-layout-row hy-layout-align-start-center cem-font-size-common cem-important-note" style="width: 100px;">檢查結果</div>
+                <div class="hy-layout-row cem-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="jcjgDrop" ng-model="jcxmItem.fldinspconc" class="cem-form-list"
+                                  style="padding: 6px 0 0 0;"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <!--<div class="hy-layout-row">
+                <div class="hy-layout-row hy-layout-align-start-center" style="width: 100px;">是否更換</div>
+                <div class="hy-layout-row cem-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="sfDrop" ng-model="jcxmItem.SFGH" class="cem-form-list"
+                                  style="padding: 6px 0 0 0;font-size: 14px"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>-->
+            <div class="hy-layout-row">
+                <div class="hy-layout-row hy-layout-align-start-center cem-font-size-common" style="width: 100px;">檢查日期
+                </div>
+                <div class="hy-layout-row cem-form-row-content cemydzy-border-bottom">
+                    <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                    hya-date-type="String" hya-date-value="jcxmItem.tskfnshdt"
+                                    hya-format="YYYY-MM-DD hh:mm:ss"
+                                    hya-active-class="date-active"
+                                    class="cem_timepicker">
+                    </hy-datepicker3>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row hy-layout-align-start-center cem-font-size-common" style="width: 100px;">處理方式</div>
+                <div class="hy-layout-row cem-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="clfsDrop" ng-model="jcxmItem.fldinsphandmeth" class="cem-form-list"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <div class="hy-layout-column" style="margin-bottom: 20px;">
+                <div class="hy-layout-row hy-layout-align-start-center cem-font-size-common" style="width: 100px;height: 44px;">處理意見</div>
+                <div class="hy-layout-row">
+                     <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;"
+                               placeholder="請輸入" rows="4" ng-model="jcxmItem.fldinspcmt"></textarea>
+                </div>
+            </div>
+            <div class="hy-layout-column cem-jcxm-item" ng-repeat="item in ownXmList track by $index">
+                <div class="hy-layout-row hy-layout-align-start-center cem-font-size-common" style="width: auto">
+                    {{ item.chkitmcdMc }} <!-- chkitmcd为代码编码 需要修改 -->
+                </div>
+                <div class="hy-layout-row hy-layout-align-start-center">
+                    <hy-radio-group ng-model="item.chkitmconc">
+                        <div class="hy-layout-row" style="width: 100%;font-size: 16px;">
+                            <hy-radio-button value="01" class="process-radio">合格
+                            </hy-radio-button>
+                            <hy-radio-button value="00" class="process-radio">不合格
+                            </hy-radio-button>
+                        </div>
+                    </hy-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button">
+        <div style="width: 60%" class="button-solid" ng-click="saveJcxm()">保存</div>
+    </ons-bottom-toolbar>
+</ons-page>

@@ -1,0 +1,40 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/02/25
+公告消息
+-->
+<ons-page ng-controller="cemgbCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            消息廣播
+        </div>
+    </ons-toolbar>
+    <div class="cem-dqcb-content hy-layout-column"
+         style="height: 100%;">
+        <div style="padding: 8px 7px 6px 7px;overflow: scroll;height: 100%">
+            <div class="cem-no-data" ng-if="news.length===0"></div>
+            <div class="cem-news" ng-repeat="item in news track by $index">
+                <div class="cem-news-title">
+                    <div>{{ item.fromName }}</div>
+                    <div>{{ item.fromTime }}</div>
+                </div>
+                <div class="cem-message-text" ng-if="item.type === 'img'"><img ng-src="{{ item.imgSrc }}" style="width: 100px;height: 75px" ng-click="showImg(item.imgSrc)"/></div>
+                <div class="cem-message-text" ng-if="item.type === 'text'" ng-bind-html="item.messageHtml"></div><!--{{ item.message }}-->
+                <div class="cem-news-new" ng-if="!item.read"><span class="cem-news-sign">NEW</span></div>
+            </div>
+        </div>
+    </div>
+
+</ons-page>

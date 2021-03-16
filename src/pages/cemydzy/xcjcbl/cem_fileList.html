@@ -1,0 +1,62 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/02/28
+附件列表
+-->
+<ons-page ng-controller="cemFileListCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            附件列表
+        </div>
+    </ons-toolbar>
+    <div class="cem-query-container">
+        <!--列表展示-->
+        <div class="cem-query-result">
+            <div class="cem-no-data" ng-if="resultList.length<1"></div>
+            <div class="cem-query-result-item" style="padding: 21px 20px 15px 20px"
+                 ng-repeat="item in resultList track by $index" ng-if="resultList.length>0">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-result-form-header">文件名稱</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.fileName }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-result-form-header">文件類型</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.fileType }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cem-result-form-header">文件大小</div>
+                    <div class="hy-layout-row cem-result-form-content">
+                        {{ item.fileSizeK }}
+                    </div>
+                </div>
+                <div class="cem-query-dxxx-title">
+                    <div>
+                        <div>{{ item.DXBH }}</div>
+                        <div style="margin: 4px 0;">{{ item.PROPERTYNO }}</div>
+                    </div>
+                    <div>
+                        <div ng-if="!item.SFXZ" ng-click="selectFile(item)">附件下載</div>
+                        <div ng-if="item.SFXZ" ng-click="openfile(item)">附件查看</div>
+                        <div><img src="img/cem/db/cem_look.png"/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

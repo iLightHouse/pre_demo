@@ -1,0 +1,226 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/16
+故障處理辦理
+-->
+<ons-page ng-controller="cemgzclCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            故障處理辦理
+        </div>
+        <div class="right cem_title">
+            <div>
+                <img ng-src="img/cem/db/filter_check.png" style="display: none;"/>
+            </div>
+            <div ng-click="changeLanguage(flag)">
+                <img ng-src="{{ languageSrc }}"/>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div class="hy-focus-scroll-content">
+        <!--基本信息-->
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    基本信息
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">工作單號</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.wkordrno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">電錶號</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.meterno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">合約賬戶</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.contractno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">客戶姓名</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{ flag?jbxx.custenglnm:jbxx.custnm }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">客戶電話</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.clientphone}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">用戶地址</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{ flag?jbxx.detaengladdr:jbxx.detaaddr }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">設備GPS</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom"
+                         style="margin-right: 0">
+                        {{ jbxx.equilocdescr}}
+                    </div>
+                    <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="openMap('equipment')"
+                         style="margin-right: 20px">
+                        <img src="img/cem/cbbl/dingwei.png"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">訂定功率</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{jbxx.subsdema}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">申請功率</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{ jbxx.applykw }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                        供電點信息
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom margin-left-zero">
+                        {{ jbxx.supppntno }}
+                    </div>
+                    <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="openMap()"
+                         style="margin-right: 20px">
+                        <img src="img/cem/cbbl/dingwei.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--故障設備列表-->
+        <div style="width: 100%;">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    故障設備列表
+                </div>
+            </div>
+            <div class="cem-query-result cem-sxx-tab">
+                <div class="cem-no-data" ng-if="gzsbList.length<1"></div>
+                <div class="cem-query-result-item" ng-repeat="item in gzsbList track by $index">
+                    <div class="cem-query-lsjd-title">
+                        <div style="width: 100%;">
+                            <div>設備類型</div>
+                            <div style="font-size: 21px;color: #4B4B4B;">{{ item.equitypmc }}</div>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">資產編號</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.asseno }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header cem-important-note" style="height: 44px;">
+                            處理方式
+                        </div>
+                        <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom">
+                            <hy-drop-list items="clfsDrop" ng-model="item.faulhandmde" class="cem-form-list"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                        </div>
+                    </div>
+                    <div class="hy-layout-column">
+                        <div class="hy-layout-row cem-result-form-header cem-important-note" style="height: 44px;">
+                            故障描述
+                        </div>
+                        <div class="hy-layout-row">
+                     <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;" hy-focus-scroll
+                               placeholder="請輸入" rows="4" ng-model="item.faulphen"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--故障處理信息-->
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    故障處理信息
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-important-note">
+                        處理結果
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        <hy-drop-list items="jcjgDrop" ng-model="jbxx.tsksts" class="cem-form-list"
+                                      hya-value-key="DMBM"
+                                      hya-title-key="DMBMMC"
+                                      placeholder="請選擇">
+                        </hy-drop-list>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                        現場任務類型
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        故障處理
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">處理日期
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                        hya-date-type="String" hya-date-value="jbxx.tskfnshdt"
+                                        hya-format="YYYY-MM-DD hh:mm:ss"
+                                        hya-active-class="date-active"
+                                        class="cem_timepicker">
+                        </hy-datepicker3>
+                    </div>
+                </div>
+                <div class="hy-layout-column">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">處理意見</div>
+                    <div class="hy-layout-row" style="margin: 0 20px;">
+                     <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;" hy-focus-scroll
+                               placeholder="請輸入" rows="4" ng-model="jbxx.tskhndlsituat"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--錄入臨時裝拆數據-->
+        <div style="width: 100%;margin-bottom: 20px" ng-if="zclu">
+            <div class="cemydyz_xcjcbl_head" ng-click="toLrlszc()">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    錄入裝拆數據
+                </div>
+                <div class="cem-input-scancodes"
+                     style="margin:4px 10px;width: 20px;height: 20px">
+                    <img style="margin-top: 5px" src="img/cem/ydzybl/cem_lt.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType!=='2'">
+        <div style="width: 33%" class="button-solid" ng-click="save()">保存</div>
+        <div style="width: 33%" class="button-solid" ng-click="send()">傳遞</div>
+    </ons-bottom-toolbar>
+</ons-page>

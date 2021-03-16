@@ -1,0 +1,90 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2019/05/16
+搜索
+-->
+<ons-page ng-controller="cemmyCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center my_title">
+            WELCOME
+        </div>
+    </ons-toolbar>
+    <div class="hy-layout-column cem_my">
+        <!--个人信息-->
+        <div class="cem_my_info">
+            <div>
+                <img src="img/cem/common/my_via.png"/>
+            </div>
+            <div>{{ info.name }}</div>
+            <div>{{ info.dlzh }}</div>
+            <div>{{ info.gddwmc }}</div>
+        </div>
+        <!--功能区域-->
+        <div class="cem_my_operate">
+            <div class="cem_my_operate-item" ng-click="toSetting()">
+                <div>
+                    <img src="img/cem/common/my_setting.png"/>
+                </div>
+                <div>
+                    密碼設定
+                </div>
+                <div>
+                    <img src="img/cem/common/right.png" style="height: 10px"/>
+                </div>
+            </div>
+            <div class="cem_my_operate-item" ng-click="loginGps()">
+                <div>
+                    <img src="img/cem/common/cem_gprs.png"/>
+                </div>
+                <div>
+                    GPS展示
+                </div>
+                <div><img src="img/cem/common/right.png" style="height: 10px"/></div>
+            </div>
+            <div class="cem_my_operate-item" ng-click="clearData()">
+                <div>
+                    <img src="img/cem/common/my_clear.png"/>
+                </div>
+                <div>
+                    清除緩存
+                </div>
+                <div>
+                    <!--{{ buffer }}-->
+                </div>
+            </div>
+            <div class="cem_my_operate-item">
+                <div>
+                    <img src="img/cem/common/my_versions.png"/>
+                </div>
+                <div>
+                    版本信息
+                </div>
+                <div>
+                    V 0.1.13
+                </div>
+            </div>
+
+            <div class="cem_my_operate-item" ng-click="loginOut()">
+                <div>
+                    <img src="img/cem/common/loginout.png"/>
+                </div>
+                <div>
+                    登出
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</ons-page>

@@ -1,0 +1,96 @@
+.containerBlock {
+  margin: 0 5px 7px 5px;
+  padding: 4px 8px;
+  background-color: white;
+  border-radius: 8px;
+  //box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.home-black {
+  font-size: 14px;
+  color: #000000;
+  width: 30%;
+}
+
+.home-gray {
+  font-size: 14px;
+  color: #aaaaaa;
+  width: 70%;
+}
+
+.inner-middle {
+  line-height: 30px;
+}
+
+.buttonTheme {
+  margin: 5px;
+  width: 70px;
+  height: 30px;
+  min-height: 30px;
+  line-height: 30px;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+//懒加载样式
+.tf-lazy-list {
+  font-size: 14px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+//搜索框
+.tf-search-input {
+  background-color: white;
+  width: calc(100% - 6px);
+  margin: 3px;
+  height: 40px;
+  font-size: 17px;
+  padding: 2px 0 0 28px;
+}
+
+.messageBlock {
+  margin-bottom: 8px;
+  background-color: white;
+  border-bottom: 1px solid #E9EBED;
+  border-top: 1px solid #E9EBED;
+  //
+  //box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.task-gdclr-img {
+  width: 30px;
+  margin-left: 20%;
+}
+
+.task-ywzl-box {
+  width: 45%;
+  height: 100%;
+  padding: 10px;
+}
+.task-button{
+  background: linear-gradient(to right,#8bccf6, #5dbcff);
+  color: #FFFFFF;
+  width: 60px;
+  height: 27px;
+  line-height: 27px;
+  min-height: 27px;
+  margin: 3px;
+}
+.task-ywzl-text {
+  width: 100%;
+  height: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-ywzl-text-grey {
+  width: 100%;
+  height: 50%;
+  color: #7E7E7E;
+  font-size: 12px;
+}

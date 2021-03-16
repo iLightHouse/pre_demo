@@ -1,0 +1,59 @@
+<!--
+Version:1.0.0
+Author:宋晓鹏
+Date:2019/04/09
+地图监控
+-->
+<ons-page ng-controller="DtjkCtrl" class="dtjk-page">
+    <ons-modal var="app.dtjkModel" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-center-center">
+                <ons-icon icon="spinner" spin="true" size="40px"></ons-icon>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            位置信息
+        </div>
+    </ons-toolbar>
+    <hy-action-sheet style="height: 100%;"
+                     var="zjjcActionSheet1"
+                     hya-groups="groupButtons"
+                     hya-click="buttonClick(data)">
+    </hy-action-sheet>
+    <div class="app-page-content hy-layout-column" style="background-color: #FFFFFF;width: 100%;">
+        <div style="height: calc(100% - 100px);">
+            <hy-gd-map hya-ak="234ff739f7a8578b997bda504cd024ba" id="hy-dtjk-map"
+                       hya-init="init($event)"
+                       hya-geolocation="geolocation($event,$map);"
+                       hya-controls="mapControls"
+                       var="dtjkMapView">
+            </hy-gd-map>
+        </div>
+        <div style="height: 100px">
+            <div class="hy-layout-row hy-layout-align-space-between-center" style="height: 100%">
+                <div class="hy-layout-column app-info-content cem-map-location-title" ng-class="{'map-width':formFlag!=='equipment'}">
+                    <div class="hy-layout-row app-display-font">
+                        <div class="hy-layout-row app-row-header-100" style="width: 70px;color: #ffc72c" ng-if="formFlag === 'equipment'">當前位置</div>
+                        <div class="hy-layout-row app-row-header-100" style="width: 70px;color: #ffc72c" ng-if="formFlag !== 'equipment'">位置信息</div>
+                    </div>
+                    <div class="hy-layout-row app-display-font">
+                        <div class="hy-layout-row app-row-content-auto" style="font-size: smaller">
+                            {{ addr ? addr : '無'}}
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-layout-row" ng-if="formFlag === 'equipment'">
+                    <hy-button ng-click="navigation()" class="hy-fab" style="width: 56px;height: 56px;"
+                               ng-disabled="!geoend">
+                        導航
+                    </hy-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

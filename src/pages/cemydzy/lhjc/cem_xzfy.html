@@ -1,0 +1,107 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/03/15
+新增鎖
+-->
+<ons-page ng-controller="cemxzfysCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            新增鎖
+        </div>
+    </ons-toolbar>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div class="cemydyz_xcjcbl_head">
+            <div class="cemydyz_xcjcbl_head_icon">
+            </div>
+            <div class="cemydyz_xcjcbl_head_title">
+                鎖信息
+            </div>
+        </div>
+        <div class="cemydyz_xcjcbl_content" style="margin-top: 8px;">
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal">鎖編號
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <input ng-model="fyxx.sealno" set-focus placeholder="請輸入" ng-blur=""
+                           class="cem-form-input"/>
+                    <div class="cem-input-scancode" ng-click="scanMeter('fybh')">
+                        <img src="img/cem/cbbl/scancode.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                    加封對象
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="jfsbDrop" ng-model="fyxx.sealequicate" class="cem-form-list"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal">資產編號
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <input ng-model="fyxx.sealasseno" set-focus placeholder="請輸入" ng-blur=""
+                           class="cem-form-input"/>
+                    <div class="cem-input-scancode" ng-click="scanMeter('zcbh')">
+                        <img src="img/cem/cbbl/scancode.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">
+                    加封位置
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="jfwzDrop" ng-model="fyxx.sealloc" class="cem-form-list"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal">加封用途
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    裝裱封
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal">加封日期
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                    hya-date-type="String" hya-date-value="fyxx.sealtm"
+                                    hya-format="YYYY-MM-DD hh:mm:ss"
+                                    class="cem_timepicker">
+                    </hy-datepicker3>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center"
+                     style="line-height: normal">加封人
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <input ng-model="fyxx.sealMc" set-focus placeholder="請輸入"
+                           class="cem-form-input"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button">
+        <div style="width: 60%" class="button-solid" ng-click="confirmFyxx()">確定</div>
+    </ons-bottom-toolbar>
+</ons-page>

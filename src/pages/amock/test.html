@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"/>
+    <title>Title</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dragObj {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+
+    .box {
+        width: 300px;
+        height: 300px;
+        background: #00b38a;
+    }
+
+    @keyframes shake {
+        0% {
+            transform: rotate(0deg);
+        }
+        4% {
+            transform: rotate(-5deg);
+        }
+        8% {
+            transform: rotate(5deg);
+        }
+        12% {
+            transform: rotate(-5deg);
+        }
+        16% {
+            transform: rotate(5deg);
+        }
+        20% {
+            transform: rotate(-5deg);
+        }
+        24% {
+            transform: rotate(5deg);
+        }
+        28% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .badge {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        border-radius: 4px 4px 0 0;
+        margin: 2px;
+        width: 36px;
+        height: 36px;
+        overflow: hidden;
+        filter: drop-shadow(0 1px 1px #973340a3);
+        color: white;
+        font-weight: bold;
+        line-height: 32px;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+        animation: shake infinite 2s ease;
+    }
+
+    .badge::before,
+    .badge::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        display: block;
+        border-radius: 4px;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(0deg, red, #ff8484);
+    }
+
+    .badge::before {
+        transform-origin: left top;
+        transform: skewY(-20deg);
+    }
+
+    .badge::after {
+        transform-origin: right top;
+        transform: skewY(20deg);
+    }
+
+    .sysBtn:active {
+        background-color: #BFD4F0;
+    }
+
+    ul > li {
+        list-style: none;
+        float: left;
+        background-color: #b2ebf2;
+        height: 100px;
+        width: 20px;
+    }
+    h2 {
+        overflow-wrap: break-word;
+        width: 100px;
+        border: solid 1px #ddd;
+    }
+</style>
+<body>
+<div>
+    <div class="sysBtn">
+        <div>1231</div>
+           <span>全屏显示</span>
+    </div>
+</div>
+<h2>houdunren.com</h2>
+<div class="badge">Hi</div>
+<!--<div class="dragObj" id="dragObj" style="left: 100px; top: 100px"></div>
+<div class="box" id="box"></div>-->
+
+<!--<div id="list">
+    <ul>
+        <li><a href="">第一個</a></li>
+        <li><a href="">第二個</a></li>
+        <li><a href="">第仨個</a></li>
+        <li><a href="">第四個</a></li>
+        <li><a href="">第五個</a></li>
+        <li><a href="">第六個</a></li>
+        <li><a href="">第七個</a></li>
+        <li><a href="">第八個</a></li>
+    </ul>
+</div>-->
+<div style="white-space:pre-wrap">
+    换行\n换行
+</div>
+ 
+<ul>
+    <li><a href="">555</a></li>
+    <li><a href="">666</a></li>
+</ul>
+<div class="file-input">
+    <button class="ruibao">點我</button>
+</div>
+<script>
+
+
+    var objName = {name1: "第一", name2: "第二", name3: "第三", name4: "第四"};
+    var objNames = {name1: "1", name2: "2", name3: "第三", name4: "4"};
+    var cd = ['xiaoming', 'xiaohong'];
+    var val = ['13', '12'];
+    var cdObj = {
+        one: {
+            ming: '13'
+        },
+        two: {
+            gang: '14'
+        },
+        three: {
+            xz: '22',
+            xiaoming: '13',
+            we: '12'
+        },
+        fore: {
+            xiaohong: '12'
+        }
+    };
+    for (var i = 0; i < cd.length; i++) {
+        var bz = false;
+        for (var key in cdObj) {
+            var objs = cdObj[key];
+            var flag = false;
+            for (var keys in objs) {
+                if (objs[keys] === val[i]) {
+                    console.log(keys, objs[keys]);
+                    flag = true;
+                    bz = true;
+                    break;
+                }
+            }
+            if (flag) break;
+            console.log(key, cdObj[key]);
+        }
+        if (bz) break;
+        console.log('最外层：' + cd[i]);
+    }
+    /*for (var key in objName) {
+        var flag = false;
+        for (var keys in objNames) {
+            if (objNames[keys] === objName[key]) {
+                console.log(objNames[keys]);
+                flag = true;
+                break;
+            }
+        }
+        if (flag) break;
+        console.log(objName[key]);
+    }*/
+
+
+    /*var fileInput = document.getElementsByClassName('file-input');
+    var btn = fileInput[0].getElementsByTagName('button');
+    btn[0].onclick = function () {
+        alert('点我');
+    };*/
+
+    /*var ruiBao = document.getElementsByClassName('ruibao');
+    ruiBao[0].onclick = function () {
+        alert('保护嘤嘤怪');
+    };*/
+
+
+    // console.log(fileInput);
+    // console.log(btn);
+    /*function measureBW(fn, time) {
+        time = time || 1;
+        var startTime, endTime, fileSize;
+        var count = time;
+        var _this = this;
+
+        function measureBWSimple() {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    if (!fileSize) {
+                        fileSize = xhr.responseText.length;
+                    }
+                    count--;
+                    if (count <= 0) {
+                        endTime = Date.now();
+                        var speed = fileSize * time / ((endTime - startTime) / 1000) / 1024;
+                        fn && fn(Math.floor(speed));
+                    }
+                }
+            };
+            xhr.open("GET", "https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png", true);
+            xhr.send();
+        }
+
+        startTime = Date.now();
+        for (var x = time; x > 0; x--) {
+            measureBWSimple()
+        }
+    }
+
+    measureBW(function (speed) {
+        console.log(speed + " KB/sec");  //913 KB/sec
+    }, 10);*/
+
+
+    function goHome(overTime) {
+        var nowTime = new Date().getTime();
+        var workDown = new Date().toLocaleDateString();
+        var eachDown = workDown + ' 11:30:00';
+        var homeDown = overTime ? workDown + ' 20:00:00' : workDown + ' 17:15:00';
+        var eachTime = new Date(eachDown).getTime();
+        var homeTime = new Date(homeDown).getTime();
+        var eachRemainingTime = getTime(eachTime, nowTime);
+        var homeRemainingTime = getTime(homeTime, nowTime);
+        if (eachTime - nowTime > 0 && homeTime - nowTime > 0) {
+            console.log('午饭倒計時：' + eachRemainingTime);
+            console.log('下班倒計時：' + homeRemainingTime);
+        } else {
+            console.log('下班倒計時：' + homeRemainingTime);
+        }
+    }
+
+    function getTime(targetTime, nowTime) {
+        var remainderTime = Math.round((targetTime - nowTime) / 1000);// 秒
+        var hh = Math.floor(remainderTime / 60 / 60).toString();// 小时
+        var mm = Math.floor((remainderTime - hh * 60 * 60) / 60).toString();// 分钟
+        var ss = Math.floor(remainderTime - hh * 60 * 60 - mm * 60).toString();// 秒
+        hh = hh.length === 1 ? '0' + hh : hh;
+        mm = mm.length === 1 ? '0' + mm : mm;
+        ss = ss.length === 1 ? '0' + ss : ss;
+        return hh + '时' + mm + '分' + ss + '秒'
+    }
+
+    goHome(false);// 加班
+
+    function holiday(holidayTime) {
+        var nowDate = new Date().getDate();
+        var holidayDate = new Date(holidayTime).getDate();
+        var holidayAllTime = new Date(holidayTime).getTime();
+        var nowAllTime = new Date().getTime();
+        var remind = '';
+        var day = holidayDate - nowDate;
+        if (day > 0) {
+            var workDown = new Date().getTime();
+            var start = new Date(new Date().toLocaleDateString());
+            start.setTime(start.getTime() + 3600 * 1000 * 24);
+            var t = start.getTime();
+            remind = getTime(t, workDown);
+            return '放假倒計時：' + day + '天' + remind;
+        } else {
+            remind = getTime(holidayAllTime, nowAllTime);
+            return '放假倒計時：' + remind;
+        }
+    }
+
+    console.log(holiday('2020-12-26'));
+
+    // goHome(false);// 不加班
+
+    function hello(name) {
+        var phrase = 'Hello,' + name;
+        // debugger;
+        say(phrase);
+    }
+
+    function say(phrase) {
+        alert('**' + phrase + '**');
+    }
+
+
+    // hello('John');
+
+
+    // function clickLi() {
+    //     var liList = document.querySelectorAll('#list>ul>li');
+    //     console.log(liList);
+    //     for (var i = 0; i < liList.length; i++) {
+    //         console.log(liList[i]);
+    //         liList[i].onclick = function () {
+    //             alert(this.innerHTML);
+    //         }
+    //     }
+    // }
+
+    // clickLi();
+
+
+    /*let dragObj = document.getElementById('dragObj');
+
+    dragObj.onmousedown = dragStart; // 监听盒子的鼠标按下事件，在事件函数中赋予盒子可以被拖动的能力；
+    dragObj.onmouseup = dragEnd; // 鼠标抬起结束拖拽,1400+900=2300-3400 = 1100
+    function dragStart(e) {
+        // 开始拖拽
+        // 1. 记录盒子初始位置、鼠标按下的位置
+        this.startL = parseFloat(this.style.left);
+        this.startT = parseFloat(this.style.top);
+
+        // 2. 记录鼠标按下时的鼠标位置
+        this.startX = e.pageX;
+        this.startY = e.pageY;
+
+        // 3. 赋予元素可以被拖拽的能力
+        dragObj.onmousemove = dragMove;
+
+    }
+
+    function dragMove(e) {
+        // 拖动：在拖动过程中不断的计算鼠标现在所处的位置相对于鼠标按下的位置移动的距离，然后加上盒子的初始位置，就是盒子应该出现的位置
+
+        // 1. 计算当前鼠标位置相对于鼠标按下移动的距离
+        let moveX = e.pageX - this.startX;
+        let moveY = e.pageY - this.startY;
+
+        // 2. 计算盒子应该出现的位置
+
+        let curL = this.startL + moveX;
+        let curT = this.startT + moveY;
+
+        // 3. 将盒子的left和top分别设置为它应该出现的值
+        this.style.left = `${curL}px`;
+        this.style.top = `${curT}px`;
+
+    }
+
+    function dragEnd() {
+        dragObj.onmousemove = null;
+    }*/
+
+
+    // 原型链继承
+
+    // function A() {
+    //     this.private = '私有属性';
+    // }
+    // A.prototype.public = '公有属性';
+    // function B() {
+    //     this.name = 'B私有的属性';
+    //     let tmp = new A();
+    //     for (let key in tmp) {
+    //         this[key] = tmp[key];
+    //     }
+    // }
+    // let b = new B();
+    // console.log(b);
+
+    // function A() {
+    //     this.private = '私有属性';
+    // }
+    // A.prototype.public = '公有属性';
+    // function B() {
+    //     A.call(this); // 借用构造函数继承
+    //     this.name = 'b私有的';
+    // }
+    // // 原型式继承：把父类公有的 继承为子类实例公有的
+    // B.prototype = Object.create(A.prototype);
+    // B.prototype.constructor = B;
+    // let b = new B(); // {name: '私有的', private: '私有属性'}
+    // console.log(b);
+    // console.log(b.private); // 继承过来的私有属性
+    // console.log(b.public); // 继承过来到的公有属性
+
+    // function A() {
+    //     this.a = 'aa';
+    //     this.say = function () {
+    //         console.log('A say');
+    //     }
+    // }
+    // A.prototype.public = 'public';
+    // function B() {
+    //     A.call(this); // this 是 B 类的一个实例，A.call(this) 的意思是把 A 中的 this 就该成 B 的实例（而在 B 的构造函数中 this 就是 B 的实例）这样在 A 中通过 this.xxx = xxx 的方式添加的属性都会添加到 B 的实例身上。
+    // }
+    // let b = new B();
+    // console.log(b); // {a: 'aa', say: fun.....}
+    // let b2 = new B();
+    // console.log(b2.say === b.say); // false;
+
+    // function A() {
+    // }
+    // A.prototype.age = 19;
+    // A.prototype.say = function () {
+    //     console.log('来自 A 类原型的 say 方法')
+    // };
+    // function B() {}
+    // B.prototype = new A(); // 把 B 类的原型改写成一个 A 类的实例；
+    // let b = new B();
+    // console.log(new A());
+    // console.log(b);
+    // console.log(b.__proto__); // {text: 'xxx', __proto__....}
+    // console.log(b.age);
+    // console.log(b.say);
+
+    // function Fn() {
+    //     this.name = 'Hi';
+    // }
+    // Fn.prototype.say = 'hello';
+    // Fn.prototype.title = 'world';
+    // Fn.prototype.greeting = function () {
+    //     console.log('hi~');
+    // };
+    // Fn.prototype = {
+    //     say: 'yan',
+    //     hello: 'world',
+    //     greeting: function () {
+    //         console.log('hi~')
+    //     },
+    //     constructor : Fn
+    // };
+    // let f1 = new Fn();
+    // f1.__proto__.say = 'wang';
+    //
+    //
+    // Fn.prototype.constructor = Fn;
+    // console.log(f1);
+
+
+    /*setTimeout(() => {
+        console.log(1);
+    }, 2000);
+    console.log(2);
+    setTimeout(() => {
+        console.log(3)
+    }, 3000);
+    console.log(4);
+    setTimeout(() => {
+        console.log(10)
+    }, 0);
+    for(let i = 0; i < 9999999; i++) {}
+    console.log(5);
+    setTimeout(() => {
+        console.log(6)
+    }, 1400);
+    console.log(7);
+    setTimeout(() => {
+        console.log(8)
+    }, 1500);
+    console.log(9);*/
+
+    // let t = 1000;
+    //
+    // setTimeout(function () {
+    //     t = 5000;
+    //     console.log('setTimeout', t);
+    //
+    // }, 50);
+    // setInterval(function () {
+    //     console.log('setInterval', t);
+    //
+    // }, t);
+
+    // let t = 1000;
+    //
+    // setTimeout(() => {
+    //     t = 5000;
+    //     console.log('setTimeout',t);
+    // }, 50);
+    // setInterval(() => {
+    //     console.log('setInterval',t);
+    // }, t);
+
+    // let str = 'hello2019 zhufeng2019 zhufeng9021';
+    // let reg = /zhufeng(\d+)/g; // () 是分组，相当于小正则
+    //
+    // console.log(reg.exec(str));//  ["zhufeng2019", "2019", index: 10, input: "hello2019 zhufeng2019 zhufeng9021", groups: undefined]
+    // console.log(reg.exec(str));
+
+    // var str4 = 'abcdef abcggg';
+    // var reg = /abc\w+/g;
+    // var ary2 = str4.match(reg);
+    // console.log(ary2);
+
+    // let str = 'hello2019 zhufeng2019 zhufeng9021';
+    // let reg = /zhufeng\d+/;
+    // let reg2 = /xxxx/;
+    // let reg3 = /zhufeng\d+/g;
+    // let execs = reg3.exec(str);
+    // console.log(reg3.exec(str));
+    // console.log(reg3.exec(str));
+    // console.log(reg3.exec(str));
+
+    /*function f(a, b, c) {
+        console.log(a, b, c);
+        console.log('ff', this);
+        return a + b + c;
+    }
+
+    let obj2 = {
+        college: 'x'
+    };*/
+
+    /*let f2 = f.bind(obj2);
+    console.log(f2 === f); // false
+    f2(1, 2, 3);
+    f2(1, 3, 5);
+    console.log(f2);*/
+
+    /*let f3 = f.bind(obj2, 10, 20, 30);
+    f3(13); // 10 20 13
+    f3(14); // 10 20 14
+
+    let f4 = f.bind(obj2, 12); // x = 12
+    let f5= f4.bind(obj2, 13); // x = 12 y = 13
+    let f6 = f5.bind(obj2, 14); // x = 12 y = 13 z = 14
+    f6(); // 12 13 14*/
+
+
+    /*function fe(a, b) {
+        console.log(a, b);
+        console.log(this);
+    }
+
+    fe(1, 2); // this -> window
+
+    var obj = {
+        id: '0511120117'
+    };
+    fe.call(obj, 2, 5);
+    fe.call(null, 1, 2);*/
+
+    /*function fe(a, b) {
+        var age = 11;
+        var title = 'hello1';
+        console.log('I am an excellent FE cultivated by ZhuFeng');
+    }
+
+    console.dir(fe);
+
+    fe.age = 10;
+    fe.title = 'hello';
+    fe.greeting = function () {
+        console.log('hello world')
+    };
+    // console.log(fe.age);
+    // console.log(fe.title);
+
+    let f1 = new fe();
+
+    console.log(f1);
+    console.log(fe.prototype);
+    console.dir(fe);*/
+
+    /*function Fn() {
+        this.name = 'Hi';
+    }
+
+    // console.log(Fn.prototype);
+
+
+    Fn.prototype = {
+        say: 'hell',
+        hello: 'world',
+        greeting: function () {
+            console.log('hi~')
+        }
+    };
+    // console.log(Fn.constructor); // Object
+    Fn.prototype.constructor = Fn;
+    // console.log(new Fn());
+    console.dir(Fn);*/
+    /*---------------------- 关于类 --------------------------------*/
+
+    // Fn 为构造函数（类）
+    // prototype 为原型并且其中包含constructor属性，是当前构造函数（类）本身
+
+    /*---------------------- 关于实例 --------------------------------*/
+
+    // 有一个 __proto__ 的属性，指向当前实例所属类的
+
+    // 构造函数自带原型对象 prototype
+    // prototype 中存放共有的变量、方法 和 constructor
+
+    // function Teacher(name, age, subject, from) {
+    //     this.name = name;
+    //     this.mission = '传道受业解惑';
+    //     this.age = age;
+    //     this.subject = subject;
+    //     this.from = from;
+    // }
+    //
+    // Teacher.prototype.teach = function () {
+    //     console.log(`${this.name} 老师教 ${this.subject} 学科`);
+    // };
+    //
+    // console.log(Teacher.prototype);
+    //
+    //
+    // let t1 = new Teacher('mabin', 18, 'js', 'zf');
+    // let t2 = new Teacher('jiangwen', 19, '架构', 'zf');
+    // console.log(t1);
+    // console.log(t2);
+    // console.log(Object.prototype);
+    // t1.teach();
+    // t2.teach();
+
+    // function Fn() {
+    //     this.name = 'Hi';
+    // }
+    // Fn.prototype.say = 'hello';
+    // Fn.prototype.title = 'world';
+    // Fn.prototype.greeting = function () {
+    //     console.log('hi~');
+    // };
+    // Fn.prototype = {
+    //     say: 'yan',
+    //     hello: 'world',
+    //     greeting: function () {
+    //         console.log('hi~')
+    //     },
+    //     constructor : Fn
+    // };
+    // let f1 = new Fn();
+    // f1.__proto__.say = 'wang';
+
+
+    // Fn.prototype.constructor = Fn;
+    // console.log(f1);
+
+
+    // var str1 = new String('javascript');
+    // console.log(str1.toUpperCase());
+
+    /*function a() {
+        var c = 0;
+        var d = 1;
+        b(c, d);
+    }
+
+    function b(c, d) {
+        console.log(c);
+        console.log(d);
+    }
+
+    a();*/
+
+    // var str = '987654321';
+    // console.log(str.substring(str.length-6));
+
+    /*var str4 = 'abcdefabcgggabc';
+    var ary2 = str4.match('abcge');
+    console.log(ary2);*/
+    /*var objArr = [
+        {
+            a: 1,
+            b: 2
+        }, {
+            a: 3,
+            b: 4
+        }, {
+            a: 5,
+            b: 6
+        }, {
+            a: 7,
+            b: 8
+        }
+    ];
+    var flag = objArr.some(function (value, index) {
+        if (value.a === 1 || value.a === 3) {
+            objArr.splice(index, 1);
+            return true;
+        }
+    });
+    console.log(flag);
+    console.log(objArr);*/
+
+    // var add = function (a, b) {
+    //     return a + b;
+    // };
+    /*var myObject = {
+        value: 0,
+        increment: function (inc) {
+            this.value += typeof inc === 'number' ? inc : 1;
+        },
+        add:function (a,b) {
+            return a+b;
+        },
+        double: function () {
+            console.log(this);
+            var that = this;
+            var helper = function () {
+                console.log(this);
+                that.value = that.add(that.value, that.value);
+            };
+            helper();
+            // console.log(this);
+            // console.log(this.value);
+        }
+    };
+    myObject.increment();
+    console.log(myObject.value);
+    myObject.increment(2);
+    console.log(myObject.value);
+    myObject.double();
+    console.log(myObject.value);*/
+
+    /*function add(a, b) {
+        return a + b;
+    }*/
+
+
+    /*function test() {
+        var abc = [1, 2, 3, 1, 2, 3];
+        for (var i = 0; i < abc.length; i++) {
+            if (abc[i] === 1) {
+                i++;
+                console.log(i);
+                return abc[i];
+            }
+        }
+    }
+    console.log(test());*/
+
+    // setInterval(goHome, 1000);
+
+    /*function interval() {
+        setInterval(goHome, 1000);
+    }
+
+    setTimeout(interval, 10000);*/
+
+
+    /*for (var i = 0; i < 3; i++) {
+        console.log(i);
+    }
+    console.log(i);
+    for (var i = 0; i < 4; i++) {
+        console.log(i);
+    }
+    console.log(i);*/
+    /*var ary = true;
+    function fn(ary) {
+        console.log(ary);    // => 3
+        ary = false;
+        console.log(ary);    // => 4
+    }
+    fn(ary);
+    console.log(ary);       // => 3*/
+
+
+
+
+    // let a;
+    // console.log(typeof  a);
+    /**
+     * 变量提升 fn = AAAFFF111(console.log(4))
+     * 代码执行 fn始终打印4
+     * var fn = 100;将fn = AAAFFF111;修改为 fn = 100;此时将会报错
+     */
+    /*fn();
+    function fn() { console.log(1); }
+    fn();
+    function fn() { console.log(2); }
+    fn();
+    var fn = 100;
+    fn();
+    function fn() { console.log(3); }
+    fn();
+    function fn() { console.log(4); }
+    fn();*/
+
+
+
+    /*console.log(fn);        // undefined
+    if (1 === 1) {
+        console.log(fn);    // 函数本身
+        function fn() {
+            console.log('ok');
+        }
+    }
+    console.log(fn);        // 函数本身*/
+    /*f = function (){ return true;};
+    g = function (){ return false;};
+    !function () {
+      if (g() && [] == ![]) {
+          f = function () { return false };
+          function g() {
+              return true;
+          }
+      }
+    }();
+    console.log(f());
+    console.log(g());*/
+</script>
+</body>
+</html>
+<!--dafdfadaf-->

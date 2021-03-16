@@ -1,0 +1,108 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/05/07
+互感器安装位置详情  办理
+-->
+<ons-page ng-controller="cemAzwzxqCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            {{flag == 'add'?'安裝位置信息添加':'安裝位置信息修改'}}
+        </div>
+
+    </ons-toolbar>
+    <div style="width: 100%;margin-bottom: 20px" class="hy-focus-scroll-content">
+        <div class="cemydyz_xcjcbl_content">
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center "
+                     style="line-height: normal">設備位置編號
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{jbxx.equilocno}}
+                </div>
+            </div>
+            <div class="hy-layout-row" style="margin-top: 4px">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center "
+                     style="line-height: normal">
+                    房產內安裝
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="sblbDrop" ng-model="jbxx.indoinst" class="cem-form-list"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <div class="hy-layout-row" style="margin-top: 4px" ng-show="flag==='update'">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center "
+                     style="line-height: normal">
+                    是否更新GPS
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    <hy-drop-list items="sblbDrop" ng-model="jbxx.sfgx" class="cem-form-list"
+                                  hya-value-key="DMBM"
+                                  hya-title-key="DMBMMC"
+                                  hya-selected="updateLocation($value)"
+                                  placeholder="請選擇">
+                    </hy-drop-list>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">
+                    經度
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{jbxx.long1}}
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">
+                    緯度
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                    {{jbxx.lati1}}
+                </div>
+            </div>
+
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-important-note">
+                    補充地址
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom" style="margin-right: 0">
+                    <input ng-model="jbxx.extaddr" placeholder="請輸入" ng-blur="queryByDbbh()" hy-focus-scroll
+                           class="cem-form-input"/>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center ">
+                    樓層
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom" style="margin-right: 0">
+                    <input ng-model="jbxx.flr" placeholder="請輸入" ng-blur="queryByDbbh()" hy-focus-scroll
+                           class="cem-form-input"/>
+                </div>
+            </div>
+            <div class="hy-layout-row">
+                <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center "
+                     style="line-height: normal">設備位置描述
+                </div>
+                <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom"
+                     style="height: auto;margin-top: 5px;letter-spacing: 1px;line-height: inherit">
+                    {{jbxx.maskInfo}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ons-bottom-toolbar class="cem-button">
+        <hy-button
+                style="width:60%;background-color: #ffc72c;min-height: 25px;height: 30px;line-height: 30px;font-size: 16px;color: #4B4B4B;letter-spacing: 2px;border-radius: 20px"
+                class="hy-fill gdsp_cxbutton " ng-click="sure()" ng-disabled="bcsfky">
+            确定
+        </hy-button>
+    </ons-bottom-toolbar>
+</ons-page>

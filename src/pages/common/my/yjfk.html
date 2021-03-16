@@ -1,0 +1,56 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/7
+意见反馈
+-->
+<ons-page ng-controller="wdYjfkCtrl">
+    <ons-modal var="app.yjfkModel" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="toolbar-hide-border" toolbar-modal>
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">意见反馈</div>
+    </ons-toolbar>
+    <div class="cb-content">
+        <div class="hy-layout-row hy-layout-align-space-between-center cb-content-head">
+            <div class="hy-layout-row">
+                <img src="img/my/wd_tc.png"/>
+                <div>我要反馈</div>
+            </div>
+        </div>
+        <div class="cb-content-body">
+            <textarea class="hy-layout-row" style="width: 100%;border: 1px solid #dddddd;border-radius: 4px"
+                      placeholder="您的宝贵意见是我们前进的动力,请输入遇到的问题或建议..."
+                      rows="8" ng-model="feedback"></textarea>
+        </div>
+    </div>
+    <div class="cb-content">
+        <div class="hy-layout-row hy-layout-align-space-between-center cb-content-head">
+            <div class="hy-layout-row">
+                <ons-icon icon="fa-paperclip" class="tf-icon-primary-header" size="21px"></ons-icon>
+                <div>附件信息</div>
+            </div>
+        </div>
+        <div class="cb-content-body">
+            <div class="hy-file-list">
+                <hy-image-list class="tf-select-image" height="80" style="width: 100%;"
+                               hya-list="photoList" hya-column="4" hya-add="selectPicture($callback);"
+                               hya-delete="deletePhoto($index,$item,$done);" hya-item-del="canDelFile($item)"
+                               hya-src-key="SRC">
+                    <img ng-src="{{item.SRC}}" hy-img-auto/>
+                </hy-image-list>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar>
+        <hy-button class="cb-button hy-fill" ng-click="commitYj()">提交</hy-button>
+    </ons-bottom-toolbar>
+</ons-page>

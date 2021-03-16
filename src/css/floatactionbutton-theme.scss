@@ -1,0 +1,20 @@
+.floatpopover {
+  position:absolute;right: 8px;bottom: -1px;width: 200px;
+  height: 225px;
+
+  background: #fff;
+  z-index: 31000;
+  margin: 0;
+  opacity: 0;
+  border-radius: 50%;
+
+  display: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);
+  -webkit-transform: scale(.85,.6);
+  transform: scale(.85,.6);
+  -webkit-transition-property: opacity,-webkit-transform,border-radius;
+  -moz-transition-property: opacity,-moz-transform,border-radius;
+  transition-property: opacity,transform,border-radius;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}

@@ -1,0 +1,24 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/17
+電力裝置技術要求單
+-->
+<ons-page ng-controller="scewmCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            二維碼
+        </div>
+    </ons-toolbar>
+    <div style="width: 100%;margin-bottom: 20px">
+        <div  style="height: 270px;text-align: center; background-color: white;padding: 10px 15px;">
+            <qrcode data="{{sr}}" size="220"></qrcode>
+            <div class="app-my-ewm">
+                {{nr}}
+            </div>
+        </div>
+    </div>
+</ons-page>

@@ -1,0 +1,45 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/25
+路径规划
+-->
+<ons-page ng-controller="ljghCtrl">
+    <ons-toolbar class="toolbar-hide-border" toolbar-modal>
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">路径规划</div>
+    </ons-toolbar>
+    <div class="tf-page-content hy-layout-column" style="background-color: #FFFFFF;">
+        <div style="height: 100%">
+            <hy-gd-map hya-ak="234ff739f7a8578b997bda504cd024ba" id="hy-gd-map"
+                       hya-init="init($event)"
+                       hya-controls="mapControls"
+                       hya-geolocation="geolocation($event,$map);"
+                       var="ljghMapView"
+            ></hy-gd-map>
+        </div>
+        <div ng-show="dhxxShow" class="ljgh-dh-content">
+            <div class="hy-layout-row tf-info-content hy-layout-align-space-between-center" style="height: 100%">
+                <div class="hy-layout-column">
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row tf-row-content">
+                            {{dhxx.text}}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row tf-row-content" style="font-size: smaller">
+                            {{dhxx.address}}
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <hy-button ng-click="daohang(dhxx)" class="hy-fab">
+                        导航
+                    </hy-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ons-page>

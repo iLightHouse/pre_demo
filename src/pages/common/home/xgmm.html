@@ -1,0 +1,61 @@
+<!--
+Version:1.0.0
+Author:wangyingxue
+Date:2018/8/14
+-->
+<ons-page ng-controller="xgmmCtrl">
+    <ons-modal var="app.xgmmModel" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="toolbar-hide-border">
+        <div class="left">
+            <hy-back-button ng-if="xianshi"></hy-back-button>
+        </div>
+        <div class="center">修改密码</div>
+    </ons-toolbar>
+    <div class="tf-content-flex">
+
+        <div style="width: 100%;">
+            <div class="">
+                <div style="padding: 8px 10px;color: #EB4F38;background-color: white; border-radius: 8px;margin: 5px;">
+                    您的密码过于简单，请修改密码
+                </div>
+            </div>
+                <div class="cb-content-body">
+                    <div class="hy-layout-row tf-display-font" style="margin-top: 16px">
+                        <div class="hy-layout-row tf-row-header" style="width: 80px"> 原密码</div>
+                        <div class="hy-layout-row tf-row-content-auto ">
+                            <div class="right1" style="width: 100%">
+                                <hy-password class="password-input" ng-model="mm.ymm" placeholder="請輸入原密码" />
+                            </div>
+                            <!--<hy-input-clear type="text" placeholder="請輸入原密码" hy-value="mm.ymm"-->
+                                            <!--class="tf-input-clear"></hy-input-clear>-->
+                        </div>
+                    </div>
+                    <div class="hy-layout-row tf-display-font" style="margin: 16px 0">
+                        <div class="hy-layout-row tf-row-header" style="width: 80px"> 新密码</div>
+                        <div class="hy-layout-row tf-row-content-auto" >
+                            <div class="right1" style="width: 100%">
+                                <hy-password class="password-input" ng-model="mm.xmm" placeholder="請輸入新密码" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class=" hy-layout-row hy-layout-align-space-around-center"
+                        style="background-color: rgb(238, 238, 238)">
+        <hy-button style="width: 50%" class="hy-fill gdsp_cxbutton " ng-click="queren()">
+            确定
+        </hy-button>
+        <hy-button style="width: 50%" class="hy-fill gdsp_cxbutton " ng-click="tuichu()">
+            退出
+        </hy-button>
+    </ons-bottom-toolbar>
+</ons-page>

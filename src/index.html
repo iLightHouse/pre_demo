@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"/>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' blob: http: https: data: gap: file: content: ws://vdata.amap.com https://ssl.gstatic.com http://webapi.amap.com https://js.fundebug.cn  https://web.fundebug.net 'unsafe-eval';
+          style-src 'self' http: 'unsafe-inline'; media-src *"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <!-- HyMobile 框架 CSS库 -->
+    <link rel="stylesheet" href="libs/hyMobile/css/hyMobile-all.min.css"/>
+    <!-- 应有自身的 CSS库 -->
+    <link rel="stylesheet" href="app.min.css"/>
+    <!--    <script src="libs/fundbug/fundebug.2.0.0.min.js"-->
+    <!--            apikey="bd49291a112250d7293032afc5466557af8a06e0a60b7cd993edb9eed8e140df"></script>-->
+    <!-- HyMobile JS库 -->
+    <script src="libs/hyMobile/js/hyMobile-all.min.js"></script>
+    <!-- 引用的第三方库-->
+    <!--<script src="libs/Echarts/echarts3.3.2.min.js"></script>-->
+    <script src="libs/Echarts/echarts.min.js"></script>
+    <script src="libs/qrcode/qrcode.js"></script>
+    <script src="libs/qrcode/qrcode_UTF8.js"></script>
+    <!--应用自身的js文件 -->
+    <script src="app.min.js"></script>
+    <script src="libs/Echarts/echarts-liquidfill.js"></script>
+    <script src="libs/hyMobile/js/swiper.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+<hy-navi var="mainNavi"></hy-navi>
+<ons-modal var="appVersionUpdate" class="appVersionUpdate">
+    <ons-icon icon="ion-load-d" size="35px" spin="true"></ons-icon>
+    <div class="list__item list__item--inset" style="padding:5px;">
+        <hy-progress-bar hya-progressbar="appVersionUpdateProgress" hya-location="bottom"
+                         style="width:100%"></hy-progress-bar>
+    </div>
+    <div class="label-text">正在更新</div>
+</ons-modal>
+<ons-modal var="appLoader" class="tf-loader-modal  ">
+    <div class="hy-layout-column hy-layout-align-center-center">
+        <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+            <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+            <div class="tf-loader-content-text">加載中...</div>
+        </div>
+    </div>
+</ons-modal>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"/>
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        .wrapper {
+            margin: 30px auto;
+            width: 606px;
+            height: 400px;
+            border: 1px solid #000;
+        }
+        .header {
+            border: 1px solid #000;
+        }
+        .header li {
+            float: left;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            -webkit-user-select: none; /*禁止用户选中*/
+        }
+        .header li:nth-child(2) {
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+        li.active {
+            background: yellow;
+        }
+        .clearfix:after {
+            display: block;
+            content: '';
+            visibility: hidden;
+            clear: both;
+        }
+        .wrapper div {
+            text-align: center;
+            height: 356px;
+            line-height: 356px;
+            display: none;
+        }
+        div.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper" id="tab1">
+    <ul class="header clearfix" id="header">
+        <li class="active">
+            视频
+        </li>
+        <li>
+            秒拍
+        </li>
+        <li>
+            综艺
+        </li>
+    </ul>
+    <div class="active">
+        程序员惨遭亲妈拍卖
+    </div>
+    <div>
+        预防脱发秘籍（黑芝麻糊）
+    </div>
+    <div>
+        蔡徐坤-我们很爷们儿
+    </div>
+</div>
+
+
+<div class="wrapper" id="tab2">
+    <ul class="header clearfix">
+        <li class="active">
+            视频2
+        </li>
+        <li>
+            秒拍2
+        </li>
+        <li>
+            综艺3
+        </li>
+    </ul>
+    <div class="active">
+        程序员惨遭亲妈拍卖2
+    </div>
+    <div>
+        预防脱发秘籍（黑芝麻糊）2
+    </div>
+    <div>
+        蔡徐坤-我们很爷们儿2
+    </div>
+</div>
+
+<script>
+    // 1. 创建选项卡类
+    function Tab(options) {
+        // 1. 确保如何是通过 new 操作调用
+        if (!(this instanceof Tab)) {
+            console.error('Tab is a constructor which should be call with new');
+            return;
+        }
+
+        // 2. 参数合法校验
+        if (!options || !options.el) {
+            console.error('缺少el元素');
+            return;
+        }
+
+        // 3. 将传进来的参数对象保存到实例上
+        this._options = options;
+
+        // 4. 执行初始化
+        this.init();
+    }
+
+
+
+    // 为 tab 增加 init 方法：
+    Tab.prototype.init = function () {
+        this.queryEle();
+        this.bindEvent();
+    };
+
+    // 为 Tab 增加公用的获取元素的方法
+    Tab.prototype.queryEle = function () {
+        // 1. 从 this 中的 options 中的 el 获取最外层元素
+        const container = document.querySelector(this._options.el);
+
+        // 2. 获取选项卡头，并挂载到实例上
+        this.headerList = container.querySelectorAll('.header > li');
+
+        // 3. 获取所有的卡片并挂载到实例上
+        this.cardList = container.querySelectorAll('div');
+    };
+
+    // 为Tab增加公用的绑定事件的元素
+    Tab.prototype.bindEvent = function () {
+        const HEADER_LIST = this.headerList; // 用一个常量缓存 headerList
+        // 变量 headerList 给每个 li 绑定点击事件
+        for (let i = 0; i < HEADER_LIST.length; i++) {
+            console.log(this);
+            HEADER_LIST[i].onclick = () => {
+                // 这里使用箭头函数，是因为我们希望这里的 this 是 Tab 的实例，如果不使用箭头函数，点击事件函数中的 this 就是选项卡头了
+                this.clearClass();
+                this.addClass(i);
+            }
+        }
+    };
+
+    // 为 Tab 类增加移除类名的方法
+    Tab.prototype.clearClass = function () {
+        const HEADER_LIST = this.headerList;
+        const CARD_LIST = this.cardList;
+        for (let i = 0; i < HEADER_LIST.length; i++) {
+            HEADER_LIST[i].className = '';
+            CARD_LIST[i].className = '';
+        }
+    };
+
+    // 为 Tab 类添加类名的方法
+    Tab.prototype.addClass = function (index) {
+        this.headerList[index].className = 'active';
+        this.cardList[index].className = 'active';
+    };
+
+    new Tab({
+        el: '#tab1'
+    });
+
+    new Tab({
+        el: '#tab2'
+    });
+
+
+
+    // 1. 创建选项卡类
+    /*function Tab(options) {
+        // 1. 参数合法校验
+        if (!options || !options.el) {
+            console.error('缺少el元素');
+            return;
+        }
+        // 2. 将传进来的参数对象保存到实例上
+        this._options = options;
+
+        // 3. 执行获取元素
+        this.queryEle();
+        // 4. 执行绑定事件
+        this.bindEvent();
+    }
+    // 为 Tab 增加公用的获取元素的方法
+    Tab.prototype.queryEle = function () {
+        // 1. 从 this 中的 options 中的 el 获取最外层元素
+        const container = document.querySelector(this._options.el);
+
+        // 2. 获取选项卡头，并挂载到实例上
+        this.headerList = container.querySelectorAll('.header > li');
+
+        // 3. 获取所有的卡片并挂载到实例上
+        this.cardList = container.querySelectorAll('div');
+    };
+
+    // 为 Tab 增加公用的绑定事件的元素
+    Tab.prototype.bindEvent = function () {
+        const HEADER_LIST = this.headerList; // 用一个常量缓存 headerList
+        let that = this;
+        // 变量 headerList 给每个 li 绑定点击事件
+        for (let i = 0; i < HEADER_LIST.length; i++) {
+            /!*HEADER_LIST[i].onclick = () => {
+                // 这里使用箭头函数，是因为我们希望这里的 this 是 Tab 的实例，如果不使用箭头函数，点击事件函数中的 this 就是选项卡头了
+                this.clearClass();
+                this.addClass(i);
+            }*!/
+
+            HEADER_LIST[i].onclick = function()  {
+                // 这里使用箭头函数，是因为我们希望这里的 this 是 Tab 的实例，如果不使用箭头函数，点击事件函数中的 this 就是选项卡头了
+                console.log(that);
+                that.clearClass();
+                that.addClass(i);
+            }
+        }
+    };
+
+    // 为 Tab 类增加移除类名的方法
+    Tab.prototype.clearClass = function () {
+        const HEADER_LIST = this.headerList;
+        const CARD_LIST = this.cardList;
+        for (let i = 0; i < HEADER_LIST.length; i++) {
+            HEADER_LIST[i].className = '';
+            CARD_LIST[i].className = '';
+        }
+    };
+
+    // 为 Tab 类添加类名的方法
+    Tab.prototype.addClass = function (index) {
+        this.headerList[index].className = 'active';
+        this.cardList[index].className = 'active';
+    };
+
+    new Tab({
+        el: '#tab1'
+    });
+
+    new Tab({
+        el: '#tab2'
+    });*/
+</script>
+</body>
+</html>

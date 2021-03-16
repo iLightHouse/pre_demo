@@ -1,0 +1,191 @@
+.app-info-content {
+  margin: 4px 4px 8px 4px;
+  padding: 4px 16px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.app-divider-dashed {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-width: 1px 0px 0px;
+  border-style: dashed;
+  border-color: lightgray;
+  border-image: initial;
+}
+
+.app-form-datepicker-input {
+  padding: 0px;
+  height: 44px;
+}
+
+.app-input-clear {
+  > input {
+    &::-webkit-input-placeholder {
+      color: $dark-font-color-50;
+      font-size: 14px;
+    }
+    color: #000000;
+    font-size: 14px;
+  }
+  .hy-input-clear-icon {
+    color: $dark-font-color-50;
+  }
+  height: 100%;
+  width: 100%;
+}
+
+/*-----------------Loader无限加载样式-------------------------*/
+$app-loader-background: #333;
+.app-loader-modal {
+  background: transparent;
+  .app-loader-content {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: $app-loader-background;
+  }
+}
+
+.app-drop-list {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
+.app-content-header {
+  height: 30px;
+  width: 100%;
+  color: $accent_color;
+}
+
+.app-list-row {
+  height: 40px;
+  line-height: 40px;
+}
+
+.app-display-font {
+  color: #666666;
+}
+
+.app-row-header {
+  flex: none;
+  width: 40%;
+  //width: 90px;
+  height: 30px;
+  line-height: 30px;
+  color: black;
+}
+
+.app-warn {
+  color: $warn_color;
+}
+
+/*------------------照片选择的样式-----------------------*/
+.app-select-image-content {
+  padding: 10px 0px;
+  border-bottom: 1px solid #EEEEEE;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.app-select-iamge-add-button {
+  padding: 15px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.app-select-image .hyc-image-items .hyc-image-item {
+  padding: 5px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.app-select-image .hyc-image-items .hyc-image-item .img {
+  padding: 0px;
+  overflow: hidden;
+  //border-radius: 6px;
+  //border: 1px solid #EEEEEE;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.app-select-image .hyc-image-items .hyc-image-item .img img {
+  max-width: none;
+  max-height: none;
+}
+
+.app-select-image .hyc-image-items .hyc-image-item .delete-btn {
+  //background-color: #AAAAAA;
+  //color: #FFFFFF;
+}
+
+.app-select-image .hyc-image-items .hyc-image-item .delete-btn .ion-close-round {
+  font-size: 16px;
+}
+
+.app-border-bottom {
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.app-icon-primary-header {
+  padding: 0px 6px;
+  color: $primaryColor;
+}
+
+.app-form-row-header-100 {
+  flex: none;
+  width: 100px;
+  height: 44px;
+  line-height: 44px;
+}
+
+.app-form-row-content {
+  padding-left: 6px;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.app-background {
+  color: #666666;
+}
+
+.app-red {
+  color: #fb5257;
+}
+
+.app-primary {
+  color: $primaryColor;
+}
+
+.app-form-row-header {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -moz-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+  width: 90px;
+  height: 44px;
+  line-height: 44px;
+}
+
+.app-row-content-auto {
+  padding-left: 6px;
+  flex: 1 1 auto;
+  width: 100%;
+  line-height: 30px;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: block;
+ /* text-overflow: ellipsis;
+  white-space: nowrap;*/
+}

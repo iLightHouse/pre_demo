@@ -1,0 +1,49 @@
+.dtjk-page {
+  .dtjk-info-page {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    .dtjk-info-content {
+      width: 80%;
+      background-color: #f0eff4;
+      border-bottom: 1px solid #cccccc;
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.dtjk-job-statis-text-color {
+  color: #F44336;
+  margin-top: 2px;
+}
+
+.dtjk-righttop-content {
+  width: 50%;
+  background-color: #f0eff4;
+  border-style: none;
+  border-radius: 10px;
+}
+
+.dtjk-first-div {
+  width: 100%;
+}
+
+.dtjk-heaer-div {
+  width: 70%;
+}
+
+.dtjk-content-div {
+  width: 30%;
+}
+
+.dtjk-jknr {
+  margin: 5px 10px;
+  padding: 2px 20px;
+  background-color: #f0eff4;
+  border-radius: 10px;
+  width: 40%;
+}

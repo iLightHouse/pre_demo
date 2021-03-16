@@ -1,0 +1,125 @@
+.cem-zcgdbl-son-page {
+  height: calc(100% - 48px);
+}
+
+.cem-content-padding {
+  padding: 7px 20px 20px 20px;;
+}
+
+/*电能表列表-标题头样式*/
+.cem-zcgd-list-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 35px;
+  margin-bottom: 10px;
+  .cem-title-style {
+    font-size: 17px;
+    display: flex;
+    align-items: flex-end;
+    color: $cem-dark-font-color;
+    max-width: 55%;
+    > div:nth-of-type(1) {
+      // width: 87%;
+    }
+    > div:nth-of-type(2) {
+      background-color: $cem-dark-blue;
+      color: #FFFFFF;
+      font-size: 12px;
+      height: 18px;
+      width: 18px;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 19px;
+      margin-left: 4px;
+      margin-bottom: 1px;
+    }
+  }
+  .cem-jld-style {
+    font-size: 17px;
+    color: $cem-dark-yellow;
+  }
+  .cem-jld-style::before {
+    content: 'No.';
+    font-size: 12px;
+    font-weight: bold;
+    color: $cem-light-font-color;
+  }
+}
+
+/*变更标题样式*/
+.cem-bg-bz {
+  color: #FFFFFF;
+  font-size: 12px;
+  height: 18px;
+  width: 55px;
+  border-radius: 11px;
+  text-align: center;
+  line-height: 18px;
+  margin: 22px 0 12px 0;
+  letter-spacing: 1px;
+}
+
+.cem-ghh-bg {
+  flex: none;
+  background-color: $cem-dark-green;
+  margin: 0 15px 0 0;
+}
+
+.cem-ghh-bg + div {
+  font-size: 14px;
+}
+
+.cem-ghq-bg {
+  background-color: $cem-light-red;
+}
+
+.cem-title-ghh-style {
+  display: flex;
+  height: 35px;
+  font-size: 19px;
+  color: $cem-dark-font-color;
+  align-items: center;
+  margin: 20px 0 13px 0;
+}
+
+.cem-zcxx-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 44px;
+  color: #ffc72c;
+  img {
+    height: 12px;
+    margin-left: 12px;
+  }
+}
+
+.cem-limit-father {
+  color: $cem-middle-font-color;
+  height: 28px;
+  width: 72%;
+  font-size: 13px;
+  justify-content: space-around;
+  border-left: 1px solid #eaeaea;
+}
+
+.cem-read-border {
+  border: 1px solid #ffc72c;
+  border-radius: 13px;
+  height: 21px;
+  line-height: 16px;
+  padding: 2px 7px;
+  color: #ffc72c;
+  letter-spacing: 1px;
+}
+
+.cem-text-center {
+  text-align: center;
+}
+
+.zcgd-pass-button{
+  color: #4b4b4b !important;
+  background-color: #eaeaea !important;
+  border: none !important;
+}

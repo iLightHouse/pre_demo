@@ -1,0 +1,56 @@
+.cem-query-lsjd-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  > div:nth-child(1) {
+    width: 60%;
+    letter-spacing: 1px;
+    div:nth-child(1) {
+      /*font-size: 12px;*/
+      font-size: 14px;
+      color: $cem-middle-font-color;
+      margin-bottom: 2px;
+    }
+    div:nth-child(2) {
+      font-size: 23px;
+      color: $cem-dark-yellow;
+      margin: 4px 0 10px 0;
+    }
+  }
+  > div:nth-child(2) {
+    img {
+      height: 18px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.cem-jcxm-button {
+  border-radius: 13px;
+  background-color: $cem-dark-yellow;
+  /*font-size: 12px;*/
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 3px 20px;
+}
+
+/*檢查項目中的樣式*/
+.cem-jcxm-item {
+  height: 10%;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  > div:nth-child(1) {
+    height: 40%;
+  }
+  > div:nth-child(2) {
+    height: 60%;
+  }
+  .process-radio {
+    /*margin: 0 40% 0 0;*/
+    margin: 0 25px 0 0;
+  }
+}
+

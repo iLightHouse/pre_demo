@@ -1,0 +1,57 @@
+<!--
+Version:1.0.0
+Author:lxj
+Date:2020/03/23
+發送郵件
+-->
+<ons-page ng-controller="cemfsyjCtrl">
+    <ons-modal var="app.zfjhModal" class="tf-loader-modal">
+        <div class="hy-layout-column hy-layout-align-center-center">
+            <div class="tf-loader-content hy-layout-row hy-layout-align-start-center">
+                <hy-progress-circular hy-mode="indecterminate"></hy-progress-circular>
+                <div class="tf-loader-content-text">加載中...</div>
+            </div>
+        </div>
+    </ons-modal>
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            發送郵件
+        </div>
+    </ons-toolbar>
+    <div style="height: 100%;overflow: hidden" class="hy-layout-column">
+        <div style="overflow: scroll">
+            <!--基本信息-->
+            <div style="width: 100%;margin-bottom: 20px">
+                <div class="cemydyz_xcjcbl_head">
+                    <div class="cemydyz_xcjcbl_head_icon">
+                    </div>
+                    <div class="cemydyz_xcjcbl_head_title">
+                        郵件信息
+                    </div>
+                </div>
+                <div class="cemydyz_xcjcbl_content">
+                    <div class="hy-layout-row" style="margin-top: 15px;">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center" style="width: 75px;margin-right: 10px;">收件人郵箱
+                        </div>
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom" style="margin-left: 10px;">
+                            <input ng-model="email.sjryx" set-focus placeholder="請輸入" class="cem-form-input"/>
+                        </div>
+                    </div>
+                    <!--<div class="hy-layout-column">
+                        <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center" style="width: 75px;margin-right: 10px;">郵件內容</div>
+                        <div class="hy-layout-row" style="margin: 0 20px;">
+                            <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;"
+                                      placeholder="請輸入" rows="8" ng-model="email.yjnr"></textarea>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button">
+        <div style="width: 60%" class="button-solid" ng-click="saveTdxx()">發送</div>
+    </ons-bottom-toolbar>
+</ons-page>

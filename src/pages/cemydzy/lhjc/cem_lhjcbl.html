@@ -1,0 +1,387 @@
+<!--
+Version:1.0.0
+Author:lxz
+Date:2020/03/15
+聯合檢查辦理
+-->
+<ons-page ng-controller="cemlhjcCtrl">
+    <ons-toolbar class="cem_topbar">
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">
+            聯合檢查辦理
+        </div>
+        <div class="right cem_title">
+            <div>
+                <img ng-src="img/cem/db/filter_check.png" style="display: none;"/>
+            </div>
+            <div ng-click="changeLanguage(flag)">
+                <img ng-src="{{ languageSrc }}"/>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div class="hy-focus-scroll-content">
+        <!--基本信息-->
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    基本信息
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">工作單號</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{lhjcInfo.wkordrno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">電錶號</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{lhjcInfo.meterno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">合約賬戶</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{lhjcInfo.contractno}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">客戶姓名</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{ flag?lhjcInfo.custenglnm:lhjcInfo.custnm }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">客戶電話</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{lhjcInfo.clientphone}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">用戶地址</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{ flag?lhjcInfo.detaengladdr:lhjcInfo.detaaddr }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">設備GPS</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom"
+                         style="margin-right: 0">
+                        {{ lhjcInfo.equilocdescr}}
+                    </div>
+                    <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="openMap('equipment')"
+                         style="margin-right: 20px">
+                        <img src="img/cem/cbbl/dingwei.png"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">訂定功率</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{lhjcInfo.subsdema}}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">申請功率</div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        {{ lhjcInfo.applykw }}
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                        供電點信息
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom margin-left-zero">
+                        {{ lhjcInfo.supppntno }}
+                    </div>
+                    <div class="cem-input-scancodes cemydzy-border-bottom" ng-click="openMap()"
+                         style="margin-right: 20px">
+                        <img src="img/cem/cbbl/dingwei.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--加封信息-->
+        <div style="width: 100%;">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    加封信息
+                </div>
+                <div class="cem-input-scancodes" ng-click="addNewLock('lh')"
+                     style="margin:8px 10px;width: 20px;height: 20px">
+                    <img src="img/cem/ydzybl/cem_add.png"/>
+                </div>
+            </div>
+            <div class="cem-query-result cem-sxx-tab">
+                <div class="cem-no-data" ng-if="xzsList.length<=0&&xzsRList.length<=0"></div>
+                <!--新增鎖號列表  新添加-->
+                <div class="cem-query-result-item" ng-repeat="item in xzsList track by $index"
+                     ng-if="xzsList.length>0">
+                    <div class="hy-layout-row hy-layout-align-end-center">
+                        <img style="margin-bottom: 7px;height: 18px" src="img/cem/cbbl/shandiao.png"
+                             ng-click="delXzsh($index)"/>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header40"
+                             ng-class="{'cem-important-note':!item.saveBz}">鎖編號
+                        </div>
+                        <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom" ng-if="!item.saveBz"
+                             style="flex: 1;">
+                            <input ng-model="item.sealno" placeholder="請輸入" hy-focus-scroll
+                                   class="cem-form-input"/>
+                            <div class="cem-input-scancode" ng-click="scanLock(item)">
+                                <img src="img/cem/cbbl/scancode.png"/>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row cem-result-form-content" ng-if="item.saveBz">
+                            <div class="hy-layout-row cem-result-form-content">
+                                {{ item.sealno }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header40">加封對象</div>
+                        <div class="hy-layout-row cem-result-form-content"
+                             ng-class="{'cemydzy-border-bottom':!item.saveBz}">
+                            <hy-drop-list items="jfsbDrop" ng-model="item.sealequicate" class="cem-form-list"
+                                          ng-show="!item.saveBz"
+                                          hya-value-key="DMBM"
+                                          hya-title-key="DMBMMC"
+                                          placeholder="請選擇">
+                            </hy-drop-list>
+                            <div hya-drop-lable="item.sealequicate" hya-drop-lable-dmfl="SEALEQUICATECD"
+                                 ng-if="item.saveBz"></div>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header40">資產編號</div>
+                        <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom" ng-if="!item.saveBz">
+                            <input ng-model="item.sealasseno" placeholder="請輸入" hy-focus-scroll
+                                   class="cem-form-input"/>
+                            <div class="cem-input-scancode" ng-click="scanZcbh(item)">
+                                <img src="img/cem/cbbl/scancode.png"/>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row cem-result-form-content" ng-if="item.saveBz">
+                            <div class="hy-layout-row cem-result-form-content">
+                                {{ item.sealasseno }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--原新装鎖號列表   接口返回-->
+                <div class="cem-query-result-item" ng-repeat="item in xzsRList track by $index"
+                     ng-if="xzsRList.length>0">
+                    <div class="cem-query-lsjd-title">
+                        <div>
+                            <div>鎖編號</div>
+                            <div style="font-size: 21px;color: #ffc72c;">{{ item.sealno }}</div>
+                        </div>
+                        <div ng-click="delXzshR($index)">
+                            <img style="margin-top: 5px" src="img/cem/cbbl/shandiao.png"/>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">加封對象</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.sealequicateMc }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">資產編號</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.sealasseno }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--拆封信息-->
+        <div style="width: 100%;">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    拆封信息
+                </div>
+                <div class="cem-input-scancodes" ng-click="addDelLock('lh')"
+                     style="margin:8px 10px;width: 20px;height: 20px">
+                    <img src="img/cem/ydzybl/cem_add.png"/>
+                </div>
+            </div>
+            <div class="cem-query-result cem-sxx-tab">
+                <div class="cem-no-data" ng-if="ccsList.length<=0&&ccsRList.length<=0"></div>
+                <!--拆除鎖號列表  新增-->
+                <div class="cem-query-result-item" ng-repeat="item in ccsList track by $index"
+                     ng-if="ccsList.length>0">
+                    <div class="hy-layout-row hy-layout-align-end-center">
+                        <img style="margin-bottom: 7px;height: 18px" src="img/cem/cbbl/shandiao.png"
+                             ng-click="delCcsh($index)"/>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header40"
+                             ng-class="{'cem-important-note':!item.saveBz}">鎖編號
+                        </div>
+                        <div class="hy-layout-row cem-result-form-content cemydzy-border-bottom" ng-if="!item.saveBz"
+                             style="flex: 1;">
+                            <input ng-model="item.sealno" placeholder="請輸入" hy-focus-scroll
+                                   class="cem-form-input"/>
+                            <div class="cem-input-scancode" ng-click="scanLock(item)">
+                                <img src="img/cem/cbbl/scancode.png"/>
+                            </div>
+                        </div>
+                        <div class="hy-layout-row cem-result-form-content" ng-if="item.saveBz">
+                            <div class="hy-layout-row cem-result-form-content">
+                                {{ item.sealno }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="cem-query-lsjd-title">
+                        <div>
+                            <div>鎖編號</div>
+                            <div style="font-size: 21px;color: #ffc72c;">{{ item.sealno }}</div>
+                        </div>
+                        <div ng-click="delCcsh($index)">
+                            <img style="margin-top: 5px" src="img/cem/cbbl/shandiao.png"/>
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">加封對象</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.jfsbmc }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">加封位置</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.jfwzmc }}
+                        </div>
+                    </div>-->
+                </div>
+                <!--原拆除鎖號列表 接口返回-->
+                <div class="cem-query-result-item" ng-repeat="item in ccsRList track by $index">
+                    <div class="cem-query-lsjd-title">
+                        <div>
+                            <div>鎖編號</div>
+                            <div style="font-size: 21px;color: #ffc72c;">{{ item.sealno }}</div>
+                        </div>
+                        <div ng-click="delCcsR($index)">
+                            <img style="margin-top: 5px" src="img/cem/cbbl/shandiao.png"/>
+                        </div>
+                    </div>
+                    <!--<div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">加封對象</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.sealequicateMc }}
+                        </div>
+                    </div>
+                    <div class="hy-layout-row">
+                        <div class="hy-layout-row cem-result-form-header">加封位置</div>
+                        <div class="hy-layout-row cem-result-form-content">
+                            {{ item.seallocMc }}
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!--檢查信息-->
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    檢查信息
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-important-note">
+                        檢查結果
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        <hy-drop-list items="jcjgDrop" ng-model="lhjcInfo.checkresults" class="cem-form-list"
+                                      hya-value-key="DMBM"
+                                      hya-title-key="DMBMMC"
+                                      placeholder="請選擇">
+                        </hy-drop-list>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                        檢查負責人
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        <input ng-model="lhjcInfo.principalMC" placeholder="請輸入" hy-focus-scroll
+                               class="cem-form-input"/>
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center cem-line-height">
+                        現場任務類型
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        聯合檢查
+                    </div>
+                </div>
+                <div class="hy-layout-row">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">檢查日期
+                    </div>
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-content cemydzy-border-bottom">
+                        <hy-datepicker3 hya-hasbutton="true" hya-input-class="cem-date-picker"
+                                        hya-date-type="String" hya-date-value="lhjcInfo.checktime"
+                                        hya-format="YYYY-MM-DD hh:mm:ss"
+                                        hya-active-class="date-active"
+                                        class="cem_timepicker">
+                        </hy-datepicker3>
+                    </div>
+                </div>
+                <div class="hy-layout-column">
+                    <div class="hy-layout-row cemydzy-xcjc-form-row-header hy-layout-align-end-center">處理意見</div>
+                    <div class="hy-layout-row" style="margin: 0 20px;">
+                     <textarea class="cem-form-textarea" style="background-color: #FFF9e9;padding: 10px;border: none;"
+                               hy-focus-scroll
+                               placeholder="請輸入" rows="6" ng-model="lhjcInfo.opinion"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--拍照上傳-->
+        <div style="width: 100%;margin-bottom: 20px">
+            <div class="cemydyz_xcjcbl_head">
+                <div class="cemydyz_xcjcbl_head_icon">
+                </div>
+                <div class="cemydyz_xcjcbl_head_title">
+                    拍照上傳
+                </div>
+            </div>
+            <div class="cemydyz_xcjcbl_content">
+                <div class="cb-content-body">
+                    <div class="cb-content-body">
+                        <div class="hy-file-list">
+                            <hy-image-list class="app-select-image" height="80" style="width: 100%;"
+                                           hya-list="photoList" hya-column="4" hya-add="selectPicture($callback);"
+                                           hya-delete="deletePhoto($index,$item,$done);"
+                                           hya-item-del="canDelFile($item)"
+                                           hya-src-key="SRC">
+                                <img ng-src="{{item.SRC}}" class="cem_pzsc_img"/>
+                            </hy-image-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType!=='2'">
+        <div style="width: 33%" class="button-solid" ng-click="save()">保存</div>
+        <div style="width: 33%" class="button-solid" ng-click="send()">傳遞</div>
+    </ons-bottom-toolbar>
+    <ons-bottom-toolbar class="cem-button" ng-if="orderType==='2'">
+        <div style="width: 60%" class="button-solid" ng-click="savePhoto()">照片上傳</div>
+    </ons-bottom-toolbar>
+</ons-page>

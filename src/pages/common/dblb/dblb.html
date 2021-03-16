@@ -1,0 +1,28 @@
+<!--
+Version:1.0.0
+Author:高飞
+Date:2017/9/4
+通用待办列表
+-->
+<ons-page ng-controller="DblbCtrl">
+    <ons-toolbar class="toolbar-hide-border" toolbar-modal>
+        <div class="left">
+            <hy-back-button></hy-back-button>
+        </div>
+        <div class="center">{{title}}待办列表</div>
+    </ons-toolbar>
+    <div class="tf-page-content hy-layout-column">
+        <div class="yn-cb-search-top">
+            <div class="hy-layout-row hy-layout-align-center-center">
+                <div class="tf-ydcb-search-content hy-layout-row hy-layout-align-start-center">
+                    <div class="hy-layout-row hy-layout-align-center-center" style="width:50px;height:30px">
+                        <ons-icon icon="search" size="20px" class="tf-icon-color"></ons-icon>
+                    </div>
+                    <input placeholder="工单号或业务子类" ng-model="searchparam" style="border: none;background-color: transparent"
+                           class="tf-input-clear" ng-change="search()"/>
+                </div>
+            </div>
+        </div>
+        <div class="tf-content-flex" style="height: calc(100% - 66px);" ng-include="'pages/common/templates/publicTaskList.html'"></div>
+    </div>
+</ons-page>

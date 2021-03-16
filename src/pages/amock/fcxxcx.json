@@ -1,0 +1,72 @@
+{
+  "PROPERTY": [
+    {
+      "FCBHNO": "1002",
+      "PROPERTYADDRESS": "墮明街道大河村1-1",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "FCLX": "真實房產",
+      "FCXZ": "住宅",
+      "FXZT": "新建中",
+      "dbhm": "0116766",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "HYZHNO":"000000001",
+      "sblx":"三相感應式長壽命電能表"
+    },
+    {
+      "FCBHNO": "1003",
+      "PROPERTYADDRESS": "墮明街道大河村1-2",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "FCLX": "虛假房產",
+      "FCXZ": "商業",
+      "FXZT": "待入夥",
+      "dbhm": "0146756",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "HYZHNO":"000000001",
+      "sblx":"三相感應式長壽命電能表"
+    },
+    {
+      "FCBHNO": "1004",
+      "PROPERTYADDRESS": "墮明街道大河村1-3",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "FCLX": "真實房產",
+      "FCXZ": "住宅",
+      "FXZT": "已入夥",
+      "dbhm": "0146756",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "HYZHNO":"000000001",
+      "sblx":"三相感應式長壽命電能表"
+    },
+    {
+      "FCBHNO": "1005",
+      "PROPERTYADDRESS": "墮明街道大河村1-4",
+      "ADDRESSEN": "Baía de Penghu de Macau",
+      "FCLX": "虛假房產",
+      "FCXZ": "商業",
+      "FXZT": "待入夥",
+      "dbhm": "0146756",
+      "jclx": "3",
+      "khxm": "張先生",
+      "khxmen": "Mr. Zhang",
+      "hylb": "居民照明",
+      "ddgl": "6.9kVA",
+      "eddl": "00A",
+      "HYZHNO":"000000001",
+      "sblx":"三相感應式長壽命電能表"
+    }
+  ]
+}
